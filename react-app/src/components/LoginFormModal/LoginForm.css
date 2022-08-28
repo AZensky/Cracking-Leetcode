@@ -1,0 +1,95 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-form input {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 8px;
+  margin: 0;
+  padding: 8px 12px;
+  width: 94%;
+  outline: none;
+}
+
+.login-form input:hover {
+  border: 1px solid rgb(117, 117, 117);
+}
+
+.login-form input:focus {
+  border: 1px solid rgb(1, 130, 148);
+}
+
+.login-form label {
+  display: block;
+  text-align: left;
+}
+
+.login-form__icon {
+  padding-top: 12px;
+  padding-bottom: 8px;
+  max-height: 15%;
+  height: auto;
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-form__title {
+  color: #000000;
+}
+
+.login-form__subtitle {
+  display: flex;
+  line-height: 24px;
+  gap: 6px;
+  justify-content: center;
+  color: #000000;
+}
+
+.login-form__subtitle__sign-up {
+  color: rgb(0, 130, 148);
+  text-decoration: none;
+}
+
+.login-form__email {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__email__label {
+  line-height: 24px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.login-form__password__label {
+  line-height: 24px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.login-form__log-in {
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  background-color: #f65858;
+  padding: 8px 12px;
+  border: 1px solid #f65858;
+  font-size: 1.25rem;
+  height: 3rem;
+  margin-top: 1.5rem;
+}
+
+.login-form__validation-errors {
+  list-style: none;
+  color: red;
+  text-align: center;
+  padding-left: 0;
+}

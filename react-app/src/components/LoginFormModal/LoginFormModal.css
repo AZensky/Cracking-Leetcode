@@ -1,0 +1,8 @@
+.nav-login-btn {
+  background: none;
+  margin-right: 1.25rem;
+}
+
+.nav-login-btn:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.problem-details-page-container {
+  background-color: #1d212e;
+  width: 100%;
+}
+
+.problem-details-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}

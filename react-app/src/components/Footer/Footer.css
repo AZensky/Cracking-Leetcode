@@ -1,0 +1,56 @@
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  margin-top: 4rem;
+}
+
+.footer-content-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 2.5rem 0;
+}
+
+.footer-text {
+  color: #d6d0d0;
+  margin: 0;
+}
+
+.footer-website-description {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+.footer-section-title {
+  margin-top: 0;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.footer-website-name {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.footer-inspiration {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* align-items: center; */
+}
+
+.footer-contact {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

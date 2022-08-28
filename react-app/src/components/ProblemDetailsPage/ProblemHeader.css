@@ -1,0 +1,39 @@
+.problem-header-container {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  width: 67%;
+  margin-left: 6rem;
+}
+
+.problem-header-details-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-label {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.problem-rating-title {
+  margin-right: 0.5rem;
+}
+
+.header-label .fa-star {
+  margin-right: 0.25rem;
+}
+
+.header-label img {
+  margin-right: 0.25rem;
+  height: 2rem;
+}
+
+.problem-header-difficulty {
+  background-color: #282d3a;
+  text-transform: uppercase;
+  margin-left: 0.25rem;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+}

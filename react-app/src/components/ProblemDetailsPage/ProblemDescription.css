@@ -1,0 +1,17 @@
+.problem-description-container {
+  width: 60%;
+}
+
+.problem-description-title {
+  color: #ffffff;
+  font-size: 1.75rem;
+}
+
+.problem-description {
+  color: #d6d0d0;
+}
+
+.example-problem {
+  margin-top: 2rem;
+  width: 100%;
+}

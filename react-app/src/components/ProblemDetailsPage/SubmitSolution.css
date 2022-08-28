@@ -1,0 +1,23 @@
+.submit-solution-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.submit-solution-header {
+  color: #ffffff;
+  font-size: 1.75rem;
+}
+
+.code-editor-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  background-color: #282d3a;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.submit-solution-form {
+  font-size: 0.75rem;
+}

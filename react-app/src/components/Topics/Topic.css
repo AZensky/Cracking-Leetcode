@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&display=swap");
+
+.topic-and-problems-container {
+  background-color: #282d3a;
+  border-radius: 1rem;
+}
+
+.topic-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem 0.25rem 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.topic-container > h4 {
+  margin-left: 0.75rem;
+  color: #ffffff;
+  font-family: Kanit;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.topic-container > button {
+  outline: none;
+  border: none;
+  background: none;
+  margin-right: 0.75rem;
+  color: #444751;
+  cursor: pointer;
+}
+
+.topic-container > button:hover {
+  opacity: 0.8;
+}
+
+.topic-problems-container {
+  display: flex;
+  justify-content: center;
+}
+
+.topic-problems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 98%;
+}
+
+.fa-angle-up {
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.fa-angle-down {
+  font-size: 1.25rem;
+  color: #ffffff;
+}
