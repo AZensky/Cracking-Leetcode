@@ -1,20 +1,27 @@
 import React from "react";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
-import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/session";
 import "./Navbar.css";
 
 function Navbar() {
-  // const sessionUser = useSelector((state) => state.session.user);
-  const sessionUser = null;
+  const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <div className="session-links-logged-in">
-        {/* <CreateGroupButton />
-        <ProfileButton user={sessionUser} classStyle="profile-button" /> */}
-        <h1>Logged in</h1>
+        <button onClick={onLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
     );
   } else {

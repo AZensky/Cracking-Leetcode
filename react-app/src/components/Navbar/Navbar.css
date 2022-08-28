@@ -48,3 +48,15 @@
   color: #ffffff;
   font-size: 1rem;
 }
+
+.logout-btn {
+  background: none;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login } from '../../store/session';
+import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
 
@@ -9,15 +9,15 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
     //if there are errors when trying to log in, set the errors, so we can display them
-    const data = await dispatch(login(username, password))
-        if (data) {
-            setErrors(data)
-        }
+    const data = await dispatch(login(username, password));
+    if (data) {
+      setErrors(data);
+    }
   };
 
   //form with controlled components
