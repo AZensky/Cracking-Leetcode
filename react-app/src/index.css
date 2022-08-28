@@ -1,1 +1,17 @@
 /* TODO Add site wide styles */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Open Sans";
+  color: #ffffff;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
