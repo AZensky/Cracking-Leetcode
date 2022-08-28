@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
 
@@ -14,6 +13,9 @@ function SignupForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(signUp(username, password));
+    if (data) {
+      setErrors(data);
+    }
   };
 
   //form with controlled components

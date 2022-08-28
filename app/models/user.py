@@ -8,7 +8,12 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    num_solved = db.Column(db.Integer, default=0)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    votes = db.relationship('SolutionVote', back_populates='user', cascade='all, delete')
+    ratings = db.relationship('Rating', back_populates='user', cascade='all, delete')
+    solutions = db.relationship('Solution', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
