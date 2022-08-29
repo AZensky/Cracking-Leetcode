@@ -6,6 +6,8 @@ class Solution(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column(db.Text, nullable=False)
     language = db.Column(db.String(255), nullable=False)
+    example_solution = db.Column(db.Boolean, default=False)
+    solution_vote_count = db.Column(db.Integer, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     problem_id = db.Column(db.Integer, db.ForeignKey('problems.id'), nullable=False)
 
