@@ -23,9 +23,9 @@ sort_colors = {
     'category': 'Array',
     'description': """Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
 
-We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+    We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
 
-You must solve this problem without using the library's sort function.""",
+    You must solve this problem without using the library's sort function.""",
     'example': '''Input: nums = [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]''',
     'difficulty': 'Easy'
@@ -36,7 +36,7 @@ product_of_array_except_self = {
     'category': 'Array',
     'description': """Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 
-The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.""",
+    The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.""",
     'example': '''Input: nums = [1,2,3,4]
 Output: [24,12,8,6]''',
     'difficulty': 'Medium'

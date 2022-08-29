@@ -5,6 +5,7 @@ class Solution(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column(db.Text, nullable=False)
+    language = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     problem_id = db.Column(db.Integer, db.ForeignKey('problems.id'), nullable=False)
 
@@ -16,6 +17,7 @@ class Solution(db.Model):
         return {
             'id': self.id,
             'answer': self.answer,
+            'language': self.language,
             'userId': self.user_id,
             'user': self.user.to_dict_no_relationships(),
             'problem': self.problem.to_dict_no_relationships()
@@ -25,6 +27,6 @@ class Solution(db.Model):
         return {
             'id': self.id,
             'answer': self.answer,
+            'language': self.language,
             'userId': self.user_id,
-            'user': self.user.to_dict_no_relationships(),
         }

@@ -9,6 +9,7 @@
 
 .problem-description {
   color: #d6d0d0;
+  white-space: pre-line;
 }
 
 .example-problem {
