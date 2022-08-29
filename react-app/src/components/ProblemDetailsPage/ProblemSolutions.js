@@ -56,6 +56,7 @@ function ProblemSolutions() {
               title={solution.title}
               language={solution.language}
               userId={solution.userId}
+              solutionId={solution.id}
             />
           ))}
       </div>

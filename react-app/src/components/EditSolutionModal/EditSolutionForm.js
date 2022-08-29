@@ -2,19 +2,19 @@ import CodeMirror from "@uiw/react-codemirror";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createSolution } from "../../store/solutions";
+import { editSolution } from "../../store/solutions";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./EditSolutionForm.css";
 
-function EditSolutionForm() {
+function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage }) {
   const { problemId } = useParams();
 
-  const [solution, setSolution] = useState("");
-  const [language, setLanguage] = useState("javascript");
-  const [title, setTitle] = useState("");
+  const [solution, setSolution] = useState(oldSolution);
+  const [language, setLanguage] = useState(oldLanguage);
+  const [title, setTitle] = useState(oldTitle);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -42,8 +42,12 @@ function EditSolutionForm() {
       language,
     };
 
-    let createdSolution = await dispatch(createSolution(problemId, info));
+    let editedSolution = await dispatch(
+      editSolution(problemId, solutionId, info)
+    );
   }
+
+  console.log("SOLUTION", solution);
 
   //form with controlled components
   return (
@@ -81,7 +85,7 @@ function EditSolutionForm() {
           extensions={[javascript()]}
           theme={dracula}
           onChange={(value) => setSolution(value)}
-          className="submit-solution-code-editor"
+          className="edit-solution-code-editor"
         />
       )}
 
@@ -93,11 +97,11 @@ function EditSolutionForm() {
           extensions={[python()]}
           theme={dracula}
           onChange={(value) => setSolution(value)}
-          className="submit-solution-code-editor"
+          className="edit-solution-code-editor"
         />
       )}
       <button type="submit" className="login-form__log-in">
-        Log In
+        Submit Solution
       </button>
     </form>
   );

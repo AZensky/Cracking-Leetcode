@@ -7,7 +7,7 @@ import { dracula } from "@uiw/codemirror-theme-dracula";
 import EditSolutionModal from "../EditSolutionModal/EditSolutionModal";
 import "./Solution.css";
 
-function Solution({ solution, title, language, userId }) {
+function Solution({ solution, title, language, userId, solutionId }) {
   const user = useSelector((state) => state.session.user);
 
   return (
@@ -25,7 +25,14 @@ function Solution({ solution, title, language, userId }) {
           <p className="user-solution-title">{title}</p>
           {userId === user?.id && (
             <button className="edit-solution-btn">
-              {<EditSolutionModal />}
+              {
+                <EditSolutionModal
+                  solutionId={solutionId}
+                  title={title}
+                  solution={solution}
+                  language={language}
+                />
+              }
             </button>
           )}
         </div>

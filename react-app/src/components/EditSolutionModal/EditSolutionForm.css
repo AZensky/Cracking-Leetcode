@@ -22,3 +22,9 @@
   border-radius: 0.5rem;
   padding: 0.5rem 0.5rem;
 }
+
+.edit-solution-code-editor {
+  font-size: 0.75rem;
+  justify-self: start;
+  text-align: start;
+}

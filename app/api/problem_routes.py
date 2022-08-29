@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, Problem, Solution, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
-from app.forms import CreateSolutionForm
+from app.forms import CreateSolutionForm, EditSolutionForm
 # from ..forms import PurchaseStockForm
 
 problem_routes = Blueprint('problems', __name__)
@@ -55,9 +55,10 @@ def edit_solution(id, solutionid):
         data = form.data
 
         solution = Solution.query.get(solutionid)
-        solution.answer = data['answer']
+        solution.answer = data['solution']
+        solution.title = data['title']
+        solution.language = data['language']
 
-        db.session.add(solution)
         db.session.commit()
 
         return solution.to_dict()
