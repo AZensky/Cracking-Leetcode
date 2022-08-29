@@ -5,7 +5,7 @@ import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import "./Solution.css";
 
-function Solution({ solution }) {
+function Solution({ solution, title, language }) {
   return (
     <div className="user-solution-container">
       {/* Voting Icons */}
@@ -18,18 +18,32 @@ function Solution({ solution }) {
       {/* Title and Code Editor */}
       <div className="user-solution-title-editor-container">
         <div className="user-solution-title-edit">
-          <p className="user-solution-title">Lorem, ipsum dolor sit amet</p>
+          <p className="user-solution-title">{title}</p>
           <button className="edit-solution-btn">Edit Solution</button>
         </div>
         <div className="user-solution-editor-container">
-          <CodeMirror
-            value={solution}
-            height="250px"
-            extensions={[javascript(), python()]}
-            theme={dracula}
-            editable={false}
-            className="solution-code-editor"
-          />
+          {/* If language is javascript, render a code editor with javascript highlighting */}
+          {language === "javascript" && (
+            <CodeMirror
+              value={solution}
+              height="250px"
+              extensions={[javascript()]}
+              theme={dracula}
+              editable={false}
+              className="solution-code-editor"
+            />
+          )}
+
+          {/* If language is python, render a code editor with python highlighting */}
+          {language === "python" && (
+            <CodeMirror
+              value={solution}
+              height="250px"
+              extensions={[python()]}
+              editable={false}
+              className="solution-code-editor"
+            />
+          )}
         </div>
 
         {/* Solution Owner and Date */}

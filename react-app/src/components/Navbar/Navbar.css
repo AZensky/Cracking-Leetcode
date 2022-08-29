@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.home-navigation {
+  text-decoration: none;
+}
+
 .navbar-logo {
   width: 25px;
   height: 25px;
