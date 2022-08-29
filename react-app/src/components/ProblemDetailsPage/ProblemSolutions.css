@@ -21,6 +21,14 @@
   border-bottom: 2px solid #3c404a;
 }
 
+.user-solutions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 3rem;
+}
+
 .no-user-solutions {
-  margin: 0 auto;
+  text-align: center;
 }

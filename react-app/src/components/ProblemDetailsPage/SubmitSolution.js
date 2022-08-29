@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from "react";
-import "./SubmitSolution.css";
-
 import CodeMirror from "@uiw/react-codemirror";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { createSolution } from "../../store/solutions";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
+import "./SubmitSolution.css";
 
 function SubmitSolution() {
+  const { problemId } = useParams();
   const [solution, setSolution] = useState("");
   const [language, setLanguage] = useState("javascript");
   const [title, setTitle] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const errors = [];
@@ -21,7 +27,7 @@ function SubmitSolution() {
     setValidationErrors(errors);
   }, [solution, title]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setHasSubmitted(true);
 
@@ -35,7 +41,9 @@ function SubmitSolution() {
       language,
     };
 
-    console.log("info", info);
+    let createdSolution = await dispatch(createSolution(problemId, info));
+
+    history.push(`/problems/${problemId}`);
   }
 
   return (

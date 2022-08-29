@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProblemHeader from "./ProblemHeader";
 import ProblemDescription from "./ProblemDescription";
 import ProblemSolutions from "./ProblemSolutions";
 import SubmitSolution from "./SubmitSolution";
 import Footer from "../Footer/Footer";
-
 import "./ProblemDetailsPage.css";
 
 function ProblemDetailsPage() {
   const { problemId } = useParams();
 
   const [problemDetails, setProblemDetails] = useState();
+
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     const getProblemDetails = async () => {
@@ -38,7 +40,7 @@ function ProblemDetailsPage() {
           example={problemDetails?.example}
         />
         <ProblemSolutions />
-        <SubmitSolution />
+        {user && <SubmitSolution />}
       </div>
 
       <Footer />

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, Problem, Solution, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
+from app.forms import CreateSolutionForm
 # from ..forms import PurchaseStockForm
 
 problem_routes = Blueprint('problems', __name__)
@@ -32,8 +33,9 @@ def post_solution(problemid):
 
     if form.validate_on_submit():
         data = form.data
+        user = current_user
 
-        solution = Solution(answer=data['answer'], user_id=problemid)
+        solution = Solution(answer=data['solution'], title=data['title'], language=data['language'], user_id=user.id, problem_id=problemid)
 
         db.session.add(solution)
         db.session.commit()
