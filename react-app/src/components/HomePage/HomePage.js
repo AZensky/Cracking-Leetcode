@@ -1,11 +1,36 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadProblems } from "../../store/problems";
 import ProgressBar from "@ramonak/react-progress-bar";
 import Topic from "../Topics/Topic";
 import Footer from "../Footer/Footer";
 import "./HomePage.css";
+import { useEffect } from "react";
 
 function HomePage() {
   const [searchInput, setSearchInput] = useState("");
+  const [arrayProblems, setArrayProblems] = useState({});
+
+  const dispatch = useDispatch();
+
+  const allProblems = useSelector((state) => state.problems.Problems);
+
+  useEffect(() => {
+    const initializePage = async () => {
+      await dispatch(loadProblems());
+    };
+
+    initializePage();
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!allProblems) return;
+
+    let arrayProblems = allProblems.filter(
+      (problem) => problem.category === "Array"
+    );
+    setArrayProblems(arrayProblems);
+  }, [allProblems]);
 
   function handleSearch() {}
 
@@ -57,7 +82,7 @@ function HomePage() {
       {/* Contains all the problems */}
       <div className="problems-container">
         {/* Loop through all the problem topics */}
-        <Topic num={1} title={"Arrays"} />
+        <Topic num={1} title={"Arrays"} problems={arrayProblems} />
         <Topic num={2} title={"Hash Maps"} />
         <Topic num={3} title={"Two Pointers"} />
         <Topic num={4} title={"Sliding Window"} />

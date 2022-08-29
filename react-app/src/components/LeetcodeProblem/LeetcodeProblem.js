@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem() {
+function LeetcodeProblem({ name, id }) {
   return (
     <div className="problem-content-container">
       {/* Solved icon */}
@@ -13,8 +14,8 @@ function LeetcodeProblem() {
       {/* Problem Overview Details */}
       <div className="lc-problem-overview-container">
         <div className="lc-problem-overview">
-          <Link to="/problems/1" className="problem-link">
-            <p className="lc-problem-title">Product of Array Except Self</p>
+          <Link to={`/problems/${id}`} className="problem-link">
+            <p className="lc-problem-title">{name}</p>
           </Link>
 
           <div className="lc-problem-details">
