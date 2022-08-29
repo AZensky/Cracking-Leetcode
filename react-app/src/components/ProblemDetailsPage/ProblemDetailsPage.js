@@ -33,7 +33,10 @@ function ProblemDetailsPage() {
         difficulty={problemDetails?.difficulty}
       />
       <div className="problem-details-content-container">
-        <ProblemDescription description={problemDetails?.description} />
+        <ProblemDescription
+          description={problemDetails?.description}
+          example={problemDetails?.example}
+        />
         <ProblemSolutions />
         <SubmitSolution />
       </div>

@@ -23,14 +23,15 @@ function Topic({ num, title, problems }) {
       <div className="topic-problems-container">
         {showProblems && (
           <div className="topic-problems">
-            {problems.map((problem) => (
-              <LeetcodeProblem
-                key={problem.id}
-                name={problem.name}
-                difficulty={problem.difficulty}
-                id={problem.id}
-              />
-            ))}
+            {problems &&
+              problems.map((problem) => (
+                <LeetcodeProblem
+                  key={problem.id}
+                  name={problem.name}
+                  difficulty={problem.difficulty}
+                  id={problem.id}
+                />
+              ))}
           </div>
         )}
       </div>

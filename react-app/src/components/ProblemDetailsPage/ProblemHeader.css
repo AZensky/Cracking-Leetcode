@@ -6,6 +6,10 @@
   margin-left: 6rem;
 }
 
+.problem-header-container > h2 {
+  font-size: 1.75rem;
+}
+
 .problem-header-details-container {
   display: flex;
   gap: 2rem;
