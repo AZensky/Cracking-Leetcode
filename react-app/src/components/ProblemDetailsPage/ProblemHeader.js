@@ -2,10 +2,10 @@ import React from "react";
 import categoryIcon from "../../assets/categoryIcon.png";
 import "./ProblemHeader.css";
 
-function ProblemHeader() {
+function ProblemHeader({ name, difficulty }) {
   return (
     <div className="problem-header-container">
-      <h2>Product of Array Except Self</h2>
+      <h2>{name}</h2>
       <div className="problem-header-details-container">
         <div className="header-label">
           <span className="problem-rating-title">Rating</span>
@@ -17,7 +17,7 @@ function ProblemHeader() {
         </div>
         <span className="header-label">
           Difficulty Level:{" "}
-          <span className="problem-header-difficulty">Easy</span>
+          <span className="problem-header-difficulty">{difficulty}</span>
         </span>
         <span className="header-label">
           <img src={categoryIcon} alt="" />
