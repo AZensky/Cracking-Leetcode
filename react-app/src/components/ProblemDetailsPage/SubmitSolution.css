@@ -7,6 +7,47 @@
 .submit-solution-header {
   color: #ffffff;
   font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.submit-solution-form > .code-editor-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.solution-form-title {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.solution-form-language-selection {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.solution-form-language-selection select {
+  margin-left: 1rem;
+  width: fit-content;
+  background-color: #212735;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  color: #ffffff;
+}
+
+.submit-solution-form input {
+  padding: 0.25rem 0.5rem;
+  width: 50%;
+  color: #ffffff;
+  border: none;
+  background-color: #212735;
+  border-radius: 8px;
+  margin-left: 1rem;
 }
 
 .code-editor-container {
@@ -18,6 +59,28 @@
   border-radius: 1rem;
 }
 
-.submit-solution-form {
+.submit-solution-code-editor {
   font-size: 0.75rem;
+}
+
+.submit-solution-form button {
+  background-color: #3cdb7c;
+  color: #ffffff;
+  padding: 0.75rem 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  margin-top: 1rem;
+  align-self: flex-end;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.submit-solution-form button:hover {
+  cursor: pointer;
+}
+
+.code-editor-container > .login-form__validation-errors {
+  margin-bottom: 1.5rem;
 }
