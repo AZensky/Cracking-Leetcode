@@ -27,6 +27,7 @@ function Topic({ num, title, problems }) {
               <LeetcodeProblem
                 key={problem.id}
                 name={problem.name}
+                difficulty={problem.difficulty}
                 id={problem.id}
               />
             ))}

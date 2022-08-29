@@ -3,7 +3,8 @@ contains_duplicate = {
     'category': 'Array',
     'description': 'Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.',
     'example': '''Input: nums = [1,2,3,1]
-Output: true'''
+Output: true''',
+    'difficulty': 'Easy'
 }
 
 squares_of_a_sorted_array = {
@@ -13,7 +14,8 @@ squares_of_a_sorted_array = {
     'example': '''Input: nums = [-4,-1,0,3,10]
 Output: [0,1,9,16,100]
 Explanation: After squaring, the array becomes [16,1,0,9,100].
-After sorting, it becomes [0,1,9,16,100].'''
+After sorting, it becomes [0,1,9,16,100].''',
+    'difficulty': 'Easy'
 }
 
 sort_colors = {
@@ -25,7 +27,8 @@ We will use the integers 0, 1, and 2 to represent the color red, white, and blue
 
 You must solve this problem without using the library's sort function.""",
     'example': '''Input: nums = [2,0,2,1,1,0]
-Output: [0,0,1,1,2,2]'''
+Output: [0,0,1,1,2,2]''',
+    'difficulty': 'Easy'
 }
 
 product_of_array_except_self = {
@@ -35,5 +38,6 @@ product_of_array_except_self = {
 
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.""",
     'example': '''Input: nums = [1,2,3,4]
-Output: [24,12,8,6]'''
+Output: [24,12,8,6]''',
+    'difficulty': 'Medium'
 }

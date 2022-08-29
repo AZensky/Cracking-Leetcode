@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem({ name, id }) {
+function LeetcodeProblem({ name, id, difficulty }) {
   return (
     <div className="problem-content-container">
       {/* Solved icon */}
@@ -27,7 +27,7 @@ function LeetcodeProblem({ name, id }) {
             <i className="fa-solid fa-star empty"></i>
             <span className="lc-difficulty-title">Difficulty Level:</span>
             <div className="lc-problem-diffculty">
-              <span>Easy</span>
+              <span>{difficulty}</span>
             </div>
           </div>
         </div>
