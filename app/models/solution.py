@@ -20,6 +20,8 @@ class Solution(db.Model):
             'id': self.id,
             'answer': self.answer,
             'language': self.language,
+            'example_solution': self.example_solution,
+            'solution_vote_count': self.solution_vote_count,
             'userId': self.user_id,
             'user': self.user.to_dict_no_relationships(),
             'problem': self.problem.to_dict_no_relationships()
@@ -30,5 +32,7 @@ class Solution(db.Model):
             'id': self.id,
             'answer': self.answer,
             'language': self.language,
+            'example_solution': self.example_solution,
+            'solution_vote_count': self.solution_vote_count,
             'userId': self.user_id,
         }
