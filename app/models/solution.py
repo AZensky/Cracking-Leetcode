@@ -4,6 +4,7 @@ class Solution(db.Model):
     __tablename__ = 'solutions'
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
     answer = db.Column(db.Text, nullable=False)
     language = db.Column(db.String(255), nullable=False)
     example_solution = db.Column(db.Boolean, default=False)
@@ -18,6 +19,7 @@ class Solution(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'title': self.title,
             'answer': self.answer,
             'language': self.language,
             'example_solution': self.example_solution,
@@ -30,6 +32,7 @@ class Solution(db.Model):
     def to_dict_no_relationships(self):
         return {
             'id': self.id,
+            'title': self.title,
             'answer': self.answer,
             'language': self.language,
             'example_solution': self.example_solution,

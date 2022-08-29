@@ -6,7 +6,7 @@ import "./ProblemSolutions.css";
 function ProblemSolutions() {
   const { problemId } = useParams();
 
-  const [exampleSolution, setExampleSolution] = useState("");
+  const [exampleSolution, setExampleSolution] = useState({});
   const [userSolutions, setUserSolutions] = useState([]);
 
   useEffect(() => {
@@ -19,11 +19,11 @@ function ProblemSolutions() {
         (solution) => solution.example_solution === true
       );
 
-      setExampleSolution(ourSolution[0].answer);
+      setExampleSolution(ourSolution[0]);
     };
 
     fetchProblemSolutions();
-  });
+  }, []);
   let solution = `function hello() {
     return 'Hello World!'
 }`;
@@ -32,7 +32,11 @@ function ProblemSolutions() {
       {/* Our Solution */}
       <div className="our-solution">
         <h3 className="solutions-header">Our Solution</h3>
-        <Solution solution={exampleSolution} />
+        <Solution
+          solution={exampleSolution.answer}
+          title={exampleSolution.title}
+          language={exampleSolution.language}
+        />
       </div>
 
       {/* User Solutions */}
