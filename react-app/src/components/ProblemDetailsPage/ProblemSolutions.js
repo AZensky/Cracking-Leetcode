@@ -42,7 +42,10 @@ function ProblemSolutions() {
       {/* User Solutions */}
       <h3 className="solutions-header">User Solutions</h3>
 
-      <Solution solution={solution} />
+      {userSolutions.length === 0 && (
+        <p className="no-user-solutions">No User Solutions Yet!</p>
+      )}
+      {userSolutions.length > 0 && <Solution solution={solution} />}
     </div>
   );
 }
