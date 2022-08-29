@@ -1,11 +1,15 @@
-import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
+import React from "react";
+import { useSelector } from "react-redux";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
+import EditSolutionModal from "../EditSolutionModal/EditSolutionModal";
 import "./Solution.css";
 
-function Solution({ solution, title, language }) {
+function Solution({ solution, title, language, userId }) {
+  const user = useSelector((state) => state.session.user);
+
   return (
     <div className="user-solution-container">
       {/* Voting Icons */}
@@ -19,7 +23,11 @@ function Solution({ solution, title, language }) {
       <div className="user-solution-title-editor-container">
         <div className="user-solution-title-edit">
           <p className="user-solution-title">{title}</p>
-          <button className="edit-solution-btn">Edit Solution</button>
+          {userId === user?.id && (
+            <button className="edit-solution-btn">
+              {<EditSolutionModal />}
+            </button>
+          )}
         </div>
         <div className="user-solution-editor-container">
           {/* If language is javascript, render a code editor with javascript highlighting */}

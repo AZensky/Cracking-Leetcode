@@ -29,8 +29,6 @@ function ProblemSolutions() {
     fetchProblemSolutions();
   }, []);
 
-  console.log("USER SOLUTIONS", userSolutions);
-
   return (
     <div className="solutions-container">
       {/* Our Solution */}
@@ -40,6 +38,7 @@ function ProblemSolutions() {
           solution={exampleSolution.answer}
           title={exampleSolution.title}
           language={exampleSolution.language}
+          userId={exampleSolution.userId}
         />
       </div>
 
@@ -56,6 +55,7 @@ function ProblemSolutions() {
               solution={solution.answer}
               title={solution.title}
               language={solution.language}
+              userId={solution.userId}
             />
           ))}
       </div>

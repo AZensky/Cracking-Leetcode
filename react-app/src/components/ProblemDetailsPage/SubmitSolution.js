@@ -10,6 +10,7 @@ import "./SubmitSolution.css";
 
 function SubmitSolution() {
   const { problemId } = useParams();
+
   const [solution, setSolution] = useState("");
   const [language, setLanguage] = useState("javascript");
   const [title, setTitle] = useState("");
@@ -66,6 +67,7 @@ function SubmitSolution() {
               required
             />
           </label>
+
           <label className="solution-form-language-selection">
             Language:
             <select
