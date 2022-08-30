@@ -34,6 +34,7 @@ function LeetcodeProblem({ name, id, difficulty, ratings }) {
               fullSymbol="fa fa-star"
               className="problem-rating-display"
               initialRating={problemRating}
+              readonly={true}
             />
             <span id="lc-problem-rating-number">({problemRating})</span>
             <span className="lc-difficulty-title">Difficulty Level:</span>
