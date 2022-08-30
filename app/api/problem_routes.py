@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import Problem, Solution, Rating, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
-from app.forms import CreateSolutionForm, EditSolutionForm
+from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm
 
 problem_routes = Blueprint('problems', __name__)
 
@@ -89,7 +89,7 @@ def post_rating(problemid):
         data = form.data
         user = current_user
 
-        user_rating = Rating.query.filter(Rating.user_id == user.id, Rating.problem_id == problemid)
+        user_rating = Rating.query.filter(Rating.user_id == user.id, Rating.problem_id == problemid).first()
 
         if user_rating is not None:
             return {'message': 'User has already rated this problem'}
