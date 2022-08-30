@@ -67,7 +67,7 @@ def edit_solution(id, solutionid):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # Delete a solution for a problem
-@problem_routes.route('/<int:problemid>/solution/<int:solutionid>')
+@problem_routes.route('/<int:problemid>/solutions/<int:solutionid>', methods=['DELETE'])
 def delete_solution(problemid, solutionid):
 
     solution = Solution.query.get(solutionid)

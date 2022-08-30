@@ -1,0 +1,42 @@
+.delete-solution-title {
+  color: #000000;
+  align-self: flex-start;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.delete-solution-description {
+  color: rgba(0, 0, 0, 0.65);
+  margin-bottom: 1.25rem;
+}
+
+.delete-solution-btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 1rem;
+}
+
+.delete-solution-btn-container button:hover {
+  cursor: pointer;
+}
+
+.cancel-delete {
+  background-color: #ffffff;
+  border: 1px solid rgb(176, 190, 197);
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  color: rgb(69, 90, 100);
+  font-size: 1rem;
+}
+
+.confirm-delete {
+  background-color: #ffffff;
+  border: 1px solid rgb(245, 67, 54);
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  color: rgb(245, 67, 54);
+  font-size: 1rem;
+}
