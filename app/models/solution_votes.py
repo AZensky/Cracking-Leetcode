@@ -1,6 +1,6 @@
 from .db import db
 
-class SolutionVotes(db.Model):
+class SolutionVote(db.Model):
     __tablename__ = 'solution_votes'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -8,8 +8,8 @@ class SolutionVotes(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     solution_id = db.Column(db.Integer, db.ForeignKey('solutions.id'), nullable=False)
 
-    user = db.relationship('User', back_populates='ratings')
-    solution = db.relationship('Solution', back_populates='solutions')
+    user = db.relationship('User', back_populates='votes')
+    solution = db.relationship('Solution', back_populates='solution_votes')
 
     def to_dict(self):
         return {

@@ -1,8 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Rating from "react-rating";
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem() {
+function LeetcodeProblem({ name, id, difficulty, ratings }) {
+  let problemRating = 0;
+
+  if (ratings.length > 0) {
+    problemRating =
+      ratings.reduce((accum, curr) => accum + curr.rating, 0) / ratings.length;
+  }
+
+  problemRating = problemRating.toFixed(2);
+
   return (
     <div className="problem-content-container">
       {/* Solved icon */}
@@ -13,20 +23,23 @@ function LeetcodeProblem() {
       {/* Problem Overview Details */}
       <div className="lc-problem-overview-container">
         <div className="lc-problem-overview">
-          <Link to="/problems/1" className="problem-link">
-            <p className="lc-problem-title">Product of Array Except Self</p>
+          <Link to={`/problems/${id}`} className="problem-link">
+            <p className="lc-problem-title">{name}</p>
           </Link>
 
           <div className="lc-problem-details">
             <span>Rating:</span>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star empty"></i>
+            <Rating
+              emptySymbol="fa fa-star empty"
+              fullSymbol="fa fa-star"
+              className="problem-rating-display"
+              initialRating={problemRating}
+              readonly={true}
+            />
+            <span id="lc-problem-rating-number">({problemRating})</span>
             <span className="lc-difficulty-title">Difficulty Level:</span>
             <div className="lc-problem-diffculty">
-              <span>Easy</span>
+              <span>{difficulty}</span>
             </div>
           </div>
         </div>

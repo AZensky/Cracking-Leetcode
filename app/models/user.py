@@ -8,7 +8,12 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    num_solved = db.Column(db.Integer, default=0)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    votes = db.relationship('SolutionVote', back_populates='user', cascade='all, delete')
+    ratings = db.relationship('Rating', back_populates='user', cascade='all, delete')
+    solutions = db.relationship('Solution', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -22,6 +27,15 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'votes': [vote.to_dict_no_relationships() for vote in self.votes],
+            'ratings': [rating.to_dict_no_relationships() for rating in self.ratings],
+            'solutions': [solution.to_dict_no_relationships() for solution in self.solutions]
+        }
+
+    def to_dict_no_relationships(self):
         return {
             'id': self.id,
             'username': self.username,

@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, Problem, Solution, db
+from app.models import Problem, Solution, Rating, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
-# from ..forms import PurchaseStockForm
+from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm, EditRatingForm
+import datetime
 
 problem_routes = Blueprint('problems', __name__)
 
@@ -24,6 +25,13 @@ def get_problem_by_id(problemid):
     else:
         return {'message': 'Problem not found'}
 
+# Get solutions for a problem
+@problem_routes.route('/<int:problemid>/solutions')
+def get_solutions(problemid):
+    solutions = Solution.query.filter(Solution.problem_id == problemid)
+
+    return {'Solutions': [solution.to_dict() for solution in solutions]}
+
 # Post a solution for a problem
 @problem_routes.route('/<int:problemid>/solutions', methods=['POST'])
 def post_solution(problemid):
@@ -32,8 +40,9 @@ def post_solution(problemid):
 
     if form.validate_on_submit():
         data = form.data
+        user = current_user
 
-        solution = Solution(answer=data['answer'], user_id=problemid)
+        solution = Solution(answer=data['solution'], title=data['title'], language=data['language'], user_id=user.id, problem_id=problemid)
 
         db.session.add(solution)
         db.session.commit()
@@ -53,9 +62,11 @@ def edit_solution(id, solutionid):
         data = form.data
 
         solution = Solution.query.get(solutionid)
-        solution.answer = data['answer']
+        solution.answer = data['solution']
+        solution.title = data['title']
+        solution.language = data['language']
+        solution.created_at = datetime.datetime.utcnow()
 
-        db.session.add(solution)
         db.session.commit()
 
         return solution.to_dict()
@@ -64,7 +75,7 @@ def edit_solution(id, solutionid):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # Delete a solution for a problem
-@problem_routes.route('/<int:problemid>/solution/<int:solutionid>')
+@problem_routes.route('/<int:problemid>/solutions/<int:solutionid>', methods=['DELETE'])
 def delete_solution(problemid, solutionid):
 
     solution = Solution.query.get(solutionid)
@@ -74,5 +85,65 @@ def delete_solution(problemid, solutionid):
 
     else:
         db.session.delete(solution)
+        db.session.commit()
+        return {'message': 'Successfully deleted'}
+
+# Post a rating for a problem
+@problem_routes.route('/<int:problemid>/ratings', methods=['POST'])
+def post_rating(problemid):
+    form = CreateRatingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+        user = current_user
+
+        user_rating = Rating.query.filter(Rating.user_id == user.id, Rating.problem_id == problemid).first()
+
+        if user_rating is not None:
+            return {'message': 'User has already rated this problem'}
+
+        else:
+            new_rating = Rating(rating=data['rating'], problem_id=problemid, user_id=user.id)
+
+            db.session.add(new_rating)
+            db.session.commit()
+
+            return new_rating.to_dict()
+
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+# Edit a rating for a problem
+@problem_routes.route('/<int:problemid>/ratings/<int:ratingid>', methods=['PUT'])
+def edit_rating(problemid, ratingid):
+    form = EditRatingForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+
+        problem_rating = Rating.query.get(ratingid)
+
+        problem_rating.rating = data['rating']
+
+        db.session.commit()
+
+        return problem_rating.to_dict()
+
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+# Delete a rating for a problem
+@problem_routes.route('/<int:problemid>/ratings/<int:ratingid>', methods=['DELETE'])
+def delete_rating(problemid, ratingid):
+    rating = Rating.query.get(ratingid)
+
+    if rating is None:
+        return {'message': 'Could not find rating'}
+
+    else:
+        db.session.delete(rating)
         db.session.commit()
         return {'message': 'Successfully deleted'}

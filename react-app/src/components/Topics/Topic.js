@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./Topic.css";
 import LeetcodeProblem from "../LeetcodeProblem/LeetcodeProblem";
 
-function Topic({ num, title }) {
+function Topic({ num, title, problems }) {
   const [showProblems, setShowProblems] = useState(false);
 
   return (
@@ -22,9 +23,16 @@ function Topic({ num, title }) {
       <div className="topic-problems-container">
         {showProblems && (
           <div className="topic-problems">
-            <LeetcodeProblem />
-            <LeetcodeProblem />
-            <LeetcodeProblem />
+            {problems &&
+              problems.map((problem) => (
+                <LeetcodeProblem
+                  key={problem.id}
+                  name={problem.name}
+                  difficulty={problem.difficulty}
+                  id={problem.id}
+                  ratings={problem.ratings}
+                />
+              ))}
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
+import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
+import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./LoginForm.css";
 
 function LoginForm() {
@@ -9,17 +10,16 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
     //if there are errors when trying to log in, set the errors, so we can display them
-    return dispatch(sessionActions.login({ username, password })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.message) setErrors([data.message]);
-      }
-    );
+    const data = await dispatch(login(username, password));
+    if (data) {
+      console.log("DATA", data);
+      setErrors(data);
+    }
   };
 
   //form with controlled components
@@ -30,11 +30,7 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <img
-        className="login-form__icon"
-        src="https://secure.meetupstatic.com/s/img/642287997414509021596/logo/svg/logo--mSwarm--2color.svg"
-        alt="logo"
-      />
+      <img className="login-form__icon" src={crackingLeetcodeLogo} alt="logo" />
       <h1 className="login-form__title">Log in</h1>
       <label className="login-form__email__label">
         Username

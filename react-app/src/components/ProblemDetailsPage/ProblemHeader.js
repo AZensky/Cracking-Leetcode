@@ -1,28 +1,91 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import categoryIcon from "../../assets/categoryIcon.png";
+import AddRatingModal from "../AddRatingModal/AddRatingModal";
+import EditRatingModal from "../EditRatingModal/EditRatingModal";
+import DeleteRatingModal from "../DeleteRatingModal/DeleteRatingModal";
+import Rating from "react-rating";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { loadProblems } from "../../store/problems";
 import "./ProblemHeader.css";
 
-function ProblemHeader() {
+function ProblemHeader({ name, difficulty, category }) {
+  const { problemId } = useParams();
+  const dispatch = useDispatch();
+
+  const allProblems = useSelector((state) => state.problems.Problems);
+  const user = useSelector((state) => state.session.user);
+
+  let problem;
+  let allRatings;
+  let problemRating;
+  let userRated = false;
+  let userRating;
+  let ratingId;
+
+  if (allProblems) {
+    problem = allProblems?.find((problem) => problem.id === +problemId);
+
+    allRatings = problem.ratings;
+
+    // prettier-ignore
+    problemRating = allRatings.reduce((accum, curr) => accum + curr.rating, 0) / allRatings.length;
+
+    problemRating = problemRating.toFixed(2);
+
+    if (user) {
+      allRatings.forEach((rating) => {
+        if (user.id === rating.userId) {
+          userRated = true;
+          userRating = rating.rating;
+          ratingId = rating.id;
+        }
+      });
+    }
+  }
+
+  useEffect(() => {
+    const initializePage = async () => {
+      await dispatch(loadProblems());
+    };
+
+    initializePage();
+  }, [dispatch]);
+
   return (
     <div className="problem-header-container">
-      <h2>Product of Array Except Self</h2>
+      <h2>{name}</h2>
       <div className="problem-header-details-container">
         <div className="header-label">
-          <span className="problem-rating-title">Rating</span>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star empty"></i>
+          <span className="problem-rating-title">Rating:</span>
+          <Rating
+            emptySymbol="fa fa-star empty"
+            fullSymbol="fa fa-star"
+            className="problem-rating-display"
+            initialRating={problemRating}
+            readonly={true}
+          />
+          <span id="lc-problem-rating-number">({problemRating})</span>
         </div>
         <span className="header-label">
           Difficulty Level:{" "}
-          <span className="problem-header-difficulty">Easy</span>
+          <span className="problem-header-difficulty">{difficulty}</span>
         </span>
         <span className="header-label">
           <img src={categoryIcon} alt="" />
-          Category: Arrays
+          Category: {category}
         </span>
+
+        <div className="add-rating-btn-container">
+          {user && !userRated && <AddRatingModal />}
+          {user && userRated && (
+            <>
+              <EditRatingModal userRating={userRating} ratingId={ratingId} />
+              <DeleteRatingModal ratingId={ratingId} />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

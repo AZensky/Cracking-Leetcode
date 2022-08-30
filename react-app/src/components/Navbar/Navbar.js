@@ -1,20 +1,28 @@
 import React from "react";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
-import { useSelector } from "react-redux";
+import { useHistory, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/session";
+import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./Navbar.css";
 
 function Navbar() {
-  // const sessionUser = useSelector((state) => state.session.user);
-  const sessionUser = null;
+  const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <div className="session-links-logged-in">
-        {/* <CreateGroupButton />
-        <ProfileButton user={sessionUser} classStyle="profile-button" /> */}
-        <h1>Logged in</h1>
+        <button onClick={onLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
     );
   } else {
@@ -29,24 +37,14 @@ function Navbar() {
 
   return (
     <div className="navbar-container">
-      <div className="nav-logo-title-container">
-        <div className="logo-container">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="navbar-logo"
-          >
-            <path
-              d="M2 23L7.5 12.5M23 23L18 12.5M18 12.5L13 2L7.5 12.5M18 12.5H7.5M18 12.5L2.5 23H22.5"
-              stroke="white"
-            />
-          </svg>
+      <Link to="/" className="home-navigation">
+        <div className="nav-logo-title-container">
+          <div className="logo-container">
+            <img src={crackingLeetcodeLogo} alt="Cracking Leetcode Logo" />
+          </div>
+          <h1>Cracking Leetcode</h1>
         </div>
-        <h1>Cracking Leetcode</h1>
-      </div>
+      </Link>
       <div className="login-container">{sessionLinks}</div>
     </div>
   );

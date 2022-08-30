@@ -4,14 +4,25 @@
 
 .problem-description-title {
   color: #ffffff;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 .problem-description {
   color: #d6d0d0;
+  white-space: pre-line;
 }
 
-.example-problem {
+.problem-description-example-title {
   margin-top: 2rem;
-  width: 100%;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.problem-example {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+  color: #000000;
+  line-height: 2.5rem;
 }

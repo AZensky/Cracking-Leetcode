@@ -11,7 +11,7 @@
 
 .solutions-header {
   color: #ffffff;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin-top: 0;
 }
 
@@ -19,4 +19,16 @@
   padding-bottom: 3rem;
   margin-bottom: 2rem;
   border-bottom: 2px solid #3c404a;
+}
+
+.user-solutions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 3rem;
+}
+
+.no-user-solutions {
+  text-align: center;
 }
