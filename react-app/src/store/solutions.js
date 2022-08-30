@@ -37,12 +37,12 @@ export const remove = (solutionId) => {
 
 // thunk action creator to load a problem's solutions
 export const loadSolutions = (problemId) => async (dispatch) => {
-  const res = await fetch(`/api/problems/${problemId}`);
+  const res = await fetch(`/api/problems/${problemId}/solutions`);
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(loadAllSolutions(data.solutions));
-    return data.solutions;
+    dispatch(loadAllSolutions(data.Solutions));
+    return data.Solutions;
   }
 };
 

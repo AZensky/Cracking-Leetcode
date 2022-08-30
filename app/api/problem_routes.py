@@ -3,6 +3,7 @@ from app.models import Problem, Solution, Rating, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm, EditRatingForm
+import datetime
 
 problem_routes = Blueprint('problems', __name__)
 
@@ -23,6 +24,13 @@ def get_problem_by_id(problemid):
 
     else:
         return {'message': 'Problem not found'}
+
+# Get solutions for a problem
+@problem_routes.route('/<int:problemid>/solutions')
+def get_solutions(problemid):
+    solutions = Solution.query.filter(Solution.problem_id == problemid)
+
+    return {'Solutions': [solution.to_dict() for solution in solutions]}
 
 # Post a solution for a problem
 @problem_routes.route('/<int:problemid>/solutions', methods=['POST'])
@@ -57,6 +65,7 @@ def edit_solution(id, solutionid):
         solution.answer = data['solution']
         solution.title = data['title']
         solution.language = data['language']
+        solution.created_at = datetime.datetime.utcnow()
 
         db.session.commit()
 

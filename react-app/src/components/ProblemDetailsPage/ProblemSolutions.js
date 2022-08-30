@@ -9,9 +9,6 @@ function ProblemSolutions() {
   const { problemId } = useParams();
   const dispatch = useDispatch();
 
-  // const [exampleSolution, setExampleSolution] = useState({});
-  // const [userSolutions, setUserSolutions] = useState([]);
-
   const allSolutions = useSelector((state) => Object.values(state.solutions));
 
   let exampleSolution = allSolutions.filter(
@@ -20,6 +17,8 @@ function ProblemSolutions() {
   let userSolutions = allSolutions.filter(
     (solution) => solution.example_solution === false
   );
+
+  console.log("USER SOLUTIONS", userSolutions);
 
   useEffect(() => {
     const fetchProblemSolutions = async () => {
@@ -39,6 +38,8 @@ function ProblemSolutions() {
           title={exampleSolution?.title}
           language={exampleSolution?.language}
           userId={exampleSolution?.userId}
+          username={exampleSolution?.user?.username}
+          date={exampleSolution?.created_at}
         />
       </div>
 
@@ -57,6 +58,8 @@ function ProblemSolutions() {
               language={solution?.language}
               userId={solution?.userId}
               solutionId={solution?.id}
+              username={solution?.user?.username}
+              date={solution?.created_at}
             />
           ))}
       </div>

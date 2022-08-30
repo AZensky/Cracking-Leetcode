@@ -2,7 +2,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { createSolution } from "../../store/solutions";
+import { createSolution, loadSolutions } from "../../store/solutions";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
@@ -43,7 +43,14 @@ function SubmitSolution() {
       language,
     };
 
+    setSolution("");
+    setTitle("");
+    setLanguage("javascript");
+    setHasSubmitted(false);
+
     let createdSolution = await dispatch(createSolution(problemId, info));
+
+    await dispatch(loadSolutions(problemId));
   }
 
   return (
