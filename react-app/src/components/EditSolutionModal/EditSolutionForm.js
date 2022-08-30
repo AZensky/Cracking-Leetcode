@@ -42,8 +42,6 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
       language,
     };
 
-        console.log(info);
-
     let editedSolution = await dispatch(
       editSolution(problemId, solutionId, info)
     );
