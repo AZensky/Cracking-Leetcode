@@ -25,6 +25,7 @@ function LeetcodeProblem({ name, id, difficulty }) {
             <i className="fa-solid fa-star"></i>
             <i className="fa-solid fa-star"></i>
             <i className="fa-solid fa-star empty"></i>
+            <span id="lc-problem-rating-number">(4.00)</span>
             <span className="lc-difficulty-title">Difficulty Level:</span>
             <div className="lc-problem-diffculty">
               <span>{difficulty}</span>

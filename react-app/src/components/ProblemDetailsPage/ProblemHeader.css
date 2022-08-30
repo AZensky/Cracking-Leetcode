@@ -8,6 +8,7 @@
 .problem-header-container > h2 {
   font-size: 1.75rem;
   margin-left: 6rem;
+  margin-bottom: 10px;
 }
 
 .problem-header-details-container {
@@ -47,7 +48,28 @@
 .add-rating-btn-container {
   margin-left: auto;
   margin-right: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-rating-btn {
+  background-color: #3cdb7c;
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.add-rating-btn:hover {
+  cursor: pointer;
+}
+
+#lc-problem-rating-number {
+  color: #d6d0d0;
+  margin-left: 0.25rem;
 }
