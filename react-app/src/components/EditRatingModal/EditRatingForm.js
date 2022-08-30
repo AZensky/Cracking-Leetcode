@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadProblems } from "../../store/problems";
 import Rating from "react-rating";
-import "./AddRatingForm.css";
+import "./EditRatingForm.css";
 import { useEffect } from "react";
 
-function AddRatingForm({ closeModal }) {
+function EditRatingForm({ closeModal, userRating, ratingId }) {
   const { problemId } = useParams();
   const dispatch = useDispatch();
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(userRating);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -32,8 +32,8 @@ function AddRatingForm({ closeModal }) {
       rating,
     };
 
-    await fetch(`/api/problems/${problemId}/ratings`, {
-      method: "POST",
+    await fetch(`/api/problems/${problemId}/ratings/${ratingId}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -51,7 +51,7 @@ function AddRatingForm({ closeModal }) {
         {hasSubmitted &&
           validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <h1 className="rating-form-title">Add Rating</h1>
+      <h1 className="rating-form-title">Edit Rating</h1>
       <Rating
         emptySymbol="fa fa-star empty fa-2x"
         fullSymbol="fa fa-star fa-2x"
@@ -66,4 +66,4 @@ function AddRatingForm({ closeModal }) {
   );
 }
 
-export default AddRatingForm;
+export default EditRatingForm;

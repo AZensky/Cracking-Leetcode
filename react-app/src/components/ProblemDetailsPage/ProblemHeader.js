@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import categoryIcon from "../../assets/categoryIcon.png";
 import AddRatingModal from "../AddRatingModal/AddRatingModal";
+import EditRatingModal from "../EditRatingModal/EditRatingModal";
 import Rating from "react-rating";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -19,6 +20,8 @@ function ProblemHeader({ name, difficulty, category }) {
   let allRatings;
   let problemRating;
   let userRated = false;
+  let userRating;
+  let ratingId;
 
   if (allProblems) {
     problem = allProblems?.find((problem) => problem.id === +problemId);
@@ -32,7 +35,11 @@ function ProblemHeader({ name, difficulty, category }) {
 
     if (user) {
       allRatings.forEach((rating) => {
-        if (user.id === rating.userId) userRated = true;
+        if (user.id === rating.userId) {
+          userRated = true;
+          userRating = rating.rating;
+          ratingId = rating.id;
+        }
       });
     }
   }
@@ -70,6 +77,9 @@ function ProblemHeader({ name, difficulty, category }) {
 
         <div className="add-rating-btn-container">
           {user && !userRated && <AddRatingModal />}
+          {user && userRated && (
+            <EditRatingModal userRating={userRating} ratingId={ratingId} />
+          )}
         </div>
       </div>
     </div>
