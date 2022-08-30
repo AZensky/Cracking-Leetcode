@@ -14,6 +14,7 @@ function ProblemHeader({ name, difficulty, category }) {
           <i className="fa-solid fa-star"></i>
           <i className="fa-solid fa-star"></i>
           <i className="fa-solid fa-star empty"></i>
+          <span id="lc-problem-rating-number">(4.00)</span>
         </div>
         <span className="header-label">
           Difficulty Level:{" "}
@@ -23,6 +24,10 @@ function ProblemHeader({ name, difficulty, category }) {
           <img src={categoryIcon} alt="" />
           Category: {category}
         </span>
+
+        <div className="add-rating-btn-container">
+          <button className="add-rating-btn">Add Rating</button>
+        </div>
       </div>
     </div>
   );
