@@ -1,0 +1,30 @@
+.solution-edit-form-title {
+  color: #000000;
+  font-size: 1.25rem;
+}
+
+.solution-edit-form-title > input {
+  margin-top: 1rem;
+}
+
+.solution-edit-form-language-selection {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #000000;
+  display: flex;
+  align-items: center;
+}
+
+.solution-edit-form-language-selection select {
+  margin-left: 1rem;
+  width: fit-content;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.edit-solution-code-editor {
+  font-size: 0.75rem;
+  justify-self: start;
+  text-align: start;
+}

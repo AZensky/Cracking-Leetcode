@@ -30,3 +30,16 @@
   padding: 36px 40px 32px 40px;
   border-radius: 0.5rem;
 }
+
+#wide {
+  position: absolute;
+  background-color: white;
+  max-height: 100%;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0px 40px 32px 40px;
+  border-radius: 0.5rem;
+}

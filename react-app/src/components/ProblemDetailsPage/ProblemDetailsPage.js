@@ -26,8 +26,6 @@ function ProblemDetailsPage() {
     getProblemDetails().catch(console.error);
   }, []);
 
-  console.log("PROBLEM", problemDetails);
-
   return (
     <div className="problem-details-page-container">
       <ProblemHeader

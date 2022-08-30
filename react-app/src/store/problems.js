@@ -1,6 +1,6 @@
 const LOAD_PROBLEMS = "/problems/LOAD_PROBLEMS";
 
-const loadAllProblems = (problems) => {
+export const loadAllProblems = (problems) => {
   return {
     type: LOAD_PROBLEMS,
     payload: problems,
