@@ -1,0 +1,18 @@
+.delete-rating-btn {
+  background-color: transparent;
+  /* background-color: rgb(245, 67, 54); */
+  border: 1px solid rgb(245, 67, 54);
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  /* border: none; */
+  outline: none;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.delete-rating-btn:hover {
+  cursor: pointer;
+}

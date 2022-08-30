@@ -54,11 +54,13 @@
 }
 
 .add-rating-btn {
-  background-color: #3cdb7c;
+  /* background-color: #3cdb7c; */
+  background-color: transparent;
+  border: 1px solid #3cdb7c;
   color: #ffffff;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
-  border: none;
+  /* border: none; */
   outline: none;
   width: fit-content;
   font-size: 1rem;
