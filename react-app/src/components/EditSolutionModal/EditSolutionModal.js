@@ -4,6 +4,11 @@ import EditSolutionForm from "./EditSolutionForm";
 
 function EditSolutionModal({ solutionId, title, solution, language }) {
   const [showModal, setShowModal] = useState(false);
+
+  function closeModal() {
+    setShowModal(false);
+  }
+
   return (
     <>
       <i className="fa-solid fa-pen" onClick={() => setShowModal(true)}></i>
@@ -14,6 +19,7 @@ function EditSolutionModal({ solutionId, title, solution, language }) {
             oldTitle={title}
             oldSolution={solution}
             oldLanguage={language}
+            closeModal={closeModal}
           />
         </Modal>
       )}

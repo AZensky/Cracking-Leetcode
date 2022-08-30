@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loadSolutions } from "../../store/solutions";
 import Solution from "./Solution";
 import "./ProblemSolutions.css";
 
 function ProblemSolutions() {
   const { problemId } = useParams();
+  const dispatch = useDispatch();
 
-  const [exampleSolution, setExampleSolution] = useState({});
-  const [userSolutions, setUserSolutions] = useState([]);
+  // const [exampleSolution, setExampleSolution] = useState({});
+  // const [userSolutions, setUserSolutions] = useState([]);
+
+  const allSolutions = useSelector((state) => Object.values(state.solutions));
+
+  let exampleSolution = allSolutions.filter(
+    (solution) => solution.example_solution === true
+  )[0];
+  let userSolutions = allSolutions.filter(
+    (solution) => solution.example_solution === false
+  );
 
   useEffect(() => {
     const fetchProblemSolutions = async () => {
-      let res = await fetch(`/api/problems/${problemId}`);
-      let data = await res.json();
-
-      let solutions = data.solutions;
-      let ourSolution = solutions.filter(
-        (solution) => solution.example_solution === true
-      );
-      let allUserSolutions = solutions.filter(
-        (solution) => solution.example_solution === false
-      );
-
-      setExampleSolution(ourSolution[0]);
-      setUserSolutions(allUserSolutions);
+      await dispatch(loadSolutions(problemId));
     };
 
     fetchProblemSolutions();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="solutions-container">
@@ -35,10 +35,10 @@ function ProblemSolutions() {
       <div className="our-solution">
         <h3 className="solutions-header">Our Solution</h3>
         <Solution
-          solution={exampleSolution.answer}
-          title={exampleSolution.title}
-          language={exampleSolution.language}
-          userId={exampleSolution.userId}
+          solution={exampleSolution?.answer}
+          title={exampleSolution?.title}
+          language={exampleSolution?.language}
+          userId={exampleSolution?.userId}
         />
       </div>
 
@@ -51,12 +51,12 @@ function ProblemSolutions() {
         {userSolutions.length > 0 &&
           userSolutions.map((solution) => (
             <Solution
-              key={solution.id}
-              solution={solution.answer}
-              title={solution.title}
-              language={solution.language}
-              userId={solution.userId}
-              solutionId={solution.id}
+              key={solution?.id}
+              solution={solution?.answer}
+              title={solution?.title}
+              language={solution?.language}
+              userId={solution?.userId}
+              solutionId={solution?.id}
             />
           ))}
       </div>

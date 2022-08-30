@@ -5,6 +5,7 @@ import "./LoginFormModal.css";
 
 function LoginFormModal({ styleClass }) {
   const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <button onClick={() => setShowModal(true)} className={styleClass}>

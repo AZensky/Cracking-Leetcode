@@ -2,14 +2,20 @@ import CodeMirror from "@uiw/react-codemirror";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { editSolution } from "../../store/solutions";
+import { editSolution, loadSolutions } from "../../store/solutions";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./EditSolutionForm.css";
 
-function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage }) {
+function EditSolutionForm({
+  solutionId,
+  oldTitle,
+  oldSolution,
+  oldLanguage,
+  closeModal,
+}) {
   const { problemId } = useParams();
 
   const [solution, setSolution] = useState(oldSolution);
@@ -45,9 +51,10 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage }) {
     let editedSolution = await dispatch(
       editSolution(problemId, solutionId, info)
     );
-  }
 
-  console.log("SOLUTION", solution);
+    await dispatch(loadSolutions(problemId));
+    closeModal();
+  }
 
   //form with controlled components
   return (
