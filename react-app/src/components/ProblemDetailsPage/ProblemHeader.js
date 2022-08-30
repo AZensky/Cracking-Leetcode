@@ -23,6 +23,10 @@ function ProblemHeader({ name, difficulty, category }) {
           <img src={categoryIcon} alt="" />
           Category: {category}
         </span>
+
+        <div className="add-rating-btn-container">
+          <button className="add-rating-btn">Add Rating</button>
+        </div>
       </div>
     </div>
   );

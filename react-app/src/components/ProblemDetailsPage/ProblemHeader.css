@@ -2,17 +2,19 @@
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  width: 67%;
-  margin-left: 6rem;
+  width: 100%;
 }
 
 .problem-header-container > h2 {
   font-size: 1.75rem;
+  margin-left: 6rem;
 }
 
 .problem-header-details-container {
   display: flex;
   gap: 2rem;
+  max-width: 100%;
+  margin-left: 6rem;
 }
 
 .header-label {
@@ -40,4 +42,12 @@
   margin-left: 0.25rem;
   padding: 0.25rem 1rem;
   border-radius: 1rem;
+}
+
+.add-rating-btn-container {
+  margin-left: auto;
+  margin-right: 3rem;
+}
+
+.add-rating-btn {
 }
