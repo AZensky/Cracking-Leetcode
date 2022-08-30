@@ -30,4 +30,13 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'votes': [vote.to_dict_no_relationships() for vote in self.votes],
+            'ratings': [rating.to_dict_no_relationships() for rating in self.ratings],
+            'solutions': [solution.to_dict_no_relationships() for solution in self.solutions]
+        }
+
+    def to_dict_no_relationships(self):
+        return {
+            'id': self.id,
+            'username': self.username,
         }

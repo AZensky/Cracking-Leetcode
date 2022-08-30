@@ -24,6 +24,13 @@ def get_problem_by_id(problemid):
     else:
         return {'message': 'Problem not found'}
 
+# Get solutions for a problem
+@problem_routes.route('/<int:problemid>/solutions')
+def get_solutions(problemid):
+    solutions = Solution.query.filter(Solution.problem_id == problemid)
+
+    return {'Solutions': [solution.to_dict() for solution in solutions]}
+
 # Post a solution for a problem
 @problem_routes.route('/<int:problemid>/solutions', methods=['POST'])
 def post_solution(problemid):
