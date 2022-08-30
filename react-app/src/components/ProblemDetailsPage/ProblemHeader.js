@@ -2,7 +2,7 @@ import React from "react";
 import categoryIcon from "../../assets/categoryIcon.png";
 import "./ProblemHeader.css";
 
-function ProblemHeader({ name, difficulty }) {
+function ProblemHeader({ name, difficulty, category }) {
   return (
     <div className="problem-header-container">
       <h2>{name}</h2>
@@ -21,7 +21,7 @@ function ProblemHeader({ name, difficulty }) {
         </span>
         <span className="header-label">
           <img src={categoryIcon} alt="" />
-          Category: Arrays
+          Category: {category}
         </span>
       </div>
     </div>
