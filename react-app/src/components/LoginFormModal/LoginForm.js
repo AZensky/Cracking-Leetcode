@@ -17,7 +17,6 @@ function LoginForm() {
     //if there are errors when trying to log in, set the errors, so we can display them
     const data = await dispatch(login(username, password));
     if (data) {
-      console.log("DATA", data);
       setErrors(data);
     }
   };
