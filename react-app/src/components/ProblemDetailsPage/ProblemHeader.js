@@ -25,8 +25,6 @@ function ProblemHeader({ name, difficulty, category }) {
 
     allRatings = problem.ratings;
 
-    console.log(allRatings);
-
     // prettier-ignore
     problemRating = allRatings.reduce((accum, curr) => accum + curr.rating, 0) / allRatings.length;
 
@@ -59,11 +57,6 @@ function ProblemHeader({ name, difficulty, category }) {
             className="problem-rating-display"
             initialRating={problemRating}
           />
-          {/* <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star empty"></i> */}
           <span id="lc-problem-rating-number">({problemRating})</span>
         </div>
         <span className="header-label">
