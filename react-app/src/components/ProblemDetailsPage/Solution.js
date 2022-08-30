@@ -6,10 +6,16 @@ import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import EditSolutionModal from "../EditSolutionModal/EditSolutionModal";
 import DeleteSolutionModal from "../DeleteSolutionModal/DeleteSolutionModal";
+import { getDayMonthYear } from "../../util/date";
 import "./Solution.css";
 
-function Solution({ solution, title, language, userId, solutionId }) {
+// prettier-ignore
+function Solution({ solution, title, language, userId, solutionId, username, date }) {
   const user = useSelector((state) => state.session.user);
+
+  let solutionDate = new Date(date);
+
+  let {day, month, year} = getDayMonthYear(solutionDate);
 
   return (
     <div className="user-solution-container">
@@ -70,9 +76,9 @@ function Solution({ solution, title, language, userId, solutionId }) {
         <div className="solution-owner-date">
           <div className="solution-owner">
             <i class="fa-solid fa-user"></i>
-            <p>AZensky</p>
+            <p>{username}</p>
           </div>
-          <div className="solution-date">March 22, 2022</div>
+          <div className="solution-date">{month} {day}, {year}</div>
         </div>
       </div>
     </div>

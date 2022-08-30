@@ -3,6 +3,7 @@ from app.models import Problem, Solution, Rating, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm, EditRatingForm
+import datetime
 
 problem_routes = Blueprint('problems', __name__)
 
@@ -64,6 +65,7 @@ def edit_solution(id, solutionid):
         solution.answer = data['solution']
         solution.title = data['title']
         solution.language = data['language']
+        solution.created_at = datetime.datetime.utcnow()
 
         db.session.commit()
 
