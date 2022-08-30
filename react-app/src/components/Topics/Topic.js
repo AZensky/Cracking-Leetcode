@@ -30,6 +30,7 @@ function Topic({ num, title, problems }) {
                   name={problem.name}
                   difficulty={problem.difficulty}
                   id={problem.id}
+                  ratings={problem.ratings}
                 />
               ))}
           </div>

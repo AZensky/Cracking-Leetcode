@@ -44,8 +44,6 @@ function SubmitSolution() {
     };
 
     let createdSolution = await dispatch(createSolution(problemId, info));
-
-    history.push(`/problems/${problemId}`);
   }
 
   return (

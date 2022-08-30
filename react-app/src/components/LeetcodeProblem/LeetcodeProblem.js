@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Rating from "react-rating";
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem({ name, id, difficulty }) {
+function LeetcodeProblem({ name, id, difficulty, ratings }) {
+  let problemRating = 0;
+
+  if (ratings.length > 0) {
+    problemRating =
+      ratings.reduce((accum, curr) => accum + curr.rating, 0) / ratings.length;
+  }
+
+  problemRating = problemRating.toFixed(2);
+
   return (
     <div className="problem-content-container">
       {/* Solved icon */}
@@ -20,12 +29,13 @@ function LeetcodeProblem({ name, id, difficulty }) {
 
           <div className="lc-problem-details">
             <span>Rating:</span>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star empty"></i>
-            <span id="lc-problem-rating-number">(4.00)</span>
+            <Rating
+              emptySymbol="fa fa-star empty"
+              fullSymbol="fa fa-star"
+              className="problem-rating-display"
+              initialRating={problemRating}
+            />
+            <span id="lc-problem-rating-number">({problemRating})</span>
             <span className="lc-difficulty-title">Difficulty Level:</span>
             <div className="lc-problem-diffculty">
               <span>{difficulty}</span>
