@@ -59,6 +59,7 @@ function Solution({ solution, title, language, userId, solutionId }) {
               value={solution}
               height="250px"
               extensions={[python()]}
+              theme={dracula}
               editable={false}
               className="solution-code-editor"
             />
