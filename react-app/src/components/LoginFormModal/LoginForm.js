@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
+import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./LoginForm.css";
 
 function LoginForm() {
@@ -29,11 +30,7 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <img
-        className="login-form__icon"
-        src="https://secure.meetupstatic.com/s/img/642287997414509021596/logo/svg/logo--mSwarm--2color.svg"
-        alt="logo"
-      />
+      <img className="login-form__icon" src={crackingLeetcodeLogo} alt="logo" />
       <h1 className="login-form__title">Log in</h1>
       <label className="login-form__email__label">
         Username

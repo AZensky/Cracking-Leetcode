@@ -9,7 +9,6 @@
 }
 
 .logo-container {
-  background-color: #3cdb7c;
   border-radius: 50%;
   padding: 0.25rem;
   height: 2rem;
@@ -17,6 +16,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo-container img {
+  width: 100%;
 }
 
 .home-navigation {

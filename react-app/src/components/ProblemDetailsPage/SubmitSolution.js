@@ -22,7 +22,8 @@ function SubmitSolution() {
 
   useEffect(() => {
     const errors = [];
-    if (solution.length === 0) errors.push("Solution is required");
+    if (solution.length === 0 || solution.trim().length === 0)
+      errors.push("Solution is required");
     if (title.length === 0) errors.push("Title is required");
 
     setValidationErrors(errors);

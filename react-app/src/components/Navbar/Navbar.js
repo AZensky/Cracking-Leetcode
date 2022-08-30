@@ -4,6 +4,7 @@ import SignupFormModal from "../SignupFormModal/SignupFormModal";
 import { useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./Navbar.css";
 
 function Navbar() {
@@ -39,19 +40,7 @@ function Navbar() {
       <Link to="/" className="home-navigation">
         <div className="nav-logo-title-container">
           <div className="logo-container">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="navbar-logo"
-            >
-              <path
-                d="M2 23L7.5 12.5M23 23L18 12.5M18 12.5L13 2L7.5 12.5M18 12.5H7.5M18 12.5L2.5 23H22.5"
-                stroke="white"
-              />
-            </svg>
+            <img src={crackingLeetcodeLogo} alt="Cracking Leetcode Logo" />
           </div>
           <h1>Cracking Leetcode</h1>
         </div>

@@ -31,6 +31,7 @@ function ProblemDetailsPage() {
       <ProblemHeader
         name={problemDetails?.name}
         difficulty={problemDetails?.difficulty}
+        category={problemDetails?.category}
       />
       <div className="problem-details-content-container">
         <ProblemDescription

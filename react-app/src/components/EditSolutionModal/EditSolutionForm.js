@@ -6,16 +6,10 @@ import { editSolution, loadSolutions } from "../../store/solutions";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
-import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
-import "./EditSolutionForm.css";
 
-function EditSolutionForm({
-  solutionId,
-  oldTitle,
-  oldSolution,
-  oldLanguage,
-  closeModal,
-}) {
+import "./EditSolutionForm.css";
+//prettier-ignore
+function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, closeModal, }) {
   const { problemId } = useParams();
 
   const [solution, setSolution] = useState(oldSolution);
@@ -28,7 +22,7 @@ function EditSolutionForm({
 
   useEffect(() => {
     const errors = [];
-    if (solution.length === 0) errors.push("Solution is required");
+    if (solution.length === 0 || solution.trim().length === 0) errors.push("Solution is required");
     if (title.length === 0) errors.push("Title is required");
 
     setValidationErrors(errors);
@@ -48,6 +42,8 @@ function EditSolutionForm({
       language,
     };
 
+        console.log(info);
+
     let editedSolution = await dispatch(
       editSolution(problemId, solutionId, info)
     );
@@ -63,7 +59,6 @@ function EditSolutionForm({
         {hasSubmitted &&
           validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <img className="login-form__icon" src={crackingLeetcodeLogo} alt="logo" />
       <h1 className="login-form__title">Edit Solution</h1>
       <label className="solution-edit-form-title">
         Solution Title:
