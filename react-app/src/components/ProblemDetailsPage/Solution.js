@@ -5,6 +5,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import EditSolutionModal from "../EditSolutionModal/EditSolutionModal";
+import DeleteSolutionModal from "../DeleteSolutionModal/DeleteSolutionModal";
 import "./Solution.css";
 
 function Solution({ solution, title, language, userId, solutionId }) {
@@ -24,16 +25,19 @@ function Solution({ solution, title, language, userId, solutionId }) {
         <div className="user-solution-title-edit">
           <p className="user-solution-title">{title}</p>
           {userId === user?.id && (
-            <button className="edit-solution-btn">
-              {
+            <div className="edit-delete-container">
+              <button className="edit-solution-btn">
                 <EditSolutionModal
                   solutionId={solutionId}
                   title={title}
                   solution={solution}
                   language={language}
                 />
-              }
-            </button>
+              </button>
+              <button className="edit-solution-btn">
+                <DeleteSolutionModal solutionId={solutionId} />
+              </button>
+            </div>
           )}
         </div>
         <div className="user-solution-editor-container">

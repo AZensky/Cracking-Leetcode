@@ -89,3 +89,10 @@
 .solution-code-editor {
   font-size: 0.75rem;
 }
+
+.edit-delete-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-right: 0.25rem;
+}
