@@ -9,9 +9,6 @@ function ProblemSolutions() {
   const { problemId } = useParams();
   const dispatch = useDispatch();
 
-  // const [exampleSolution, setExampleSolution] = useState({});
-  // const [userSolutions, setUserSolutions] = useState([]);
-
   const allSolutions = useSelector((state) => Object.values(state.solutions));
 
   let exampleSolution = allSolutions.filter(
