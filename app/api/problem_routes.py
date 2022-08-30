@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import Problem, Solution, Rating, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
-from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm
+from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm, EditRatingForm
 
 problem_routes = Blueprint('problems', __name__)
 
