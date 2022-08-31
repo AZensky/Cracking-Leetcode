@@ -12,18 +12,18 @@ import { getDayMonthYear } from "../../util/date";
 import "./Solution.css";
 
 // prettier-ignore
-function Solution({ solution, title, language, userId, solutionId, username, date, solutionVotes }) {
+function Solution({ solution, title, language, userId, solutionId, username, date, solutionVotes, voteCount }) {
   const { problemId } = useParams()
   const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
 
-  let solutionVoteCount = 0;
+  // let solutionVoteCount = 0;
   let userVotedUp = false;
   let userVotedDown = false;
 
   if (solutionVotes && solutionVotes.length > 0) {
   solutionVotes.forEach((vote) => {
-    vote.upvote === true ? solutionVoteCount++ : solutionVoteCount--;
+    // vote.upvote === true ? solutionVoteCount++ : solutionVoteCount--;
     if (user?.id === vote.userId && vote.upvote === true) userVotedUp = true;
     if (user?.id === vote.userId && vote.upvote === false) userVotedDown = true;
   });
@@ -66,7 +66,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
         <button onClick={upvote} disabled={userVotedUp || !user}>
           <i className="fa-solid fa-caret-up"></i>
         </button>
-        <p className="user-solution-vote-count">{solutionVoteCount}</p>
+        <p className="user-solution-vote-count">{voteCount}</p>
         <button onClick={downvote} disabled={userVotedDown || !user}>
           <i className="fa-solid fa-caret-down"></i>
         </button>

@@ -65,6 +65,7 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
+          maxlength="55"
           required
         />
       </label>

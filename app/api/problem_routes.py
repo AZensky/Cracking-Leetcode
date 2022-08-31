@@ -28,7 +28,7 @@ def get_problem_by_id(problemid):
 # Get solutions for a problem
 @problem_routes.route('/<int:problemid>/solutions')
 def get_solutions(problemid):
-    solutions = Solution.query.filter(Solution.problem_id == problemid)
+    solutions = Solution.query.filter(Solution.problem_id == problemid).order_by(Solution.vote_count.desc())
 
     return {'Solutions': [solution.to_dict() for solution in solutions]}
 

@@ -1,9 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addSolvedProblem, removeSolvedProblem } from "../../store/session";
 import Rating from "react-rating";
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem({ name, id, difficulty, ratings }) {
+function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
+
+  const problemsSolved = user?.problemsSolved;
+
+  let solvedProblem = problemsSolved?.find(
+    (problem) => problem.problemId === id
+  );
+
   let problemRating = 0;
 
   if (ratings.length > 0) {
@@ -13,12 +24,27 @@ function LeetcodeProblem({ name, id, difficulty, ratings }) {
 
   problemRating = problemRating.toFixed(2);
 
+  async function handleAdd(id) {
+    await dispatch(addSolvedProblem(user.id, id));
+  }
+
+  async function handleRemove(id) {
+    await dispatch(removeSolvedProblem(user.id, id));
+  }
+
   return (
     <div className="problem-content-container">
       {/* Solved icon */}
-      <div className="solved-icon-container">
-        <i class="fa-solid fa-circle-check"></i>
-      </div>
+      {user && (
+        <div className="solved-icon-container">
+          <i
+            className={`fa-solid fa-circle-check ${solvedProblem && "solved"}`}
+            onClick={
+              solvedProblem ? () => handleRemove(id) : () => handleAdd(id)
+            }
+          ></i>
+        </div>
+      )}
 
       {/* Problem Overview Details */}
       <div className="lc-problem-overview-container">
@@ -47,7 +73,9 @@ function LeetcodeProblem({ name, id, difficulty, ratings }) {
         {/* Solve Button */}
         <a
           className="solve-challenge-btn"
-          href="https://leetcode.com/problems/product-of-array-except-self/"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span>Solve Challenge</span>
         </a>

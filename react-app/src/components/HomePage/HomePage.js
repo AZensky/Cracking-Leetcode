@@ -10,10 +10,12 @@ import { useEffect } from "react";
 function HomePage() {
   const [searchInput, setSearchInput] = useState("");
   const [arrayProblems, setArrayProblems] = useState({});
+  const [hashMapProblems, setHashMapProblems] = useState({});
 
   const dispatch = useDispatch();
 
   const allProblems = useSelector((state) => state.problems.Problems);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     const initializePage = async () => {
@@ -29,7 +31,13 @@ function HomePage() {
     let arrayProblems = allProblems.filter(
       (problem) => problem.category === "Array"
     );
+
+    let hashMapProblems = allProblems.filter(
+      (problem) => problem.category === "Hash Maps"
+    );
+
     setArrayProblems(arrayProblems);
+    setHashMapProblems(hashMapProblems);
   }, [allProblems]);
 
   function handleSearch() {}
@@ -41,15 +49,17 @@ function HomePage() {
         <div>
           <h1>Grind 50</h1>
         </div>
-        <div className="problems-completed-section">
-          <p>Completed: 30/50</p>
-          <ProgressBar
-            completed={60}
-            bgColor="#3CDB7C"
-            baseBgColor="#282D3A"
-            width="200px"
-          />
-        </div>
+        {user && (
+          <div className="problems-completed-section">
+            <p>Completed: {user.problemsSolved.length}/50</p>
+            <ProgressBar
+              completed={(user.problemsSolved.length / 50) * 100}
+              bgColor="#3CDB7C"
+              baseBgColor="#282D3A"
+              width="200px"
+            />
+          </div>
+        )}
       </div>
 
       {/* Search and Display All Section */}
@@ -83,7 +93,7 @@ function HomePage() {
       <div className="problems-container">
         {/* Loop through all the problem topics */}
         <Topic num={1} title={"Arrays"} problems={arrayProblems} />
-        <Topic num={2} title={"Hash Maps"} />
+        <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
         <Topic num={3} title={"Two Pointers"} />
         <Topic num={4} title={"Sliding Window"} />
         <Topic num={5} title={"Binary Search"} />
