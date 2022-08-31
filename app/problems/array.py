@@ -4,7 +4,8 @@ contains_duplicate = {
     'description': 'Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.',
     'example': '''Input: nums = [1,2,3,1]
 Output: true''',
-    'difficulty': 'Easy'
+    'difficulty': 'Easy',
+    'link': 'https://leetcode.com/problems/contains-duplicate/'
 }
 
 squares_of_a_sorted_array = {
@@ -15,7 +16,8 @@ squares_of_a_sorted_array = {
 Output: [0,1,9,16,100]
 Explanation: After squaring, the array becomes [16,1,0,9,100].
 After sorting, it becomes [0,1,9,16,100].''',
-    'difficulty': 'Easy'
+    'difficulty': 'Easy',
+    'link': 'https://leetcode.com/problems/squares-of-a-sorted-array/'
 }
 
 sort_colors = {
@@ -28,7 +30,8 @@ sort_colors = {
     You must solve this problem without using the library's sort function.""",
     'example': '''Input: nums = [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]''',
-    'difficulty': 'Easy'
+    'difficulty': 'Easy',
+    'link': 'https://leetcode.com/problems/sort-colors/'
 }
 
 product_of_array_except_self = {
@@ -39,5 +42,6 @@ product_of_array_except_self = {
     The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.""",
     'example': '''Input: nums = [1,2,3,4]
 Output: [24,12,8,6]''',
-    'difficulty': 'Medium'
+    'difficulty': 'Medium',
+    'link': 'https://leetcode.com/problems/product-of-array-except-self/'
 }

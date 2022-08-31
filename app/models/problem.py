@@ -9,6 +9,7 @@ class Problem(db.Model):
     description = db.Column(db.Text, nullable=False)
     example = db.Column(db.Text, nullable=False)
     difficulty = db.Column(db.String(255), nullable=False)
+    link = db.Column(db.Text, nullable=False)
 
     ratings = db.relationship('Rating', back_populates='problem', cascade='all, delete')
     solutions = db.relationship('Solution', back_populates='problem', cascade='all, delete')
@@ -21,6 +22,7 @@ class Problem(db.Model):
             'description': self.description,
             'example': self.example,
             'difficulty': self.difficulty,
+            'link': self.link,
             'ratings': [rating.to_dict_no_relationships() for rating in self.ratings],
             'solutions': [solution.to_dict_no_relationships() for solution in self.solutions]
         }
@@ -32,5 +34,6 @@ class Problem(db.Model):
             'category': self.category,
             'description': self.description,
             'example': self.example,
-            'difficulty': self.difficulty
+            'difficulty': self.difficulty,
+            'link': self.link
         }

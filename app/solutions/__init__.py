@@ -1,1 +1,2 @@
 from .array import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution
+from .hash_maps import two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution
