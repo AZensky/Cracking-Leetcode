@@ -9,7 +9,8 @@ You can return the answer in any order.""",
     'example': """Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
 Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].""",
-    "difficulty": 'Easy'
+    "difficulty": 'Easy',
+    'link': 'https://leetcode.com/problems/two-sum/'
 }
 
 majority_element = {
@@ -20,7 +21,8 @@ majority_element = {
 The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.""",
     'example': """Input: nums = [3,2,3]
 Output: 3""",
-    "difficulty": 'Easy'
+    "difficulty": 'Easy',
+    'link': 'https://leetcode.com/problems/majority-element/'
 }
 
 valid_anagram = {
@@ -31,7 +33,8 @@ valid_anagram = {
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.""",
     'example': """Input: s = "anagram", t = "nagaram"
 Output: true""",
-    "difficulty": 'Easy'
+    "difficulty": 'Easy',
+    'link': 'https://leetcode.com/problems/valid-anagram/'
 }
 
 group_anagrams = {
@@ -42,7 +45,8 @@ group_anagrams = {
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.""",
     'example': """Input: strs = ["eat","tea","tan","ate","nat","bat"]
 Output: [["bat"],["nat","tan"],["ate","eat","tea"]]""",
-    "difficulty": 'Medium'
+    "difficulty": 'Medium',
+    'link': 'https://leetcode.com/problems/group-anagrams/'
 }
 
 top_k_frequent_elements = {
@@ -51,5 +55,6 @@ top_k_frequent_elements = {
     'description': """Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.""",
     'example': """Input: nums = [1,1,1,2,2,3], k = 2
 Output: [1,2]""",
-    "difficulty": 'Medium'
+    "difficulty": 'Medium',
+    'link': 'https://leetcode.com/problems/top-k-frequent-elements/'
 }

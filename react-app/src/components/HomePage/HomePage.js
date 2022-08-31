@@ -10,6 +10,7 @@ import { useEffect } from "react";
 function HomePage() {
   const [searchInput, setSearchInput] = useState("");
   const [arrayProblems, setArrayProblems] = useState({});
+  const [hashMapProblems, setHashMapProblems] = useState({});
 
   const dispatch = useDispatch();
 
@@ -29,7 +30,13 @@ function HomePage() {
     let arrayProblems = allProblems.filter(
       (problem) => problem.category === "Array"
     );
+
+    let hashMapProblems = allProblems.filter(
+      (problem) => problem.category === "Hash Maps"
+    );
+
     setArrayProblems(arrayProblems);
+    setHashMapProblems(hashMapProblems);
   }, [allProblems]);
 
   function handleSearch() {}
@@ -83,7 +90,7 @@ function HomePage() {
       <div className="problems-container">
         {/* Loop through all the problem topics */}
         <Topic num={1} title={"Arrays"} problems={arrayProblems} />
-        <Topic num={2} title={"Hash Maps"} />
+        <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
         <Topic num={3} title={"Two Pointers"} />
         <Topic num={4} title={"Sliding Window"} />
         <Topic num={5} title={"Binary Search"} />

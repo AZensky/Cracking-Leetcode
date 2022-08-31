@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from "react-rating";
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem({ name, id, difficulty, ratings }) {
+function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
   let problemRating = 0;
 
   if (ratings.length > 0) {
@@ -47,7 +47,9 @@ function LeetcodeProblem({ name, id, difficulty, ratings }) {
         {/* Solve Button */}
         <a
           className="solve-challenge-btn"
-          href="https://leetcode.com/problems/product-of-array-except-self/"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span>Solve Challenge</span>
         </a>

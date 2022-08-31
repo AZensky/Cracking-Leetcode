@@ -1,5 +1,5 @@
 from app.models import db, Solution
-from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution
+from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution
 
 def seed_solutions():
     solution_1 = Solution(title='JavaScript Solution', answer=contains_duplicate_solution, language='javascript', example_solution=True, user_id=1, problem_id=1)
@@ -10,10 +10,25 @@ def seed_solutions():
 
     solution_4 = Solution(title='JavaScript Solution', answer=product_of_array_except_self_solution, language='javascript', example_solution=True, user_id=1, problem_id=4)
 
+    solution_5 = Solution(title='JavaScript Solution', answer=two_sum_solution, language='javascript', example_solution=True, user_id=1, problem_id=5)
+
+    solution_6 = Solution(title='JavaScript Solution', answer=majority_element_solution, language='javascript', example_solution=True, user_id=1, problem_id=6)
+
+    solution_7 = Solution(title='JavaScript Solution', answer=valid_anagram_solution, language='javascript', example_solution=True, user_id=1, problem_id=7)
+
+    solution_8 = Solution(title='JavaScript Solution', answer=group_anagrams_solution, language='javascript', example_solution=True, user_id=1, problem_id=8)
+
+    solution_9 = Solution(title='JavaScript Solution', answer=top_k_frequent_elements_solution, language='javascript', example_solution=True, user_id=1, problem_id=9)
+
     db.session.add(solution_1)
     db.session.add(solution_2)
     db.session.add(solution_3)
     db.session.add(solution_4)
+    db.session.add(solution_5)
+    db.session.add(solution_6)
+    db.session.add(solution_7)
+    db.session.add(solution_8)
+    db.session.add(solution_9)
 
     db.session.commit()
 
