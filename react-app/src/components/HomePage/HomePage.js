@@ -49,15 +49,17 @@ function HomePage() {
         <div>
           <h1>Grind 50</h1>
         </div>
-        <div className="problems-completed-section">
-          <p>Completed: {user.problemsSolved.length}/50</p>
-          <ProgressBar
-            completed={(user.problemsSolved.length / 50) * 100}
-            bgColor="#3CDB7C"
-            baseBgColor="#282D3A"
-            width="200px"
-          />
-        </div>
+        {user && (
+          <div className="problems-completed-section">
+            <p>Completed: {user.problemsSolved.length}/50</p>
+            <ProgressBar
+              completed={(user.problemsSolved.length / 50) * 100}
+              bgColor="#3CDB7C"
+              baseBgColor="#282D3A"
+              width="200px"
+            />
+          </div>
+        )}
       </div>
 
       {/* Search and Display All Section */}

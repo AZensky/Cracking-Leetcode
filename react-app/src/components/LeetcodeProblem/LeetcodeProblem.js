@@ -9,9 +9,9 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
-  const problemsSolved = user.problemsSolved;
+  const problemsSolved = user?.problemsSolved;
 
-  let solvedProblem = problemsSolved.find(
+  let solvedProblem = problemsSolved?.find(
     (problem) => problem.problemId === id
   );
 
