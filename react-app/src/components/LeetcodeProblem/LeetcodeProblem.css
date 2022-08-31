@@ -101,3 +101,7 @@
 .solved-icon-container .solved {
   color: #0be462;
 }
+
+.solved-icon-container .fa-circle-check:hover {
+  cursor: pointer;
+}
