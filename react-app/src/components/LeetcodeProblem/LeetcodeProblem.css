@@ -97,3 +97,7 @@
 .solve-challenge-btn > span {
   color: #ffffff;
 }
+
+.solved-icon-container .solved {
+  color: #0be462;
+}

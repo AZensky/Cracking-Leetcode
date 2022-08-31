@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const ADD_PROBLEM_SOLVED = "session/ADD_PROBLEM_SOLVED";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +10,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+});
+
+const addSolved = (info) => ({
+  type: ADD_PROBLEM_SOLVED,
+  payload: info,
 });
 
 const initialState = { user: null };
@@ -93,12 +99,40 @@ export const signUp = (username, password) => async (dispatch) => {
   }
 };
 
+export const addSolvedProblem = (userId, problemId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/problems-solved/${problemId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId, problemId }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    console.log("DDDAAATATA", data);
+    dispatch(addSolved(data));
+    return data;
+  }
+};
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return { user: action.payload };
     case REMOVE_USER:
       return { user: null };
+    case ADD_PROBLEM_SOLVED: {
+      let newState = global.structuredClone(state);
+
+      let problemInfo = {};
+      problemInfo.id = action.payload.id;
+      problemInfo.problemId = action.payload.problemId;
+      problemInfo.userId = action.payload.userId;
+      newState.user.problemsSolved.push(problemInfo);
+
+      return newState;
+    }
     default:
       return state;
   }
