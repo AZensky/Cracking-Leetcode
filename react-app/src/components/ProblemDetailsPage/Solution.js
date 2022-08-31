@@ -1,6 +1,8 @@
 import CodeMirror from "@uiw/react-codemirror";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { loadSolutions } from "../../store/solutions";
+import { useParams } from "react-router-dom";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
@@ -10,20 +12,64 @@ import { getDayMonthYear } from "../../util/date";
 import "./Solution.css";
 
 // prettier-ignore
-function Solution({ solution, title, language, userId, solutionId, username, date }) {
+function Solution({ solution, title, language, userId, solutionId, username, date, solutionVotes }) {
+  const { problemId } = useParams()
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
+
+  let solutionVoteCount = 0;
+  let userVotedUp = false;
+  let userVotedDown = false;
+
+  if (solutionVotes && solutionVotes.length > 0) {
+  solutionVotes.forEach((vote) => {
+    vote.upvote === true ? solutionVoteCount++ : solutionVoteCount--;
+    if (user?.id === vote.userId && vote.upvote === true) userVotedUp = true;
+    if (user?.id === vote.userId && vote.upvote === false) userVotedDown = true;
+  });
+  }
+
+
 
   let solutionDate = new Date(date);
 
   let {day, month, year} = getDayMonthYear(solutionDate);
 
+  async function upvote() {
+    const res = await fetch(`/api/solutions/${solutionId}/votes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({'upvote': true}),
+    });
+
+    await dispatch(loadSolutions(problemId))
+  }
+
+    async function downvote() {
+      const res = await fetch(`/api/solutions/${solutionId}/votes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({'upvote': false}),
+      });
+
+      await dispatch(loadSolutions(problemId));
+    }
+
   return (
     <div className="user-solution-container">
       {/* Voting Icons */}
       <div className="user-solution-voting-icons">
-        <i class="fa-solid fa-caret-up"></i>
-        <p className="user-solution-vote-count">30</p>
-        <i class="fa-solid fa-caret-down"></i>
+        <button onClick={upvote} disabled={userVotedUp || !user}>
+          <i className="fa-solid fa-caret-up"></i>
+        </button>
+        <p className="user-solution-vote-count">{solutionVoteCount}</p>
+        <button onClick={downvote} disabled={userVotedDown || !user}>
+          <i className="fa-solid fa-caret-down"></i>
+        </button>
       </div>
 
       {/* Title and Code Editor */}
@@ -78,7 +124,9 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
             <i class="fa-solid fa-user"></i>
             <p>{username}</p>
           </div>
-          <div className="solution-date">{month} {day}, {year}</div>
+          <div className="solution-date">
+            {month} {day}, {year}
+          </div>
         </div>
       </div>
     </div>

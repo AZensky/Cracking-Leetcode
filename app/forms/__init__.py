@@ -4,3 +4,4 @@ from .create_solution_form import CreateSolutionForm
 from .edit_solution_form import EditSolutionForm
 from .create_rating_form import CreateRatingForm
 from .edit_rating_form import EditRatingForm
+from .create_vote_form import CreateVoteForm

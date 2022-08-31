@@ -17,8 +17,8 @@ class SolutionVote(db.Model):
             'upvote': self.upvote,
             'userId': self.user_id,
             'solutionId': self.solution_id,
-            'user': self.user.to_dict(),
-            'solution': self.solution.to_dict()
+            'user': self.user.to_dict_no_relationships(),
+            'solution': self.solution.to_dict_no_relationships()
         }
 
     def to_dict_no_relationships(self):

@@ -12,13 +12,11 @@ function ProblemSolutions() {
   const allSolutions = useSelector((state) => Object.values(state.solutions));
 
   let exampleSolution = allSolutions.filter(
-    (solution) => solution.example_solution === true
+    (solution) => solution.exampleSolution === true
   )[0];
   let userSolutions = allSolutions.filter(
-    (solution) => solution.example_solution === false
+    (solution) => solution.exampleSolution === false
   );
-
-  console.log("USER SOLUTIONS", userSolutions);
 
   useEffect(() => {
     const fetchProblemSolutions = async () => {
@@ -39,7 +37,9 @@ function ProblemSolutions() {
           language={exampleSolution?.language}
           userId={exampleSolution?.userId}
           username={exampleSolution?.user?.username}
-          date={exampleSolution?.created_at}
+          date={exampleSolution?.createdAt}
+          solutionId={exampleSolution?.id}
+          solutionVotes={exampleSolution?.solutionVotes}
         />
       </div>
 
@@ -59,7 +59,7 @@ function ProblemSolutions() {
               userId={solution?.userId}
               solutionId={solution?.id}
               username={solution?.user?.username}
-              date={solution?.created_at}
+              date={solution?.createdAt}
             />
           ))}
       </div>

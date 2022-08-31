@@ -18,6 +18,29 @@
   margin-top: 1rem;
 }
 
+.user-solution-voting-icons button {
+  background-color: #282d3a;
+  border: none;
+}
+
+.user-solution-voting-icons button:enabled .fa-caret-up:hover {
+  cursor: pointer;
+  color: #3d4458;
+}
+
+.user-solution-voting-icons button:enabled .fa-caret-down:hover {
+  cursor: pointer;
+  color: #3d4458;
+}
+
+.user-solution-voting-icons .fa-caret-up {
+  font-size: 2rem;
+}
+
+.user-solution-voting-icons .fa-caret-down {
+  font-size: 2rem;
+}
+
 .user-solution-vote-count {
   color: #ffffff;
   margin: 0;

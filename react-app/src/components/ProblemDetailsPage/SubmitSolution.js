@@ -70,6 +70,7 @@ function SubmitSolution() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Title"
+              maxlength="55"
               required
             />
           </label>
