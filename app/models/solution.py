@@ -23,11 +23,12 @@ class Solution(db.Model):
             'title': self.title,
             'answer': self.answer,
             'language': self.language,
-            'example_solution': self.example_solution,
-            'created_at': self.created_at,
+            'exampleSolution': self.example_solution,
+            'createdAt': self.created_at,
             'userId': self.user_id,
             'user': self.user.to_dict_no_relationships(),
-            'problem': self.problem.to_dict_no_relationships()
+            'problem': self.problem.to_dict_no_relationships(),
+            'solutionVotes': [vote.to_dict() for vote in self.solution_votes]
         }
 
     def to_dict_no_relationships(self):
@@ -36,7 +37,7 @@ class Solution(db.Model):
             'title': self.title,
             'answer': self.answer,
             'language': self.language,
-            'example_solution': self.example_solution,
-            'created_at': self.created_at,
+            'exampleSolution': self.example_solution,
+            'createdAt': self.created_at,
             'userId': self.user_id,
         }
