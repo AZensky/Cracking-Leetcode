@@ -31,3 +31,26 @@ def solve_problem(id, problemid):
     db.session.commit()
 
     return solved_problem.to_dict()
+
+@user_routes.route('/<int:id>/problems-solved/<int:problemid>', methods=['DELETE'])
+def delete_solved(id, problemid):
+    user = current_user
+
+    user_instance = User.query.get(user.id)
+    user_instance.num_solved -= 1
+
+    solved_problem = ProblemSolved.query.filter(ProblemSolved.user_id == user.id, ProblemSolved.problem_id == problemid).first()
+
+    db.session.delete(solved_problem)
+    db.session.commit()
+
+    return {'message': 'Sucessfully deleted'}
+
+
+
+
+
+    db.session.add(solved_problem)
+    db.session.commit()
+
+    return solved_problem.to_dict()

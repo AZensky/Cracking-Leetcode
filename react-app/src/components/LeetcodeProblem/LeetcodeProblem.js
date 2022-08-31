@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addSolvedProblem } from "../../store/session";
+import { addSolvedProblem, removeSolvedProblem } from "../../store/session";
 import Rating from "react-rating";
 import "./LeetcodeProblem.css";
 
@@ -10,6 +10,7 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
   const user = useSelector((state) => state.session.user);
 
   const problemsSolved = user.problemsSolved;
+
   let solvedProblem = problemsSolved.find(
     (problem) => problem.problemId === id
   );
@@ -27,9 +28,9 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
     await dispatch(addSolvedProblem(user.id, id));
   }
 
-  // async function handleRemove(id) {
-  //   await dispatch(removeSolvedProblem(user.id, id));
-  // }
+  async function handleRemove(id) {
+    await dispatch(removeSolvedProblem(user.id, id));
+  }
 
   return (
     <div className="problem-content-container">
@@ -38,7 +39,9 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
         <div className="solved-icon-container">
           <i
             className={`fa-solid fa-circle-check ${solvedProblem && "solved"}`}
-            onClick={() => handleAdd(id)}
+            onClick={
+              solvedProblem ? () => handleRemove(id) : () => handleAdd(id)
+            }
           ></i>
         </div>
       )}

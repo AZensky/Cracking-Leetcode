@@ -2,6 +2,7 @@
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const ADD_PROBLEM_SOLVED = "session/ADD_PROBLEM_SOLVED";
+const REMOVE_PROBLEM_SOLVED = "session/REMOVE_PROBLEM_SOLVED";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -15,6 +16,11 @@ const removeUser = () => ({
 const addSolved = (info) => ({
   type: ADD_PROBLEM_SOLVED,
   payload: info,
+});
+
+const removeSolved = (problemId) => ({
+  type: REMOVE_PROBLEM_SOLVED,
+  payload: problemId,
 });
 
 const initialState = { user: null };
@@ -116,6 +122,18 @@ export const addSolvedProblem = (userId, problemId) => async (dispatch) => {
   }
 };
 
+export const removeSolvedProblem = (userId, problemId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/problems-solved/${problemId}`, {
+    method: "DELETE",
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(removeSolved(problemId));
+    return data;
+  }
+};
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
@@ -130,6 +148,17 @@ export default function reducer(state = initialState, action) {
       problemInfo.problemId = action.payload.problemId;
       problemInfo.userId = action.payload.userId;
       newState.user.problemsSolved.push(problemInfo);
+
+      return newState;
+    }
+    case REMOVE_PROBLEM_SOLVED: {
+      let newState = global.structuredClone(state);
+
+      let newArr = newState.user.problemsSolved.filter(
+        (problem) => problem.problemId !== action.payload
+      );
+
+      newState.user.problemsSolved = newArr;
 
       return newState;
     }
