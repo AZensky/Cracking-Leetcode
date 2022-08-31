@@ -18,6 +18,8 @@ function ProblemSolutions() {
     (solution) => solution.exampleSolution === false
   );
 
+  console.log("EXAMPLE", exampleSolution);
+
   useEffect(() => {
     const fetchProblemSolutions = async () => {
       await dispatch(loadSolutions(problemId));
@@ -39,6 +41,7 @@ function ProblemSolutions() {
           username={exampleSolution?.user?.username}
           date={exampleSolution?.createdAt}
           solutionId={exampleSolution?.id}
+          voteCount={exampleSolution?.voteCount}
           solutionVotes={exampleSolution?.solutionVotes}
         />
       </div>
@@ -60,6 +63,8 @@ function ProblemSolutions() {
               solutionId={solution?.id}
               username={solution?.user?.username}
               date={solution?.createdAt}
+              voteCount={solution?.voteCount}
+              solutionVotes={solution?.solutionVotes}
             />
           ))}
       </div>
