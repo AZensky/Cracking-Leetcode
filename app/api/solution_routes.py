@@ -11,9 +11,6 @@ solution_routes = Blueprint('solutions', __name__)
 def post_vote(solutionid):
     form = CreateVoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('---------------------')
-    print('ddaaatttTTTAAAA', form.data['upvote'])
-    print('---------------------')
 
     if form.validate_on_submit():
         data = form.data
@@ -22,10 +19,6 @@ def post_vote(solutionid):
         old_vote = SolutionVote.query.filter(SolutionVote.solution_id == solutionid, SolutionVote.user_id == user.id).first()
 
         solution = Solution.query.get(solutionid)
-
-        print('---------------------')
-        print('olddd', old_vote)
-        print('---------------------')
 
         if old_vote is not None:
             if data['upvote'] == True:
@@ -52,6 +45,4 @@ def post_vote(solutionid):
             return new_vote.to_dict()
 
     else:
-        print('HHHEEEREE')
-        print('ERRRRORRRSSSS', form.errors, form.data['upvote'])
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
