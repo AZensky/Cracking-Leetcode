@@ -21,7 +21,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
   let userVotedUp = false;
   let userVotedDown = false;
 
-  if (solutionVotes.length > 0) {
+  if (solutionVotes && solutionVotes.length > 0) {
   solutionVotes.forEach((vote) => {
     vote.upvote === true ? solutionVoteCount++ : solutionVoteCount--;
     if (user?.id === vote.userId && vote.upvote === true) userVotedUp = true;

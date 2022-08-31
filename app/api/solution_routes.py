@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import SolutionVote, db
+from app.models import SolutionVote, Solution, db
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import CreateVoteForm
@@ -11,8 +11,9 @@ solution_routes = Blueprint('solutions', __name__)
 def post_vote(solutionid):
     form = CreateVoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print('---------------------')
     print('ddaaatttTTTAAAA', form.data['upvote'])
+    print('---------------------')
 
     if form.validate_on_submit():
         data = form.data
@@ -20,11 +21,18 @@ def post_vote(solutionid):
 
         old_vote = SolutionVote.query.filter(SolutionVote.solution_id == solutionid, SolutionVote.user_id == user.id).first()
 
+        solution = Solution.query.get(solutionid)
+
         print('---------------------')
         print('olddd', old_vote)
         print('---------------------')
 
         if old_vote is not None:
+            if data['upvote'] == True:
+                solution.vote_count += 2
+            else:
+                solution.vote_count -= 2
+
             old_vote.upvote = data['upvote']
 
             db.session.commit()
@@ -33,6 +41,10 @@ def post_vote(solutionid):
 
         else:
             new_vote = SolutionVote(upvote=data['upvote'], user_id=user.id, solution_id=solutionid)
+            if data['upvote'] == True:
+                solution.vote_count += 1
+            else:
+                solution.vote_count -= 1
 
             db.session.add(new_vote)
             db.session.commit()
@@ -41,4 +53,5 @@ def post_vote(solutionid):
 
     else:
         print('HHHEEEREE')
+        print('ERRRRORRRSSSS', form.errors, form.data['upvote'])
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400

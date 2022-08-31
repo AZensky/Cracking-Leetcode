@@ -9,6 +9,7 @@ class Solution(db.Model):
     answer = db.Column(db.Text, nullable=False)
     language = db.Column(db.String(255), nullable=False)
     example_solution = db.Column(db.Boolean, default=False)
+    vote_count = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     problem_id = db.Column(db.Integer, db.ForeignKey('problems.id'), nullable=False)
@@ -24,6 +25,7 @@ class Solution(db.Model):
             'answer': self.answer,
             'language': self.language,
             'exampleSolution': self.example_solution,
+            'voteCount': self.vote_count,
             'createdAt': self.created_at,
             'userId': self.user_id,
             'user': self.user.to_dict_no_relationships(),
@@ -38,6 +40,7 @@ class Solution(db.Model):
             'answer': self.answer,
             'language': self.language,
             'exampleSolution': self.example_solution,
+            'voteCount': self.vote_count,
             'createdAt': self.created_at,
             'userId': self.user_id,
         }
