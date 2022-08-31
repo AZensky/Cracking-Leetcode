@@ -15,6 +15,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   const allProblems = useSelector((state) => state.problems.Problems);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     const initializePage = async () => {
@@ -49,9 +50,9 @@ function HomePage() {
           <h1>Grind 50</h1>
         </div>
         <div className="problems-completed-section">
-          <p>Completed: 30/50</p>
+          <p>Completed: {user.problemsSolved.length}/50</p>
           <ProgressBar
-            completed={60}
+            completed={(user.problemsSolved.length / 50) * 100}
             bgColor="#3CDB7C"
             baseBgColor="#282D3A"
             width="200px"

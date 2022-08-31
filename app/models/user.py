@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     votes = db.relationship('SolutionVote', back_populates='user', cascade='all, delete')
     ratings = db.relationship('Rating', back_populates='user', cascade='all, delete')
     solutions = db.relationship('Solution', back_populates='user', cascade='all, delete')
+    problems_solved = db.relationship('ProblemSolved', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -32,7 +33,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'votes': [vote.to_dict_no_relationships() for vote in self.votes],
             'ratings': [rating.to_dict_no_relationships() for rating in self.ratings],
-            'solutions': [solution.to_dict_no_relationships() for solution in self.solutions]
+            'solutions': [solution.to_dict_no_relationships() for solution in self.solutions],
+            'problemsSolved': [solved_problem.to_dict_no_relationships() for solved_problem in self.problems_solved]
         }
 
     def to_dict_no_relationships(self):
