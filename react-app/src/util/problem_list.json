@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Contains Duplicate",
+    "id": "1"
+  },
+
+  {
+    "name": "Squares of a Sorted Array",
+    "id": "2"
+  },
+
+  {
+    "name": "Sort Colors",
+    "id": "3"
+  },
+
+  {
+    "name": "Product of Array Except Self",
+    "id": "4"
+  },
+
+  {
+    "name": "Two Sum",
+    "id": "5"
+  },
+
+  {
+    "name": "Majority Element",
+    "id": "6"
+  },
+
+  {
+    "name": "Valid Anagram",
+    "id": "7"
+  },
+
+  {
+    "name": "Group Anagrams",
+    "id": "8"
+  },
+
+  {
+    "name": "Top K Frequent Elements",
+    "id": "9"
+  }
+]

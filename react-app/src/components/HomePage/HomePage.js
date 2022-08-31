@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProblems } from "../../store/problems";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import ProgressBar from "@ramonak/react-progress-bar";
 import Topic from "../Topics/Topic";
 import Footer from "../Footer/Footer";
+import problemList from "../../util/problem_list.json";
 import "./HomePage.css";
-import { useEffect } from "react";
 
 function HomePage() {
   const [searchInput, setSearchInput] = useState("");
   const [arrayProblems, setArrayProblems] = useState({});
   const [hashMapProblems, setHashMapProblems] = useState({});
+  const [showMenu, setShowMenu] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -40,7 +44,39 @@ function HomePage() {
     setHashMapProblems(hashMapProblems);
   }, [allProblems]);
 
-  function handleSearch() {}
+  useEffect(() => {
+    if (searchInput.length > 0) {
+      setShowMenu(true);
+      setSearchResults(handleSearch(searchInput));
+    } else {
+      setShowMenu(false);
+      setSearchResults([]);
+    }
+  }, [searchInput]);
+
+  function handleSearch(searchInput) {
+    const problems = [];
+
+    for (let i = 0; i < problemList.length; i++) {
+      let problem = problemList[i];
+      let name = problem.name;
+      console.log(
+        "INPUT",
+        searchInput,
+        "NAME",
+        name,
+        name.toLowerCase().startsWith(searchInput.toLowerCase())
+      );
+
+      if (name.toLowerCase().startsWith(searchInput.toLowerCase())) {
+        problems.push(problem);
+
+        if (problems.length > 5) return problems;
+      }
+    }
+
+    return problems;
+  }
 
   return (
     <div className="main-content-container">
@@ -51,9 +87,13 @@ function HomePage() {
         </div>
         {user && (
           <div className="problems-completed-section">
-            <p>Completed: {user.problemsSolved.length}/50</p>
+            <p>
+              Completed: {user.problemsSolved.length}/{allProblems?.length}
+            </p>
             <ProgressBar
-              completed={(user.problemsSolved.length / 50) * 100}
+              completed={Math.trunc(
+                (user.problemsSolved.length / allProblems?.length) * 100
+              )}
               bgColor="#3CDB7C"
               baseBgColor="#282D3A"
               width="200px"
@@ -88,6 +128,24 @@ function HomePage() {
           </button>
         </div>
       </div>
+
+      {/* Search dropdown */}
+      {showMenu && searchResults.length > 0 && (
+        <div className="search-dropdown-container">
+          <div className="search-dropdown-menu">
+            {searchResults.map((problem) => (
+              <Link
+                key={problem.id}
+                onClick={() => setSearchInput("")}
+                to={`/problems/${problem.id}`}
+                className="search-dropdown-item"
+              >
+                {problem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Contains all the problems */}
       <div className="problems-container">
