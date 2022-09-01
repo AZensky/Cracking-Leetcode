@@ -32,3 +32,19 @@
 .no-user-solutions {
   text-align: center;
 }
+
+.load-more-btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.35rem 1rem;
+  width: fit-content;
+  align-self: center;
+  margin-top: 2rem;
+  background: #282d3a;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.load-more-btn:hover {
+  cursor: pointer;
+}
