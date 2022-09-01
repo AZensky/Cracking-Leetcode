@@ -133,16 +133,18 @@ function HomePage() {
       {showMenu && searchResults.length > 0 && (
         <div className="search-dropdown-container">
           <div className="search-dropdown-menu">
-            {searchResults.map((problem) => (
-              <Link
-                key={problem.id}
-                onClick={() => setSearchInput("")}
-                to={`/problems/${problem.id}`}
-                className="search-dropdown-item"
-              >
-                {problem.name}
-              </Link>
-            ))}
+            <div className="search-dropdown-items-container">
+              {searchResults.map((problem) => (
+                <Link
+                  key={problem.id}
+                  onClick={() => setSearchInput("")}
+                  to={`/problems/${problem.id}`}
+                  className="search-dropdown-item"
+                >
+                  {problem.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}
