@@ -55,6 +55,13 @@
   margin: 1rem 2rem 2rem 0rem;
 }
 
+.voted-own-solution {
+  text-align: center;
+  color: red;
+  margin-top: 0.5rem;
+  /* display: none; */
+}
+
 .user-solution-title-edit {
   display: flex;
   justify-content: space-between;
@@ -119,4 +126,9 @@
   align-items: center;
   gap: 1.25rem;
   margin-right: 0.25rem;
+}
+
+.user-solution-voting-icons > button.disabled {
+  color: #21242d;
+  cursor: pointer;
 }

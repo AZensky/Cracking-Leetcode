@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Problem, Solution, Rating, db
-from flask_login import current_user
+from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import CreateSolutionForm, EditSolutionForm, CreateRatingForm, EditRatingForm
 import datetime
@@ -34,6 +34,7 @@ def get_solutions(problemid):
 
 # Post a solution for a problem
 @problem_routes.route('/<int:problemid>/solutions', methods=['POST'])
+@login_required
 def post_solution(problemid):
     form = CreateSolutionForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -54,14 +55,20 @@ def post_solution(problemid):
 
 # Edit a solution for a problem
 @problem_routes.route('/<int:id>/solutions/<int:solutionid>', methods=['PUT'])
+@login_required
 def edit_solution(id, solutionid):
     form = EditSolutionForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         data = form.data
+        user = current_user
 
         solution = Solution.query.get(solutionid)
+
+        if solution.user_id != user.id:
+            return {"message": "Solution doesn't belong to you"}
+
         solution.answer = data['solution']
         solution.title = data['title']
         solution.language = data['language']
@@ -76,9 +83,13 @@ def edit_solution(id, solutionid):
 
 # Delete a solution for a problem
 @problem_routes.route('/<int:problemid>/solutions/<int:solutionid>', methods=['DELETE'])
+@login_required
 def delete_solution(problemid, solutionid):
-
+    user = current_user
     solution = Solution.query.get(solutionid)
+
+    if solution.user_id != user.id:
+        return {"message": "Solution doesn't belong to you"}
 
     if solution is None:
         return {'message': 'Could not find solution'}
@@ -90,6 +101,7 @@ def delete_solution(problemid, solutionid):
 
 # Post a rating for a problem
 @problem_routes.route('/<int:problemid>/ratings', methods=['POST'])
+@login_required
 def post_rating(problemid):
     form = CreateRatingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -116,6 +128,7 @@ def post_rating(problemid):
 
 # Edit a rating for a problem
 @problem_routes.route('/<int:problemid>/ratings/<int:ratingid>', methods=['PUT'])
+@login_required
 def edit_rating(problemid, ratingid):
     form = EditRatingForm()
 
@@ -123,8 +136,15 @@ def edit_rating(problemid, ratingid):
 
     if form.validate_on_submit():
         data = form.data
+        user = current_user
 
         problem_rating = Rating.query.get(ratingid)
+
+        if problem_rating is None:
+            return {'message': 'Could not find rating'}
+
+        if problem_rating.user_id != user.id:
+            return {'message': 'Rating does not belong to you'}
 
         problem_rating.rating = data['rating']
 
@@ -137,13 +157,17 @@ def edit_rating(problemid, ratingid):
 
 # Delete a rating for a problem
 @problem_routes.route('/<int:problemid>/ratings/<int:ratingid>', methods=['DELETE'])
+@login_required
 def delete_rating(problemid, ratingid):
     rating = Rating.query.get(ratingid)
+    user = current_user
+
+    if rating.user_id != user.id:
+            return {'message': 'Rating does not belong to you'}
 
     if rating is None:
         return {'message': 'Could not find rating'}
 
-    else:
-        db.session.delete(rating)
-        db.session.commit()
-        return {'message': 'Successfully deleted'}
+    db.session.delete(rating)
+    db.session.commit()
+    return {'message': 'Successfully deleted'}
