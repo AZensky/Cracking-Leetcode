@@ -138,7 +138,7 @@ function HomePage() {
                   to={`/problems/${problem.id}`}
                   className="search-dropdown-item"
                 >
-                  {problem.name}
+                  <span className="dropdown-problem-name">{problem.name}</span>
                 </Link>
               ))}
             </div>
