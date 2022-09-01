@@ -1,5 +1,5 @@
 import CodeMirror from "@uiw/react-codemirror";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadSolutions } from "../../store/solutions";
 import { useParams } from "react-router-dom";
@@ -15,6 +15,7 @@ import "./Solution.css";
 function Solution({ solution, title, language, userId, solutionId, username, date, solutionVotes, voteCount }) {
   const { problemId } = useParams()
   const [error, setError] = useState('')
+  const [hasVoted, setHasVoted] = useState(false)
 
   const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
@@ -30,10 +31,11 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
   }
 
   function handleDisabledClick() {
-    if (userVotedUp) setError('You have already upvoted this solution')
-    else if (userVotedDown) setError('You have already downvoted this solution')
-    else if (!user) setError('You must be logged in to vote')
-    else if (user.id === userId) setError("You can't vote for your own solution")
+    setHasVoted(true);
+    if (userVotedUp) setError("You have already upvoted this solution");
+    else if (userVotedDown) setError("You have already downvoted this solution");
+    else if (!user) setError("You must be logged in to vote");
+    else if (user.id === userId) setError("You can't vote for your own solution");
   }
 
   let solutionDate = new Date(date);
@@ -64,7 +66,9 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
       await dispatch(loadSolutions(problemId));
     }
 
-    console.log('ERRROR', error);
+    useEffect(() => {
+      setHasVoted(false)
+    }, [user, userVotedDown, userVotedUp])
 
   return (
     <div className="user-solution-container">
@@ -103,7 +107,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
       <div className="user-solution-title-editor-container">
 
         {/* Display errors for voting icons */}
-        {error.length > 0 && (
+        {error.length > 0 && hasVoted && (
           <span className="voted-own-solution">{error}</span>
         )}
 
