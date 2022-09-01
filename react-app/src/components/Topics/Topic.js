@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDisplayProblemsContext } from "../../context/DisplayProblems";
 import "./Topic.css";
 import LeetcodeProblem from "../LeetcodeProblem/LeetcodeProblem";
 
 function Topic({ num, title, problems }) {
+  const { displayProblems } = useDisplayProblemsContext();
   const [showProblems, setShowProblems] = useState(false);
+
+  useEffect(() => {
+    setShowProblems(displayProblems);
+  }, [displayProblems]);
 
   return (
     <div className="topic-and-problems-container">
