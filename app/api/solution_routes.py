@@ -25,8 +25,15 @@ def post_vote(solutionid):
         old_vote = SolutionVote.query.filter(SolutionVote.solution_id == solutionid, SolutionVote.user_id == user.id).first()
 
         if old_vote is not None:
-            if data['upvote'] == True:
+            if old_vote.upvote == data['upvote'] and data['upvote'] == True:
+                return {'message': 'You have already upvoted this solution'}
+
+            elif old_vote.upvote == data['upvote'] and data['upvote'] == False:
+                return {'message': 'You have already downvoted this solution'}
+
+            elif data['upvote'] == True:
                 solution.vote_count += 2
+
             else:
                 solution.vote_count -= 2
 
