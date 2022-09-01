@@ -72,6 +72,7 @@ function SubmitSolution() {
               placeholder="Title"
               maxlength="55"
               required
+              id="solution-form-title-input"
             />
           </label>
 
