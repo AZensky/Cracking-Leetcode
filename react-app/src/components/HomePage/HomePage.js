@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadProblems } from "../../store/problems";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ProgressBar from "@ramonak/react-progress-bar";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import Topic from "../Topics/Topic";
 import Footer from "../Footer/Footer";
 import problemList from "../../util/problem_list.json";
@@ -94,9 +94,6 @@ function HomePage() {
               completed={Math.trunc(
                 (user.problemsSolved.length / allProblems?.length) * 100
               )}
-              bgColor="#3CDB7C"
-              baseBgColor="#282D3A"
-              width="200px"
             />
           </div>
         )}
