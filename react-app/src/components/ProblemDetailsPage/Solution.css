@@ -93,12 +93,13 @@
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  letter-spacing: 0.1px;
+  gap: 0.5rem;
 }
 
 .user-solution-title-editor-container .fa-user {
   color: #d6d0d0;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .solution-owner > p {

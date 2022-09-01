@@ -17,7 +17,7 @@ function Topic({ num, title, problems }) {
         </h4>
         <button>
           {showProblems && <i className="fa-solid fa-angle-up"></i>}
-          {!showProblems && <i class="fa-solid fa-angle-down"></i>}
+          {!showProblems && <i className="fa-solid fa-angle-down"></i>}
         </button>
       </div>
       <div className="topic-problems-container">
