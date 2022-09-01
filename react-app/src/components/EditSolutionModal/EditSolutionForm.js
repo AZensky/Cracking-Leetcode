@@ -22,8 +22,9 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
 
   useEffect(() => {
     const errors = [];
-    if (solution.length === 0 || solution.trim().length === 0) errors.push("Solution is required");
+
     if (title.length === 0) errors.push("Title is required");
+    if (solution.length === 0 || solution.trim().length === 0) errors.push("Solution is required");
 
     setValidationErrors(errors);
   }, [solution, title]);
@@ -66,7 +67,7 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
           maxlength="55"
-          required
+          // required
         />
       </label>
 
@@ -77,6 +78,8 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
           <option value={"python"}>Python</option>
         </select>
       </label>
+
+      <h4 className='edit-language-solution-title'>{language.charAt(0).toUpperCase() + language.slice(1)} Solution:</h4>
 
       {/* if selected language is javascript, render a code editor with javascript formatting/highlighting */}
       {language === "javascript" && (
