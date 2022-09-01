@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProblems } from "../../store/problems";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDisplayProblemsContext } from "../../context/DisplayProblems";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Topic from "../Topics/Topic";
 import Footer from "../Footer/Footer";
@@ -10,6 +11,8 @@ import problemList from "../../util/problem_list.json";
 import "./HomePage.css";
 
 function HomePage() {
+  const { displayProblems, setDisplayProblems } = useDisplayProblemsContext();
+
   const [searchInput, setSearchInput] = useState("");
   const [arrayProblems, setArrayProblems] = useState({});
   const [hashMapProblems, setHashMapProblems] = useState({});
@@ -120,9 +123,21 @@ function HomePage() {
 
         {/* Display All Content Dropdown */}
         <div className="display-content-container">
-          <button className="display-content-btn">
-            Display All Content <i className="fa-solid fa-arrow-down"></i>
-          </button>
+          {!displayProblems ? (
+            <button
+              className="display-content-btn"
+              onClick={() => setDisplayProblems(true)}
+            >
+              Display All Content <i className="fa-solid fa-arrow-down"></i>
+            </button>
+          ) : (
+            <button
+              className="display-content-btn"
+              onClick={() => setDisplayProblems(false)}
+            >
+              Hide All Content <i className="fa-solid fa-arrow-up"></i>
+            </button>
+          )}
         </div>
       </div>
 
