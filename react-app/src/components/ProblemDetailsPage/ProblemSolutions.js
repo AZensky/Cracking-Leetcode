@@ -18,8 +18,6 @@ function ProblemSolutions() {
     (solution) => solution.exampleSolution === false
   );
 
-  console.log("EXAMPLE", exampleSolution);
-
   useEffect(() => {
     const fetchProblemSolutions = async () => {
       await dispatch(loadSolutions(problemId));

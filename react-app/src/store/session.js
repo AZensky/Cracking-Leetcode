@@ -116,7 +116,6 @@ export const addSolvedProblem = (userId, problemId) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log("DDDAAATATA", data);
     dispatch(addSolved(data));
     return data;
   }
