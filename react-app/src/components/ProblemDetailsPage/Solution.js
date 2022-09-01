@@ -127,7 +127,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
         {/* Solution Owner and Date */}
         <div className="solution-owner-date">
           <div className="solution-owner">
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
             <p>{username}</p>
           </div>
           <div className="solution-date">

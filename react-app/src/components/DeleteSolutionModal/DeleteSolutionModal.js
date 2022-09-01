@@ -23,7 +23,7 @@ function DeleteSolutionModal({ solutionId }) {
 
   return (
     <>
-      <i class="fa-solid fa-trash-can" onClick={() => setShowModal(true)}></i>
+      <i className="fa-solid fa-trash-can" onClick={() => setShowModal(true)}></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <div className="login-form">

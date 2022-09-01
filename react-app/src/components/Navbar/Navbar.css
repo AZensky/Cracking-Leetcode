@@ -45,6 +45,9 @@
 
 .login-container {
   margin-right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .login-container > button {
@@ -65,4 +68,8 @@
 
 .logout-btn:hover {
   cursor: pointer;
+}
+
+.demo-btn {
+  padding-right: 0;
 }

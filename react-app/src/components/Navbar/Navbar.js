@@ -3,7 +3,7 @@ import LoginFormModal from "../LoginFormModal/LoginFormModal";
 import SignupFormModal from "../SignupFormModal/SignupFormModal";
 import { useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../store/session";
+import { logout, login } from "../../store/session";
 import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./Navbar.css";
 
@@ -14,6 +14,11 @@ function Navbar() {
 
   const onLogout = async (e) => {
     await dispatch(logout());
+  };
+
+  const loginDemoUser = async (e) => {
+    e.preventDefault();
+    await dispatch(login("Demo", "password"));
   };
 
   let sessionLinks;
@@ -28,7 +33,9 @@ function Navbar() {
   } else {
     sessionLinks = (
       <>
-        {/* <DemoLoginButton /> */}
+        <button className="nav-login-btn demo-btn" onClick={loginDemoUser}>
+          Demo
+        </button>
         <LoginFormModal styleClass="nav-login-btn" />
         <SignupFormModal styleClass="nav-sign-up" />
       </>
