@@ -84,3 +84,10 @@
 .code-editor-container > .login-form__validation-errors {
   margin-bottom: 1.5rem;
 }
+
+.language-solution-title {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}

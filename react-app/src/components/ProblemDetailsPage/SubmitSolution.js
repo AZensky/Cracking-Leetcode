@@ -22,9 +22,9 @@ function SubmitSolution() {
 
   useEffect(() => {
     const errors = [];
+    if (title.length === 0) errors.push("Title is required");
     if (solution.length === 0 || solution.trim().length === 0)
       errors.push("Solution is required");
-    if (title.length === 0) errors.push("Title is required");
 
     setValidationErrors(errors);
   }, [solution, title]);
@@ -71,7 +71,7 @@ function SubmitSolution() {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Title"
               maxlength="55"
-              required
+              // required
               id="solution-form-title-input"
             />
           </label>
@@ -86,6 +86,10 @@ function SubmitSolution() {
               <option value={"python"}>Python</option>
             </select>
           </label>
+
+          <h4 className="language-solution-title">
+            {language.charAt(0).toUpperCase() + language.slice(1)} Solution:
+          </h4>
 
           {/* if selected language is javascript, render a code editor with javascript formatting/highlighting */}
           {language === "javascript" && (

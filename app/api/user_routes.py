@@ -18,7 +18,9 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+# Route to handle user solving a problem
 @user_routes.route('/<int:id>/problems-solved/<int:problemid>', methods=['POST'])
+@login_required
 def solve_problem(id, problemid):
     user = current_user
 
@@ -32,7 +34,9 @@ def solve_problem(id, problemid):
 
     return solved_problem.to_dict()
 
+# Route to handle removing solving a problem
 @user_routes.route('/<int:id>/problems-solved/<int:problemid>', methods=['DELETE'])
+@login_required
 def delete_solved(id, problemid):
     user = current_user
 

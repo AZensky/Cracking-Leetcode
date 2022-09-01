@@ -19,10 +19,11 @@
 }
 
 .problem-example {
-  background-color: #eee;
-  border: 1px solid #999;
+  background-color: rgb(68, 68, 68);
+  border: 1px solid rgb(68, 68, 68);
+  border-radius: 1rem;
   display: block;
-  padding: 20px;
-  color: #000000;
+  padding: 1.5rem;
+  color: #ffffff;
   line-height: 2.5rem;
 }

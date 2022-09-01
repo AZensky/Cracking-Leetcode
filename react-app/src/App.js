@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
+import { useDisplayProblemsContext } from "./context/DisplayProblems";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -10,8 +11,10 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
 function App() {
+  const { setDisplayProblems } = useDisplayProblemsContext();
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -20,12 +23,19 @@ function App() {
     })();
   }, [dispatch]);
 
+  useEffect(() => {
+    history.listen(() => {
+      setDisplayProblems(false);
+    });
+  }, [history]);
+
   if (!loaded) {
     return null;
   }
 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <>
       <Navbar />
       <Switch>
         <Route path="/login" exact={true}>
@@ -41,7 +51,8 @@ function App() {
           <ProblemDetailsPage />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </>
+    // </BrowserRouter>
   );
 }
 

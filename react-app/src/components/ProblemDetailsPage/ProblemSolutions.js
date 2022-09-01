@@ -11,12 +11,17 @@ function ProblemSolutions() {
 
   const allSolutions = useSelector((state) => Object.values(state.solutions));
 
+  const [numToShow, setNumToShow] = useState(1);
+
   let exampleSolution = allSolutions.filter(
     (solution) => solution.exampleSolution === true
   )[0];
+
   let userSolutions = allSolutions.filter(
     (solution) => solution.exampleSolution === false
   );
+
+  let solutionsToShow = userSolutions.slice(0, numToShow);
 
   useEffect(() => {
     const fetchProblemSolutions = async () => {
@@ -25,6 +30,10 @@ function ProblemSolutions() {
 
     fetchProblemSolutions();
   }, [dispatch]);
+
+  function showMore() {
+    setNumToShow((prevNum) => prevNum + 3);
+  }
 
   return (
     <div className="solutions-container">
@@ -50,8 +59,8 @@ function ProblemSolutions() {
         {userSolutions.length === 0 && (
           <p className="no-user-solutions">No User Solutions Yet!</p>
         )}
-        {userSolutions.length > 0 &&
-          userSolutions.map((solution) => (
+        {solutionsToShow.length > 0 &&
+          solutionsToShow.map((solution) => (
             <Solution
               key={solution?.id}
               solution={solution?.answer}
@@ -66,6 +75,9 @@ function ProblemSolutions() {
             />
           ))}
       </div>
+      <button className="load-more-btn" onClick={showMore}>
+        Load More
+      </button>
     </div>
   );
 }
