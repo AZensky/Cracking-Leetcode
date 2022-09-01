@@ -23,12 +23,12 @@
   border: none;
 }
 
-.user-solution-voting-icons button:enabled .fa-caret-up:hover {
+.user-solution-voting-icons .fa-caret-up:hover {
   cursor: pointer;
   color: #3d4458;
 }
 
-.user-solution-voting-icons button:enabled .fa-caret-down:hover {
+.user-solution-voting-icons .fa-caret-down:hover {
   cursor: pointer;
   color: #3d4458;
 }
@@ -130,5 +130,14 @@
 
 .user-solution-voting-icons > button.disabled {
   color: #21242d;
-  cursor: pointer;
+}
+
+.user-solution-voting-icons > button.disabled .fa-caret-up:hover {
+  color: #21242d;
+  cursor: auto;
+}
+
+.user-solution-voting-icons > button.disabled .fa-caret-down:hover {
+  color: #21242d;
+  cursor: auto;
 }
