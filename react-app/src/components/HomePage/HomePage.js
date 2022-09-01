@@ -63,13 +63,6 @@ function HomePage() {
     for (let i = 0; i < problemList.length; i++) {
       let problem = problemList[i];
       let name = problem.name;
-      console.log(
-        "INPUT",
-        searchInput,
-        "NAME",
-        name,
-        name.toLowerCase().startsWith(searchInput.toLowerCase())
-      );
 
       if (name.toLowerCase().startsWith(searchInput.toLowerCase())) {
         problems.push(problem);
