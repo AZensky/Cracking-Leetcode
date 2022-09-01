@@ -1,5 +1,5 @@
 import CodeMirror from "@uiw/react-codemirror";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadSolutions } from "../../store/solutions";
 import { useParams } from "react-router-dom";
@@ -14,22 +14,27 @@ import "./Solution.css";
 // prettier-ignore
 function Solution({ solution, title, language, userId, solutionId, username, date, solutionVotes, voteCount }) {
   const { problemId } = useParams()
+  const [error, setError] = useState('')
+
   const dispatch = useDispatch()
   const user = useSelector((state) => state.session.user);
 
-  // let solutionVoteCount = 0;
   let userVotedUp = false;
   let userVotedDown = false;
 
   if (solutionVotes && solutionVotes.length > 0) {
   solutionVotes.forEach((vote) => {
-    // vote.upvote === true ? solutionVoteCount++ : solutionVoteCount--;
     if (user?.id === vote.userId && vote.upvote === true) userVotedUp = true;
     if (user?.id === vote.userId && vote.upvote === false) userVotedDown = true;
   });
   }
 
-
+  function handleDisabledClick() {
+    if (userVotedUp) setError('You have already upvoted this solution')
+    else if (userVotedDown) setError('You have already downvoted this solution')
+    else if (!user) setError('You must be logged in to vote')
+    else if (user.id === userId) setError("You can't vote for your own solution")
+  }
 
   let solutionDate = new Date(date);
 
@@ -59,20 +64,36 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
       await dispatch(loadSolutions(problemId));
     }
 
+    console.log('ERRROR', error);
+
   return (
     <div className="user-solution-container">
       {/* Voting Icons */}
       <div className="user-solution-voting-icons">
         <button
-          onClick={upvote}
-          disabled={userVotedUp || !user || user.id === userId}
+          onClick={
+            userVotedUp || !user || user.id === userId
+              ? handleDisabledClick
+              : upvote
+          }
+          // disabled={userVotedUp || !user || user.id === userId}
+          className={
+            userVotedUp || !user || user.id === userId ? "disabled" : ""
+          }
         >
           <i className="fa-solid fa-caret-up"></i>
         </button>
         <p className="user-solution-vote-count">{voteCount}</p>
         <button
-          onClick={downvote}
-          disabled={userVotedDown || !user || user.id === userId}
+          onClick={
+            userVotedDown || !user || user.id === userId
+              ? handleDisabledClick
+              : downvote
+          }
+          // disabled={userVotedDown || !user || user.id === userId}
+          className={
+            userVotedDown || !user || user.id === userId ? "disabled" : ""
+          }
         >
           <i className="fa-solid fa-caret-down"></i>
         </button>
@@ -80,6 +101,12 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
 
       {/* Title and Code Editor */}
       <div className="user-solution-title-editor-container">
+
+        {/* Display errors for voting icons */}
+        {error.length > 0 && (
+          <span className="voted-own-solution">{error}</span>
+        )}
+
         <div className="user-solution-title-edit">
           <p className="user-solution-title">{title}</p>
           {userId === user?.id && (
