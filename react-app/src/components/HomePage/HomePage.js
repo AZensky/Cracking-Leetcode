@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProblems } from "../../store/problems";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDisplayProblemsContext } from "../../context/DisplayProblems";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Topic from "../Topics/Topic";

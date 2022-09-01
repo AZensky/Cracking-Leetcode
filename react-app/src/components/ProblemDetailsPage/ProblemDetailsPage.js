@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProblemHeader from "./ProblemHeader";
 import ProblemDescription from "./ProblemDescription";
