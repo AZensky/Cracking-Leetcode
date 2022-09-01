@@ -9,24 +9,72 @@ function Footer() {
         <div className="footer-website-description">
           <p className="footer-website-name">Cracking Leetcode</p>
           <p className="footer-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            inventore, itaque debitis sit placeat dolorum!
+            An efficient way to learn data structures and algorithms.
           </p>
         </div>
 
         <div className="footer-inspiration">
           <p className="footer-section-title">Inspiration</p>
-          <p className="footer-text">Leetcode</p>
-          <p className="footer-text">Neetcode</p>
-          <p className="footer-text">Cracking the Coding Interview</p>
-          <p className="footer-text">Grind 75</p>
+          <a
+            className="footer-text"
+            href="https://leetcode.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Leetcode
+          </a>
+          <a
+            className="footer-text"
+            href="https://neetcode.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Neetcode
+          </a>
+          <a
+            className="footer-text"
+            href="https://www.crackingthecodinginterview.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Cracking the Coding Interview
+          </a>
+          <a
+            className="footer-text"
+            href="https://www.techinterviewhandbook.org/grind75"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Grind 75
+          </a>
         </div>
 
         <div className="footer-contact">
           <p className="footer-section-title">Contact</p>
-          <p className="footer-text">LinkedIn</p>
-          <p className="footer-text">Medium</p>
-          <p className="footer-text">Email</p>
+          <a
+            className="footer-text"
+            href="https://www.linkedin.com/in/alex-zelinsky"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            className="footer-text"
+            href="https://medium.com/@alexzelinsky124"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Medium
+          </a>
+          <a
+            className="footer-text"
+            href="mailto:alexzelinsky124@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Email
+          </a>
         </div>
       </div>
     </div>
