@@ -42,14 +42,15 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const login = (username, password) => async (dispatch) => {
+  console.log("USERNAME", username);
   const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username,
-      password,
+      Username: username,
+      Password: password,
     }),
   });
 
@@ -86,8 +87,8 @@ export const signUp = (username, password) => async (dispatch) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username,
-      password,
+      Username: username,
+      Password: password,
     }),
   });
 

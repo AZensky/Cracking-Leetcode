@@ -36,7 +36,7 @@ function SignupForm() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           maxLength="40"
-          required
+          // required
         />
       </label>
       <label className="login-form__password__label">
@@ -45,7 +45,7 @@ function SignupForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          // required
         />
       </label>
       <button type="submit" className="login-form__log-in">
