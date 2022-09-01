@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import SolutionVote, Solution, db
-from flask_login import current_user
+from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from app.forms import CreateVoteForm
 
@@ -8,6 +8,7 @@ solution_routes = Blueprint('solutions', __name__)
 
 # Post a vote for a solution
 @solution_routes.route('/<int:solutionid>/votes', methods=['POST'])
+@login_required
 def post_vote(solutionid):
     form = CreateVoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -16,9 +17,12 @@ def post_vote(solutionid):
         data = form.data
         user = current_user
 
-        old_vote = SolutionVote.query.filter(SolutionVote.solution_id == solutionid, SolutionVote.user_id == user.id).first()
-
         solution = Solution.query.get(solutionid)
+
+        if solution.user_id == user.id:
+            return {'message': 'User can not vote for their own solution'}
+
+        old_vote = SolutionVote.query.filter(SolutionVote.solution_id == solutionid, SolutionVote.user_id == user.id).first()
 
         if old_vote is not None:
             if data['upvote'] == True:
