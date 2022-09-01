@@ -63,11 +63,17 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
     <div className="user-solution-container">
       {/* Voting Icons */}
       <div className="user-solution-voting-icons">
-        <button onClick={upvote} disabled={userVotedUp || !user}>
+        <button
+          onClick={upvote}
+          disabled={userVotedUp || !user || user.id === userId}
+        >
           <i className="fa-solid fa-caret-up"></i>
         </button>
         <p className="user-solution-vote-count">{voteCount}</p>
-        <button onClick={downvote} disabled={userVotedDown || !user}>
+        <button
+          onClick={downvote}
+          disabled={userVotedDown || !user || user.id === userId}
+        >
           <i className="fa-solid fa-caret-down"></i>
         </button>
       </div>
@@ -121,7 +127,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
         {/* Solution Owner and Date */}
         <div className="solution-owner-date">
           <div className="solution-owner">
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
             <p>{username}</p>
           </div>
           <div className="solution-date">
