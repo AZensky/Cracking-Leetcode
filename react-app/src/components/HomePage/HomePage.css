@@ -83,7 +83,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* align-items: center; */
 }
 
 .search-dropdown-item {
@@ -91,7 +90,7 @@
   font-size: 0.75rem;
   color: #000000;
   display: block;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
 }
 
 .search-dropdown-item:first-child {
