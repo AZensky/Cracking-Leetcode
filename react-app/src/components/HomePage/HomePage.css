@@ -122,6 +122,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  letter-spacing: 0.1px;
 }
 
 .problems-container {
