@@ -19,7 +19,7 @@ function HomePage() {
   const [twoPointerProblems, setTwoPointerProblems] = useState({});
   const [slidingWindowProblems, setSlidingWindowProblems] = useState({});
   const [binarySearchProblems, setBinarySearchProblems] = useState({});
-  const [stackProblem, setStackProblems] = useState({});
+  const [stackProblems, setStackProblems] = useState({});
   const [linkedListProblems, setLinkedListProblems] = useState({});
   const [recursionProblems, setRecursionProblems] = useState({});
   const [treeProblems, setTreeProblems] = useState({});
@@ -51,6 +51,8 @@ function HomePage() {
     let twoPointerProblems = [];
     let slidingWindowProblems = [];
     let binarySearchProblems = [];
+    let stackProblems = [];
+    let linkedListProblems = [];
 
     for (let i = 0; i < allProblems.length; i++) {
       let problem = allProblems[i];
@@ -70,6 +72,12 @@ function HomePage() {
         case "Binary Search":
           binarySearchProblems.push(problem);
           break;
+        case "Stack":
+          stackProblems.push(problem);
+          break;
+        case "Linked List":
+          linkedListProblems.push(problem);
+          break;
       }
     }
 
@@ -78,6 +86,8 @@ function HomePage() {
     setTwoPointerProblems(twoPointerProblems);
     setSlidingWindowProblems(slidingWindowProblems);
     setBinarySearchProblems(binarySearchProblems);
+    setStackProblems(stackProblems);
+    setLinkedListProblems(linkedListProblems);
   }, [allProblems]);
 
   useEffect(() => {
@@ -201,8 +211,8 @@ function HomePage() {
         <Topic num={4} title={"Sliding Window"} problems={slidingWindowProblems} />
         {/* prettier-ignore */}
         <Topic num={5} title={"Binary Search"} problems={binarySearchProblems} />
-        <Topic num={6} title={"Stack"} />
-        <Topic num={7} title={"Linked List"} />
+        <Topic num={6} title={"Stack"} problems={stackProblems} />
+        <Topic num={7} title={"Linked List"} problems={linkedListProblems} />
         <Topic num={8} title={"Recursion"} />
         <Topic num={9} title={"Trees"} />
         <Topic num={10} title={"Graphs"} />
