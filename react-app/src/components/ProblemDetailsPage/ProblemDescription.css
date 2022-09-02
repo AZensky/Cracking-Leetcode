@@ -19,8 +19,8 @@
 }
 
 .problem-example {
-  background-color: rgb(68, 68, 68);
-  border: 1px solid rgb(68, 68, 68);
+  background-color: #303646;
+  /* border: 1px solid rgb(68, 68, 68); */
   border-radius: 1rem;
   display: block;
   padding: 1.5rem;
