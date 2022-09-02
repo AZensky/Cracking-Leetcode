@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { useDisplayProblemsContext } from "./context/DisplayProblems";
 import { useDispatch } from "react-redux";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
 import HomePage from "./components/HomePage/HomePage";
 import Navbar from "./components/Navbar/Navbar";
 import ProblemDetailsPage from "./components/ProblemDetailsPage/ProblemDetailsPage";
+import NotFound from "./components/NotFound/NotFound";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 
@@ -34,25 +33,20 @@ function App() {
   }
 
   return (
-    // <BrowserRouter>
     <>
       <Navbar />
       <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
         <Route path="/" exact={true}>
           <HomePage />
         </Route>
         <Route path="/problems/:problemId">
           <ProblemDetailsPage />
         </Route>
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     </>
-    // </BrowserRouter>
   );
 }
 
