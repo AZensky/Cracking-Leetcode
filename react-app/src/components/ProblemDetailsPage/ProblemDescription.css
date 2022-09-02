@@ -27,3 +27,13 @@
   color: #ffffff;
   line-height: 2.5rem;
 }
+
+.loading-problem-example {
+  background-color: transparent;
+  /* border: 1px solid #303646; */
+  /* border-radius: 1rem; */
+  display: block;
+  padding: 1.5rem;
+  color: #ffffff;
+  line-height: 2.5rem;
+}
