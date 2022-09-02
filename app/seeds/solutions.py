@@ -1,5 +1,5 @@
 from app.models import db, Solution
-from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution
+from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution, valid_palindrome_solution, merge_sorted_array_solution, three_sum_solution, conatiner_with_most_water_solution, best_time_to_buy_sell_stock_solution, longest_substring_without_repeating_chars_solution, minimum_size_subarray_sum_solution
 
 def seed_solutions():
     solution_1 = Solution(title='JavaScript Solution', answer=contains_duplicate_solution, language='javascript', example_solution=True, user_id=1, problem_id=1)
@@ -20,6 +20,20 @@ def seed_solutions():
 
     solution_9 = Solution(title='JavaScript Solution', answer=top_k_frequent_elements_solution, language='javascript', example_solution=True, user_id=1, problem_id=9)
 
+    solution_10 = Solution(title='JavaScript Solution', answer=valid_palindrome_solution, language='javascript', example_solution=True, user_id=1, problem_id=10)
+
+    solution_11 = Solution(title='JavaScript Solution', answer=merge_sorted_array_solution, language='javascript', example_solution=True, user_id=1, problem_id=11)
+
+    solution_12 = Solution(title='JavaScript Solution', answer=three_sum_solution, language='javascript', example_solution=True, user_id=1, problem_id=12)
+
+    solution_13 = Solution(title='JavaScript Solution', answer=conatiner_with_most_water_solution, language='javascript', example_solution=True, user_id=1, problem_id=13)
+
+    solution_14 = Solution(title='JavaScript Solution', answer=best_time_to_buy_sell_stock_solution, language='javascript', example_solution=True, user_id=1, problem_id=14)
+
+    solution_15 = Solution(title='JavaScript Solution', answer=longest_substring_without_repeating_chars_solution, language='javascript', example_solution=True, user_id=1, problem_id=15)
+
+    solution_16 = Solution(title='JavaScript Solution', answer=minimum_size_subarray_sum_solution, language='javascript', example_solution=True, user_id=1, problem_id=16)
+
     db.session.add(solution_1)
     db.session.add(solution_2)
     db.session.add(solution_3)
@@ -29,6 +43,13 @@ def seed_solutions():
     db.session.add(solution_7)
     db.session.add(solution_8)
     db.session.add(solution_9)
+    db.session.add(solution_10)
+    db.session.add(solution_11)
+    db.session.add(solution_12)
+    db.session.add(solution_13)
+    db.session.add(solution_14)
+    db.session.add(solution_15)
+    db.session.add(solution_16)
 
     db.session.commit()
 

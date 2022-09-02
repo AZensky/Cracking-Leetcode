@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProblems } from "../../store/problems";
 import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDisplayProblemsContext } from "../../context/DisplayProblems";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Topic from "../Topics/Topic";
@@ -16,6 +16,17 @@ function HomePage() {
   const [searchInput, setSearchInput] = useState("");
   const [arrayProblems, setArrayProblems] = useState({});
   const [hashMapProblems, setHashMapProblems] = useState({});
+  const [twoPointerProblems, setTwoPointerProblems] = useState({});
+  const [slidingWindowProblems, setSlidingWindowProblems] = useState({});
+  const [binarySearchProblem, setBinarySearchProblems] = useState({});
+  const [stackProblem, setStackProblems] = useState({});
+  const [linkedListProblems, setLinkedListProblems] = useState({});
+  const [recursionProblems, setRecursionProblems] = useState({});
+  const [treeProblems, setTreeProblems] = useState({});
+  const [graphProblems, setGraphProblems] = useState({});
+  const [dynamicProgrammingProblems, setDynamicProgrammingProblems] = useState(
+    {}
+  );
   const [showMenu, setShowMenu] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
@@ -35,16 +46,41 @@ function HomePage() {
   useEffect(() => {
     if (!allProblems) return;
 
-    let arrayProblems = allProblems.filter(
-      (problem) => problem.category === "Array"
-    );
+    let arrayProblems = [];
+    let hashMapProblems = [];
+    let twoPointerProblems = [];
+    let slidingWindowProblems = [];
 
-    let hashMapProblems = allProblems.filter(
-      (problem) => problem.category === "Hash Maps"
-    );
+    for (let i = 0; i < allProblems.length; i++) {
+      let problem = allProblems[i];
+      switch (problem.category) {
+        case "Array":
+          arrayProblems.push(problem);
+          break;
+        case "Hash Maps":
+          hashMapProblems.push(problem);
+          break;
+        case "Two Pointers":
+          twoPointerProblems.push(problem);
+          break;
+        case "Sliding Window":
+          slidingWindowProblems.push(problem);
+          break;
+      }
+    }
+
+    // let arrayProblems = allProblems.filter(
+    //   (problem) => problem.category === "Array"
+    // );
+
+    // let hashMapProblems = allProblems.filter(
+    //   (problem) => problem.category === "Hash Maps"
+    // );
 
     setArrayProblems(arrayProblems);
     setHashMapProblems(hashMapProblems);
+    setTwoPointerProblems(twoPointerProblems);
+    setSlidingWindowProblems(slidingWindowProblems);
   }, [allProblems]);
 
   useEffect(() => {
@@ -163,8 +199,12 @@ function HomePage() {
         {/* Loop through all the problem topics */}
         <Topic num={1} title={"Arrays"} problems={arrayProblems} />
         <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
-        <Topic num={3} title={"Two Pointers"} />
-        <Topic num={4} title={"Sliding Window"} />
+        <Topic num={3} title={"Two Pointers"} problems={twoPointerProblems} />
+        <Topic
+          num={4}
+          title={"Sliding Window"}
+          problems={slidingWindowProblems}
+        />
         <Topic num={5} title={"Binary Search"} />
         <Topic num={6} title={"Stack"} />
         <Topic num={7} title={"Linked List"} />
