@@ -75,9 +75,22 @@ function ProblemSolutions() {
             />
           ))}
       </div>
-      <button className="load-more-btn" onClick={showMore}>
-        Load More
-      </button>
+      {userSolutions.length > 0 && (
+        <>
+          {numToShow < userSolutions.length && (
+            <button className="load-more-btn" onClick={showMore}>
+              Load More
+            </button>
+          )}
+          <span className="solutions-shown">
+            (
+            {numToShow <= userSolutions.length
+              ? numToShow
+              : userSolutions.length}{" "}
+            out of {userSolutions.length})
+          </span>
+        </>
+      )}
     </div>
   );
 }

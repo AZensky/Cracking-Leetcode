@@ -62,7 +62,9 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
               initialRating={problemRating}
               readonly={true}
             />
-            <span id="lc-problem-rating-number">({problemRating})</span>
+            <span id="lc-problem-rating-number">
+              ({ratings?.length} ratings)
+            </span>
             <span className="lc-difficulty-title">Difficulty Level:</span>
             <div className="lc-problem-diffculty">
               <span>{difficulty}</span>
@@ -77,7 +79,7 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>Solve Challenge</span>
+          <span className="solve-challenge-btn-container">Solve Challenge</span>
         </a>
       </div>
     </div>
