@@ -1,5 +1,5 @@
 from app.models import db, Solution
-from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution, valid_palindrome_solution, merge_sorted_array_solution, three_sum_solution, conatiner_with_most_water_solution, best_time_to_buy_sell_stock_solution, longest_substring_without_repeating_chars_solution, minimum_size_subarray_sum_solution
+from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution, valid_palindrome_solution, merge_sorted_array_solution, three_sum_solution, conatiner_with_most_water_solution, best_time_to_buy_sell_stock_solution, longest_substring_without_repeating_chars_solution, minimum_size_subarray_sum_solution, binary_search_solution, search_rotated_sorted_array_solution, find_minimum_rotated_sorted_array_solution, search_2d_matrix_solution
 
 def seed_solutions():
     solution_1 = Solution(title='JavaScript Solution', answer=contains_duplicate_solution, language='javascript', example_solution=True, user_id=1, problem_id=1)
@@ -34,6 +34,14 @@ def seed_solutions():
 
     solution_16 = Solution(title='JavaScript Solution', answer=minimum_size_subarray_sum_solution, language='javascript', example_solution=True, user_id=1, problem_id=16)
 
+    solution_17 = Solution(title='JavaScript Solution', answer=binary_search_solution, language='javascript', example_solution=True, user_id=1, problem_id=17)
+
+    solution_18 = Solution(title='JavaScript Solution', answer=search_rotated_sorted_array_solution, language='javascript', example_solution=True, user_id=1, problem_id=18)
+
+    solution_19 = Solution(title='JavaScript Solution', answer=find_minimum_rotated_sorted_array_solution, language='javascript', example_solution=True, user_id=1, problem_id=19)
+
+    solution_20 = Solution(title='JavaScript Solution', answer=search_2d_matrix_solution, language='javascript', example_solution=True, user_id=1, problem_id=20)
+
     db.session.add(solution_1)
     db.session.add(solution_2)
     db.session.add(solution_3)
@@ -50,6 +58,10 @@ def seed_solutions():
     db.session.add(solution_14)
     db.session.add(solution_15)
     db.session.add(solution_16)
+    db.session.add(solution_17)
+    db.session.add(solution_18)
+    db.session.add(solution_19)
+    db.session.add(solution_20)
 
     db.session.commit()
 

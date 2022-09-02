@@ -18,7 +18,7 @@ function HomePage() {
   const [hashMapProblems, setHashMapProblems] = useState({});
   const [twoPointerProblems, setTwoPointerProblems] = useState({});
   const [slidingWindowProblems, setSlidingWindowProblems] = useState({});
-  const [binarySearchProblem, setBinarySearchProblems] = useState({});
+  const [binarySearchProblems, setBinarySearchProblems] = useState({});
   const [stackProblem, setStackProblems] = useState({});
   const [linkedListProblems, setLinkedListProblems] = useState({});
   const [recursionProblems, setRecursionProblems] = useState({});
@@ -50,6 +50,7 @@ function HomePage() {
     let hashMapProblems = [];
     let twoPointerProblems = [];
     let slidingWindowProblems = [];
+    let binarySearchProblems = [];
 
     for (let i = 0; i < allProblems.length; i++) {
       let problem = allProblems[i];
@@ -66,21 +67,17 @@ function HomePage() {
         case "Sliding Window":
           slidingWindowProblems.push(problem);
           break;
+        case "Binary Search":
+          binarySearchProblems.push(problem);
+          break;
       }
     }
-
-    // let arrayProblems = allProblems.filter(
-    //   (problem) => problem.category === "Array"
-    // );
-
-    // let hashMapProblems = allProblems.filter(
-    //   (problem) => problem.category === "Hash Maps"
-    // );
 
     setArrayProblems(arrayProblems);
     setHashMapProblems(hashMapProblems);
     setTwoPointerProblems(twoPointerProblems);
     setSlidingWindowProblems(slidingWindowProblems);
+    setBinarySearchProblems(binarySearchProblems);
   }, [allProblems]);
 
   useEffect(() => {
@@ -200,12 +197,10 @@ function HomePage() {
         <Topic num={1} title={"Arrays"} problems={arrayProblems} />
         <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
         <Topic num={3} title={"Two Pointers"} problems={twoPointerProblems} />
-        <Topic
-          num={4}
-          title={"Sliding Window"}
-          problems={slidingWindowProblems}
-        />
-        <Topic num={5} title={"Binary Search"} />
+        {/* prettier-ignore */}
+        <Topic num={4} title={"Sliding Window"} problems={slidingWindowProblems} />
+        {/* prettier-ignore */}
+        <Topic num={5} title={"Binary Search"} problems={binarySearchProblems} />
         <Topic num={6} title={"Stack"} />
         <Topic num={7} title={"Linked List"} />
         <Topic num={8} title={"Recursion"} />

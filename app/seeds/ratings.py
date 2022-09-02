@@ -17,6 +17,10 @@ def seed_ratings():
     rating_14 = Rating(rating=5, problem_id=14, user_id=1)
     rating_15 = Rating(rating=5, problem_id=15, user_id=1)
     rating_16 = Rating(rating=5, problem_id=16, user_id=1)
+    rating_17 = Rating(rating=5, problem_id=17, user_id=1)
+    rating_18 = Rating(rating=5, problem_id=18, user_id=1)
+    rating_19 = Rating(rating=5, problem_id=19, user_id=1)
+    rating_20 = Rating(rating=5, problem_id=20, user_id=1)
 
     db.session.add(rating_1)
     db.session.add(rating_2)
@@ -34,6 +38,10 @@ def seed_ratings():
     db.session.add(rating_14)
     db.session.add(rating_15)
     db.session.add(rating_16)
+    db.session.add(rating_17)
+    db.session.add(rating_18)
+    db.session.add(rating_19)
+    db.session.add(rating_20)
 
     db.session.commit()
 
