@@ -52,6 +52,7 @@ function HomePage() {
     let slidingWindowProblems = [];
     let binarySearchProblems = [];
     let stackProblems = [];
+    let linkedListProblems = [];
 
     for (let i = 0; i < allProblems.length; i++) {
       let problem = allProblems[i];
@@ -74,6 +75,9 @@ function HomePage() {
         case "Stack":
           stackProblems.push(problem);
           break;
+        case "Linked List":
+          linkedListProblems.push(problem);
+          break;
       }
     }
 
@@ -83,6 +87,7 @@ function HomePage() {
     setSlidingWindowProblems(slidingWindowProblems);
     setBinarySearchProblems(binarySearchProblems);
     setStackProblems(stackProblems);
+    setLinkedListProblems(linkedListProblems);
   }, [allProblems]);
 
   useEffect(() => {
