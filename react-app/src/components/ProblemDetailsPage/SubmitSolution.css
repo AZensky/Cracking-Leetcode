@@ -51,11 +51,12 @@
 }
 
 .code-editor-container {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 4rem;
-  background-color: #282d3a;
+  background-color: #222633;
   padding: 2rem;
+  box-sizing: border-box;
   border-radius: 1rem;
 }
 
