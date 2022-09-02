@@ -79,12 +79,18 @@
   width: 200px;
 }
 
+.search-dropdown-items-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .search-dropdown-item {
   text-decoration: none;
   font-size: 0.75rem;
   color: #000000;
   display: block;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
 }
 
 .search-dropdown-item:first-child {
@@ -100,10 +106,6 @@
 .search-dropdown-item:hover {
   background-color: rgb(231, 235, 236);
   cursor: pointer;
-}
-
-.dropdown-problem-name {
-  padding: 0.75rem;
 }
 
 .search-dropdown-item:last-of-type {
@@ -122,6 +124,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  letter-spacing: 0.1px;
 }
 
 .problems-container {

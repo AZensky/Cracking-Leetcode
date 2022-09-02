@@ -1,5 +1,6 @@
 .problem-description-container {
   width: 60%;
+  min-height: 320px;
 }
 
 .problem-description-title {
@@ -22,6 +23,15 @@
   background-color: #2f3446;
   border: 1px solid #303646;
   border-radius: 1rem;
+  display: block;
+  padding: 1.5rem;
+  color: #ffffff;
+  line-height: 2.5rem;
+  overflow: auto;
+}
+
+.loading-problem-example {
+  background-color: transparent;
   display: block;
   padding: 1.5rem;
   color: #ffffff;

@@ -1,34 +1,14 @@
 from app.models import db, Problem
-from app.problems import contains_duplicate, squares_of_a_sorted_array, sort_colors, product_of_array_except_self, two_sum, majority_element, valid_anagram, group_anagrams, top_k_frequent_elements
+from app.problems import contains_duplicate, squares_of_a_sorted_array, sort_colors, product_of_array_except_self, two_sum, majority_element, valid_anagram, group_anagrams, top_k_frequent_elements, valid_palindrome, merge_sorted_array, three_sum, container_with_most_water, best_time_to_buy_sell_stock, longest_substring_without_repeating_chars, minimum_size_subarray_sum, binary_search_prob, search_rotated_sorted_array, find_min_rotated_sorted_array, search_2d_matrix, valid_parentheses, backspace_string_compare, daily_temperatures, evaluate_reverse_polish_notation, reverse_linked_list, merge_two_sorted_lists, palindrome_linked_list, linked_list_cycle, remove_nth_node, add_two_numbers, fibonacci, power_of_three, permuations, subsets, letter_combinations, generate_parentheses, invert_binary_tree, max_depth_binary_tree, right_side_view, count_good_nodes, validate_bst, number_of_islands, max_area_of_island, clone_graph, rotting_oranges, word_search, maximum_subarray, coin_change, unique_paths, house_robber
 
 def seed_problems():
-    problem_1 = Problem(name=contains_duplicate['name'], category=contains_duplicate['category'], description=contains_duplicate['description'], example=contains_duplicate['example'], difficulty=contains_duplicate['difficulty'], link=contains_duplicate['link'])
 
-    problem_2 = Problem(name=squares_of_a_sorted_array['name'], category=squares_of_a_sorted_array['category'], description=squares_of_a_sorted_array['description'], example=squares_of_a_sorted_array['example'], difficulty=squares_of_a_sorted_array['difficulty'], link=squares_of_a_sorted_array['link'])
+    problems = [contains_duplicate, squares_of_a_sorted_array, sort_colors, product_of_array_except_self, two_sum, majority_element, valid_anagram, group_anagrams, top_k_frequent_elements, valid_palindrome, merge_sorted_array, three_sum, container_with_most_water, best_time_to_buy_sell_stock, longest_substring_without_repeating_chars, minimum_size_subarray_sum, binary_search_prob, search_rotated_sorted_array, find_min_rotated_sorted_array, search_2d_matrix, valid_parentheses, backspace_string_compare, daily_temperatures, evaluate_reverse_polish_notation, reverse_linked_list, merge_two_sorted_lists, palindrome_linked_list, linked_list_cycle, remove_nth_node, add_two_numbers, fibonacci, power_of_three, permuations, subsets, letter_combinations, generate_parentheses, invert_binary_tree, max_depth_binary_tree, right_side_view, count_good_nodes, validate_bst, number_of_islands, max_area_of_island, clone_graph, rotting_oranges, word_search, maximum_subarray, coin_change, unique_paths, house_robber]
 
-    problem_3 = Problem(name=sort_colors['name'], category=sort_colors['category'], description=sort_colors['description'], example=sort_colors['example'], difficulty=sort_colors['difficulty'], link=sort_colors['link'])
+    for problem in problems:
+        curr = Problem(name=problem['name'], category=problem['category'], description=problem['description'], example=problem['example'], difficulty=problem['difficulty'], link=problem['link'])
 
-    problem_4 = Problem(name=product_of_array_except_self['name'], category=product_of_array_except_self['category'], description=product_of_array_except_self['description'], example=product_of_array_except_self['example'], difficulty=product_of_array_except_self['difficulty'], link=product_of_array_except_self['link'])
-
-    problem_5 = Problem(name=two_sum['name'], category=two_sum['category'], description=two_sum['description'], example=two_sum['example'], difficulty=two_sum['difficulty'], link=two_sum['link'])
-
-    problem_6 = Problem(name=majority_element['name'], category=majority_element['category'], description=majority_element['description'], example=majority_element['example'], difficulty=majority_element['difficulty'], link=majority_element['link'])
-
-    problem_7 = Problem(name=valid_anagram['name'], category=valid_anagram['category'], description=valid_anagram['description'], example=valid_anagram['example'], difficulty=valid_anagram['difficulty'], link=valid_anagram['link'])
-
-    problem_8 = Problem(name=group_anagrams['name'], category=group_anagrams['category'], description=group_anagrams['description'], example=group_anagrams['example'], difficulty=group_anagrams['difficulty'], link=group_anagrams['link'])
-
-    problem_9 = Problem(name=top_k_frequent_elements['name'], category=top_k_frequent_elements['category'], description=top_k_frequent_elements['description'], example=top_k_frequent_elements['example'], difficulty=top_k_frequent_elements['difficulty'], link=top_k_frequent_elements['link'])
-
-    db.session.add(problem_1)
-    db.session.add(problem_2)
-    db.session.add(problem_3)
-    db.session.add(problem_4)
-    db.session.add(problem_5)
-    db.session.add(problem_6)
-    db.session.add(problem_7)
-    db.session.add(problem_8)
-    db.session.add(problem_9)
+        db.session.add(curr)
 
     db.session.commit()
 

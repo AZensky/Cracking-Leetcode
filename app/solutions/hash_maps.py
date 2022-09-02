@@ -1,4 +1,4 @@
-two_sum_solution = """var twoSum = function(nums, target) {
+two_sum_solution = """const twoSum = function(nums, target) {
 
     let map = {};
 
@@ -12,7 +12,7 @@ two_sum_solution = """var twoSum = function(nums, target) {
 
 };"""
 
-majority_element_solution = """var majorityElement = function(nums) {
+majority_element_solution = """const majorityElement = function(nums) {
     let map = {};
     let arrLength = nums.length;
     let n = arrLength / 2
@@ -29,7 +29,7 @@ majority_element_solution = """var majorityElement = function(nums) {
     }
 };"""
 
-valid_anagram_solution = """var isAnagram = function(s, t) {
+valid_anagram_solution = """const isAnagram = function(s, t) {
     if (s.length !== t.length) return false;
 
     let map = {};
@@ -46,7 +46,7 @@ valid_anagram_solution = """var isAnagram = function(s, t) {
     return true;
 };"""
 
-group_anagrams_solution = """var groupAnagrams = function(strs) {
+group_anagrams_solution = """const groupAnagrams = function(strs) {
     let map = {};
 
     for (let i = 0; i < strs.length; i++) {
@@ -64,7 +64,7 @@ group_anagrams_solution = """var groupAnagrams = function(strs) {
     return Object.values(map)
 };"""
 
-top_k_frequent_elements_solution = """var topKFrequent = function(nums, k) {
+top_k_frequent_elements_solution = """const topKFrequent = function(nums, k) {
     let map = {};
 
     for (let num of nums) {

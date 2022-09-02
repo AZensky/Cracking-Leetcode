@@ -88,10 +88,6 @@
   display: none;
 }
 
-.rating-stars-container:hover {
-  cursor: pointer;
-}
-
 .rating-stars-container:hover .search-dropdown-menu {
   display: block;
 }

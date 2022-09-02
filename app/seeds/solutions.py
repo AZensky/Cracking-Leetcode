@@ -1,36 +1,16 @@
 from app.models import db, Solution
-from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution
+from app.solutions import contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution, valid_palindrome_solution, merge_sorted_array_solution, three_sum_solution, conatiner_with_most_water_solution, best_time_to_buy_sell_stock_solution, longest_substring_without_repeating_chars_solution, minimum_size_subarray_sum_solution, binary_search_solution, search_rotated_sorted_array_solution, find_minimum_rotated_sorted_array_solution, search_2d_matrix_solution, valid_parentheses_solution, backspace_string_compare_solution, daily_temperatures_solution, evalute_reverse_polish_notation_solution, reverse_linked_list_solution, merge_two_sorted_lists_solution, palindrome_linked_list_solution, linked_list_cycle_solution, remove_nth_node_solution, add_two_numbers_solution, fibonacci_solution, power_of_three_solution, permutations_solution, subsets_solution, letter_combinations_solution, generate_parentheses_solution, invert_binary_tree_solution, max_depth_binary_tree_solution, right_side_view_solution, count_good_nodes_solution, validate_bst_solution, number_of_islands_solution, max_area_of_island_solution, clone_graph_solution, rotting_oranges_solution, word_search_solution, maximum_subarray_solution, coin_change_solution, unique_paths_solution, house_robber_solution
 
 def seed_solutions():
-    solution_1 = Solution(title='JavaScript Solution', answer=contains_duplicate_solution, language='javascript', example_solution=True, user_id=1, problem_id=1)
 
-    solution_2 = Solution(title='JavaScript Solution', answer=squares_of_a_sorted_array_solution, language='javascript', example_solution=True, user_id=1, problem_id=2)
+    solutions = [contains_duplicate_solution, squares_of_a_sorted_array_solution, sort_colors_solution, product_of_array_except_self_solution, two_sum_solution, majority_element_solution, valid_anagram_solution, group_anagrams_solution, top_k_frequent_elements_solution, valid_palindrome_solution, merge_sorted_array_solution, three_sum_solution, conatiner_with_most_water_solution, best_time_to_buy_sell_stock_solution, longest_substring_without_repeating_chars_solution, minimum_size_subarray_sum_solution, binary_search_solution, search_rotated_sorted_array_solution, find_minimum_rotated_sorted_array_solution, search_2d_matrix_solution, valid_parentheses_solution, backspace_string_compare_solution, daily_temperatures_solution, evalute_reverse_polish_notation_solution, reverse_linked_list_solution, merge_two_sorted_lists_solution, palindrome_linked_list_solution, linked_list_cycle_solution, remove_nth_node_solution, add_two_numbers_solution, fibonacci_solution, power_of_three_solution, permutations_solution, subsets_solution, letter_combinations_solution, generate_parentheses_solution, invert_binary_tree_solution, max_depth_binary_tree_solution, right_side_view_solution, count_good_nodes_solution, validate_bst_solution, number_of_islands_solution, max_area_of_island_solution, clone_graph_solution, rotting_oranges_solution, word_search_solution, maximum_subarray_solution, coin_change_solution, unique_paths_solution, house_robber_solution]
 
-    solution_3 = Solution(title='JavaScript Solution', answer=sort_colors_solution, language='javascript', example_solution=True, user_id=1, problem_id=3)
-
-    solution_4 = Solution(title='JavaScript Solution', answer=product_of_array_except_self_solution, language='javascript', example_solution=True, user_id=1, problem_id=4)
-
-    solution_5 = Solution(title='JavaScript Solution', answer=two_sum_solution, language='javascript', example_solution=True, user_id=1, problem_id=5)
-
-    solution_6 = Solution(title='JavaScript Solution', answer=majority_element_solution, language='javascript', example_solution=True, user_id=1, problem_id=6)
-
-    solution_7 = Solution(title='JavaScript Solution', answer=valid_anagram_solution, language='javascript', example_solution=True, user_id=1, problem_id=7)
-
-    solution_8 = Solution(title='JavaScript Solution', answer=group_anagrams_solution, language='javascript', example_solution=True, user_id=1, problem_id=8)
-
-    solution_9 = Solution(title='JavaScript Solution', answer=top_k_frequent_elements_solution, language='javascript', example_solution=True, user_id=1, problem_id=9)
-
-    db.session.add(solution_1)
-    db.session.add(solution_2)
-    db.session.add(solution_3)
-    db.session.add(solution_4)
-    db.session.add(solution_5)
-    db.session.add(solution_6)
-    db.session.add(solution_7)
-    db.session.add(solution_8)
-    db.session.add(solution_9)
+    for idx, solution in enumerate(solutions, start=1):
+        curr = Solution(title='JavaScript Solution', answer=solution, language='javascript', example_solution=True, user_id=1, problem_id=idx)
+        db.session.add(curr)
 
     db.session.commit()
+
 
 def undo_solutions():
     db.session.execute('TRUNCATE solutions RESTART IDENTITY CASCADE;')

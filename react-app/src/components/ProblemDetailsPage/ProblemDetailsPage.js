@@ -24,6 +24,7 @@ function ProblemDetailsPage() {
     };
 
     getProblemDetails().catch(console.error);
+    window.scrollTo(0, 0);
   }, []);
 
   return (

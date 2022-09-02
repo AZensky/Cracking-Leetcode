@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProblems } from "../../store/problems";
 import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDisplayProblemsContext } from "../../context/DisplayProblems";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Topic from "../Topics/Topic";
@@ -16,6 +16,17 @@ function HomePage() {
   const [searchInput, setSearchInput] = useState("");
   const [arrayProblems, setArrayProblems] = useState({});
   const [hashMapProblems, setHashMapProblems] = useState({});
+  const [twoPointerProblems, setTwoPointerProblems] = useState({});
+  const [slidingWindowProblems, setSlidingWindowProblems] = useState({});
+  const [binarySearchProblems, setBinarySearchProblems] = useState({});
+  const [stackProblems, setStackProblems] = useState({});
+  const [linkedListProblems, setLinkedListProblems] = useState({});
+  const [recursionProblems, setRecursionProblems] = useState({});
+  const [treeProblems, setTreeProblems] = useState({});
+  const [graphProblems, setGraphProblems] = useState({});
+  const [dynamicProgrammingProblems, setDynamicProgrammingProblems] = useState(
+    {}
+  );
   const [showMenu, setShowMenu] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
 
@@ -35,16 +46,68 @@ function HomePage() {
   useEffect(() => {
     if (!allProblems) return;
 
-    let arrayProblems = allProblems.filter(
-      (problem) => problem.category === "Array"
-    );
+    let arrayProblems = [];
+    let hashMapProblems = [];
+    let twoPointerProblems = [];
+    let slidingWindowProblems = [];
+    let binarySearchProblems = [];
+    let stackProblems = [];
+    let linkedListProblems = [];
+    let recursionProblems = [];
+    let treeProblems = [];
+    let graphProblems = [];
+    let dpProblems = [];
 
-    let hashMapProblems = allProblems.filter(
-      (problem) => problem.category === "Hash Maps"
-    );
+    for (let i = 0; i < allProblems.length; i++) {
+      let problem = allProblems[i];
+      switch (problem.category) {
+        case "Array":
+          arrayProblems.push(problem);
+          break;
+        case "Hash Maps":
+          hashMapProblems.push(problem);
+          break;
+        case "Two Pointers":
+          twoPointerProblems.push(problem);
+          break;
+        case "Sliding Window":
+          slidingWindowProblems.push(problem);
+          break;
+        case "Binary Search":
+          binarySearchProblems.push(problem);
+          break;
+        case "Stack":
+          stackProblems.push(problem);
+          break;
+        case "Linked List":
+          linkedListProblems.push(problem);
+          break;
+        case "Recursion":
+          recursionProblems.push(problem);
+          break;
+        case "Trees":
+          treeProblems.push(problem);
+          break;
+        case "Graphs":
+          graphProblems.push(problem);
+          break;
+        case "Dynamic Programming":
+          dpProblems.push(problem);
+          break;
+      }
+    }
 
     setArrayProblems(arrayProblems);
     setHashMapProblems(hashMapProblems);
+    setTwoPointerProblems(twoPointerProblems);
+    setSlidingWindowProblems(slidingWindowProblems);
+    setBinarySearchProblems(binarySearchProblems);
+    setStackProblems(stackProblems);
+    setLinkedListProblems(linkedListProblems);
+    setRecursionProblems(recursionProblems);
+    setTreeProblems(treeProblems);
+    setGraphProblems(graphProblems);
+    setDynamicProgrammingProblems(dpProblems);
   }, [allProblems]);
 
   useEffect(() => {
@@ -56,6 +119,10 @@ function HomePage() {
       setSearchResults([]);
     }
   }, [searchInput]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   function handleSearch(searchInput) {
     const problems = [];
@@ -159,15 +226,21 @@ function HomePage() {
         {/* Loop through all the problem topics */}
         <Topic num={1} title={"Arrays"} problems={arrayProblems} />
         <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
-        <Topic num={3} title={"Two Pointers"} />
-        <Topic num={4} title={"Sliding Window"} />
-        <Topic num={5} title={"Binary Search"} />
-        <Topic num={6} title={"Stack"} />
-        <Topic num={7} title={"Linked List"} />
-        <Topic num={8} title={"Recursion"} />
-        <Topic num={9} title={"Trees"} />
-        <Topic num={10} title={"Graphs"} />
-        <Topic num={11} title={"Dynamic Programming"} />
+        <Topic num={3} title={"Two Pointers"} problems={twoPointerProblems} />
+        {/* prettier-ignore */}
+        <Topic num={4} title={"Sliding Window"} problems={slidingWindowProblems} />
+        {/* prettier-ignore */}
+        <Topic num={5} title={"Binary Search"} problems={binarySearchProblems} />
+        <Topic num={6} title={"Stack"} problems={stackProblems} />
+        <Topic num={7} title={"Linked List"} problems={linkedListProblems} />
+        <Topic num={8} title={"Recursion"} problems={recursionProblems} />
+        <Topic num={9} title={"Trees"} problems={treeProblems} />
+        <Topic num={10} title={"Graphs"} problems={graphProblems} />
+        <Topic
+          num={11}
+          title={"Dynamic Programming"}
+          problems={dynamicProgrammingProblems}
+        />
       </div>
 
       <Footer />
