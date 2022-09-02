@@ -26,6 +26,7 @@
   padding: 1.5rem;
   color: #ffffff;
   line-height: 2.5rem;
+  overflow: auto;
 }
 
 .loading-problem-example {

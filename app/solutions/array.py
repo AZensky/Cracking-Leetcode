@@ -1,10 +1,10 @@
-contains_duplicate_solution = """var containsDuplicate = function(nums) {
+contains_duplicate_solution = """const containsDuplicate = function(nums) {
     let set = new Set(nums);
 
     return set.size !== nums.length;
 };"""
 
-squares_of_a_sorted_array_solution = """var sortedSquares = function(nums) {
+squares_of_a_sorted_array_solution = """const sortedSquares = function(nums) {
     let res = []
     let l = 0;
     let r = nums.length - 1;
@@ -26,7 +26,7 @@ squares_of_a_sorted_array_solution = """var sortedSquares = function(nums) {
 };
 """
 
-sort_colors_solution = """var sortColors = function(nums) {
+sort_colors_solution = """const sortColors = function(nums) {
     let redCount = 0;
     let whiteCount = 0;
     let blueCount = 0;
@@ -55,7 +55,7 @@ sort_colors_solution = """var sortColors = function(nums) {
     return nums;
 };"""
 
-product_of_array_except_self_solution = """var productExceptSelf = function(nums) {
+product_of_array_except_self_solution = """const productExceptSelf = function(nums) {
     let prefixes = new Array(nums.length).fill(1);
     let postfixes = new Array(nums.length).fill(1);
 
