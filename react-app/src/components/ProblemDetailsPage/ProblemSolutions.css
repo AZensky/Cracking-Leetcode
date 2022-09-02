@@ -47,4 +47,10 @@
 
 .load-more-btn:hover {
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.solutions-shown {
+  align-self: flex-end;
+  margin-top: 0.5rem;
 }
