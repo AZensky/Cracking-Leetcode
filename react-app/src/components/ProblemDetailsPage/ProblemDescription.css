@@ -1,5 +1,6 @@
 .problem-description-container {
   width: 60%;
+  min-height: 320px;
 }
 
 .problem-description-title {

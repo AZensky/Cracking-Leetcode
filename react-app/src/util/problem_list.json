@@ -42,5 +42,210 @@
   {
     "name": "Top K Frequent Elements",
     "id": "9"
+  },
+
+  {
+    "name": "Valid Palindrome",
+    "id": "10"
+  },
+
+  {
+    "name": "Merge Sorted Array",
+    "id": "11"
+  },
+
+  {
+    "name": "3Sum",
+    "id": "12"
+  },
+
+  {
+    "name": "Container With Most Water",
+    "id": "13"
+  },
+
+  {
+    "name": "Best Time to Buy and Sell Stock",
+    "id": "14"
+  },
+
+  {
+    "name": "Longest Substring Without Repeating Characters",
+    "id": "15"
+  },
+
+  {
+    "name": "Minimum Size Subarray Sum",
+    "id": "16"
+  },
+
+  {
+    "name": "Binary Search",
+    "id": "17"
+  },
+
+  {
+    "name": "Search in Rotated Sorted Array",
+    "id": "18"
+  },
+
+  {
+    "name": "Find Minimum in Rotated Sorted Array",
+    "id": "19"
+  },
+
+  {
+    "name": "Search a 2D Matrix",
+    "id": "20"
+  },
+
+  {
+    "name": "Valid Parentheses",
+    "id": "21"
+  },
+
+  {
+    "name": "Backstring Space Compare",
+    "id": "22"
+  },
+
+  {
+    "name": "Daily Temperatures",
+    "id": "23"
+  },
+
+  {
+    "name": "Evaluate Reverse Polish Notation",
+    "id": "24"
+  },
+
+  {
+    "name": "Reverse Linked List",
+    "id": "25"
+  },
+
+  {
+    "name": "Merge Two Sorted Lists",
+    "id": "26"
+  },
+
+  {
+    "name": "Palindrome Linked List",
+    "id": "27"
+  },
+
+  {
+    "name": "Linked List Cycle",
+    "id": "28"
+  },
+
+  {
+    "name": "Remove Nth Node From End of List",
+    "id": "29"
+  },
+
+  {
+    "name": "Add Two Numbers",
+    "id": "30"
+  },
+
+  {
+    "name": "Fibonacci Number",
+    "id": "31"
+  },
+
+  {
+    "name": "Power of Three",
+    "id": "32"
+  },
+
+  {
+    "name": "Permutations",
+    "id": "33"
+  },
+
+  {
+    "name": "Subsets",
+    "id": "34"
+  },
+
+  {
+    "name": "Letter Combinations of a Phone Number",
+    "id": "35"
+  },
+
+  {
+    "name": "Generate Parentheses",
+    "id": "36"
+  },
+
+  {
+    "name": "Invert Binary Tree",
+    "id": "37"
+  },
+
+  {
+    "name": "Maximum Depth of Binary Tree",
+    "id": "38"
+  },
+
+  {
+    "name": "Binary Tree Right Side View",
+    "id": "39"
+  },
+
+  {
+    "name": "Count Good Nodes in Binary Tree",
+    "id": "40"
+  },
+
+  {
+    "name": "Validate Binary Search Tree",
+    "id": "41"
+  },
+
+  {
+    "name": "Number of Islands",
+    "id": "42"
+  },
+
+  {
+    "name": "Max Area of Island",
+    "id": "43"
+  },
+
+  {
+    "name": "Clone Graph",
+    "id": "44"
+  },
+
+  {
+    "name": "Rotting Oranges",
+    "id": "45"
+  },
+
+  {
+    "name": "Word Search",
+    "id": "46"
+  },
+
+  {
+    "name": "Maximum Subarray",
+    "id": "47"
+  },
+
+  {
+    "name": "Coin Change",
+    "id": "48"
+  },
+
+  {
+    "name": "Unique Paths",
+    "id": "49"
+  },
+
+  {
+    "name": "House Robber",
+    "id": "50"
   }
 ]
