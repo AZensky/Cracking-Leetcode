@@ -57,6 +57,10 @@ function HomePage() {
     }
   }, [searchInput]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function handleSearch(searchInput) {
     const problems = [];
 

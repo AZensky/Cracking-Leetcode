@@ -8,7 +8,11 @@ function ProblemDescription({ description, example }) {
       <p className="problem-description">{description}</p>
       <h4 className="problem-description-example-title">Example</h4>
       <pre>
-        <code className="problem-example">{example}</code>
+        <code
+          className={example ? "problem-example" : "loading-problem-example"}
+        >
+          {example}
+        </code>
       </pre>
     </div>
   );
