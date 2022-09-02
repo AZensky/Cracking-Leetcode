@@ -59,14 +59,26 @@ function ProblemHeader({ name, difficulty, category }) {
       <div className="problem-header-details-container">
         <div className="header-label">
           <span className="problem-rating-title">Rating:</span>
-          <Rating
-            emptySymbol="fa fa-star empty"
-            fullSymbol="fa fa-star"
-            className="problem-rating-display"
-            initialRating={problemRating}
-            readonly={true}
-          />
-          <span id="lc-problem-rating-number">({problemRating})</span>
+          <div className="rating-stars-container">
+            <Rating
+              emptySymbol="fa fa-star empty"
+              fullSymbol="fa fa-star"
+              className="problem-rating-display"
+              initialRating={problemRating}
+              readonly={true}
+            />
+            <div className="search-dropdown-container">
+              <div className="search-dropdown-menu">
+                <div className="search-dropdown-items-container">
+                  ({problemRating})
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <span id="lc-problem-rating-number">
+            ({allRatings?.length || 0} ratings)
+          </span>
         </div>
         <span className="header-label">
           Difficulty Level:{" "}

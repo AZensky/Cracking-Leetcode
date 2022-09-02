@@ -109,3 +109,11 @@
 .problem-content-container:last-child {
   margin-bottom: 2rem;
 }
+
+.lc-problem-details #lc-problem-rating-number {
+  margin-left: -0.15rem;
+}
+
+.solve-challenge-btn {
+  font-weight: 500;
+}
