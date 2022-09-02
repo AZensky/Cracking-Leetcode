@@ -1,3 +1,4 @@
+from app.solutions import dynamic_programming
 from .array import contains_duplicate, squares_of_a_sorted_array, sort_colors, product_of_array_except_self
 from .hash_maps import two_sum, majority_element, valid_anagram, group_anagrams, top_k_frequent_elements
 from .two_pointers import valid_palindrome, merge_sorted_array, three_sum, container_with_most_water
@@ -7,3 +8,5 @@ from .stack import valid_parentheses, backspace_string_compare, daily_temperatur
 from .linked_list import reverse_linked_list, merge_two_sorted_lists, palindrome_linked_list, linked_list_cycle, remove_nth_node, add_two_numbers
 from .recursion import fibonacci, power_of_three, permuations, subsets, letter_combinations, generate_parentheses
 from .trees import invert_binary_tree, max_depth_binary_tree, right_side_view, count_good_nodes, validate_bst
+from .graphs import number_of_islands, max_area_of_island, clone_graph, rotting_oranges, word_search
+from .dynamic_programming import maximum_subarray, coin_change, unique_paths, house_robber

@@ -1,14 +1,15 @@
 .progress-bar-container {
-  height: 20;
+  height: 20px;
   width: 200px;
   background-color: #e0e0de;
   border-radius: 50px;
+  overflow: hidden;
   margin: 50;
 }
 
 .progress-bar-filler {
   height: 100%;
-  border-radius: inherit;
+  border-radius: 50px;
   text-align: right;
   background-color: #3cdb7c;
 }

@@ -7,3 +7,5 @@ from .stack import valid_parentheses_solution, backspace_string_compare_solution
 from .linked_list import reverse_linked_list_solution, merge_two_sorted_lists_solution, palindrome_linked_list_solution, linked_list_cycle_solution, remove_nth_node_solution, add_two_numbers_solution
 from .recursion import fibonacci_solution, power_of_three_solution, permutations_solution, subsets_solution, letter_combinations_solution, generate_parentheses_solution
 from .trees import invert_binary_tree_solution, max_depth_binary_tree_solution, right_side_view_solution, count_good_nodes_solution, validate_bst_solution
+from .graphs import number_of_islands_solution, max_area_of_island_solution, clone_graph_solution, rotting_oranges_solution, word_search_solution
+from .dynamic_programming import maximum_subarray_solution, coin_change_solution, unique_paths_solution, house_robber_solution
