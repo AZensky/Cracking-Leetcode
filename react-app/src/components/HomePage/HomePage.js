@@ -54,6 +54,9 @@ function HomePage() {
     let stackProblems = [];
     let linkedListProblems = [];
     let recursionProblems = [];
+    let treeProblems = [];
+    let graphProblems = [];
+    let dpProblems = [];
 
     for (let i = 0; i < allProblems.length; i++) {
       let problem = allProblems[i];
@@ -82,6 +85,15 @@ function HomePage() {
         case "Recursion":
           recursionProblems.push(problem);
           break;
+        case "Trees":
+          treeProblems.push(problem);
+          break;
+        case "Graphs":
+          graphProblems.push(problem);
+          break;
+        case "Dynamic Programming":
+          dpProblems.push(problem);
+          break;
       }
     }
 
@@ -93,6 +105,9 @@ function HomePage() {
     setStackProblems(stackProblems);
     setLinkedListProblems(linkedListProblems);
     setRecursionProblems(recursionProblems);
+    setTreeProblems(treeProblems);
+    setGraphProblems(graphProblems);
+    setDynamicProgrammingProblems(dpProblems);
   }, [allProblems]);
 
   useEffect(() => {
@@ -219,9 +234,13 @@ function HomePage() {
         <Topic num={6} title={"Stack"} problems={stackProblems} />
         <Topic num={7} title={"Linked List"} problems={linkedListProblems} />
         <Topic num={8} title={"Recursion"} problems={recursionProblems} />
-        <Topic num={9} title={"Trees"} />
-        <Topic num={10} title={"Graphs"} />
-        <Topic num={11} title={"Dynamic Programming"} />
+        <Topic num={9} title={"Trees"} problems={treeProblems} />
+        <Topic num={10} title={"Graphs"} problems={graphProblems} />
+        <Topic
+          num={11}
+          title={"Dynamic Programming"}
+          problems={dynamicProgrammingProblems}
+        />
       </div>
 
       <Footer />
