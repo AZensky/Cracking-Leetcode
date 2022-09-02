@@ -79,6 +79,13 @@
   width: 200px;
 }
 
+.search-dropdown-items-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* align-items: center; */
+}
+
 .search-dropdown-item {
   text-decoration: none;
   font-size: 0.75rem;
@@ -100,10 +107,6 @@
 .search-dropdown-item:hover {
   background-color: rgb(231, 235, 236);
   cursor: pointer;
-}
-
-.dropdown-problem-name {
-  padding: 0.75rem;
 }
 
 .search-dropdown-item:last-of-type {
