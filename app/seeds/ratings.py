@@ -2,7 +2,7 @@ from app.models import db, Rating
 
 def seed_ratings():
 
-    for i in range (1, 21):
+    for i in range (1, 25):
         rating = Rating(rating=5, problem_id=i, user_id=1)
         db.session.add(rating)
 
