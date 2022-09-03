@@ -57,3 +57,28 @@ def post_vote(solutionid):
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@solution_routes.route('/<int:solutionid>/votes/<int:voteid>', methods=['DELETE'])
+@login_required
+def delete_vote(solutionid, voteid):
+    user = current_user
+
+    solution_vote = SolutionVote.query.get(voteid)
+    solution = Solution.query.get(solutionid)
+
+    if solution_vote is None:
+        return {'message': 'You have not voted for this solution'}
+
+    if solution_vote.user_id != user.id:
+        return {'message': 'This vote does not belong to you'}
+
+    if solution_vote.upvote == True:
+        solution.vote_count -= 1
+
+    if solution_vote.upvote == False:
+        solution.vote_count += 1
+
+    db.session.delete(solution_vote)
+    db.session.commit()
+
+    return {'message': 'Successfully deleted'}

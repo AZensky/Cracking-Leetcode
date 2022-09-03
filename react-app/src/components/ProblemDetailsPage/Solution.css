@@ -141,3 +141,17 @@
   color: #21242d;
   cursor: auto;
 }
+
+.user-solution-voting-icons > button.voted {
+  color: #3d4458;
+}
+
+.user-solution-voting-icons > button.voted .fa-caret-up:hover {
+  color: #3d4458;
+  cursor: pointer;
+}
+
+.user-solution-voting-icons > button.voted .fa-caret-down:hover {
+  color: #3d4458;
+  cursor: pointer;
+}
