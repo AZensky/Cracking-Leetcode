@@ -1,10 +1,13 @@
 from app.models import db, User
+import os
+
+admin_pass = os.environ.get('ADMIN_PASS')
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     alex = User(
-        username='Alex', password='password')
+        username='Alex', password=admin_pass)
     demo = User(
         username='Demo', password='password')
 
