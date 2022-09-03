@@ -23,7 +23,7 @@ Output: [1,1,2,3,4,4]''',
 }
 
 palindrome_linked_list = {
-    'name': 'Palindrome Linked',
+    'name': 'Palindrome Linked List',
     'category': 'Linked List',
     'description': """Given the head of a singly linked list, return true if it is a palindrome or false otherwise.""",
     'example': '''Input: head = [1,2,2,1]

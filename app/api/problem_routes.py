@@ -10,7 +10,7 @@ problem_routes = Blueprint('problems', __name__)
 # Get all problems
 @problem_routes.route('')
 def get_all_problems():
-    problems = Problem.query.all()
+    problems = Problem.query.order_by(Problem.id).all()
 
     return {'Problems': [problem.to_dict() for problem in problems]}
 
