@@ -151,7 +151,7 @@ function HomePage() {
       {/* Home page header */}
       <div className="home-page-header">
         <div>
-          <h1>CL 50</h1>
+          <h1>Curated 50</h1>
         </div>
         {user && (
           <div className="problems-completed-section">
