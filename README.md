@@ -5,6 +5,7 @@ Cracking Leetcode is a website created to help developers learn data structures 
 **Live Site:** [Cracking Leetcode](https://cracking-leetcode.herokuapp.com/)
 
 ## Wiki Links
+
 - [API Documentation](https://github.com/AZensky/Cracking-Leetcode/wiki/API-Routes)
 - [Database Schema](https://github.com/AZensky/Cracking-Leetcode/wiki/Database-Schema)
 - [Feature List](https://github.com/AZensky/Cracking-Leetcode/wiki/Feature-List)
@@ -15,9 +16,9 @@ Cracking Leetcode is a website created to help developers learn data structures 
 ### Frameworks, Platforms, and Libraries:
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
- 
-### Database: 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+### Database:
 
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
@@ -34,7 +35,7 @@ Cracking Leetcode is a website created to help developers learn data structures 
 
 ![cracking-leetcode-prob-dropdown](https://user-images.githubusercontent.com/95510710/188289405-494ef350-165d-4865-9f87-596851264515.png)
 
-## Problem Description 
+## Problem Description
 
 ![cracking-leetcode-prob-description](https://user-images.githubusercontent.com/95510710/188289410-ab65f57d-527f-4740-9f46-d55bda059d29.png)
 
@@ -60,4 +61,4 @@ SECRET_KEY=«generate_strong_secret_here»
 
 ## To-do-list
 
-- Dark Mode
+- Light Mode
