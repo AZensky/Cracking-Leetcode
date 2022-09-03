@@ -53,13 +53,13 @@
   flex-direction: column;
   width: 100%;
   margin: 1rem 2rem 2rem 0rem;
+  overflow: hidden;
 }
 
 .voted-own-solution {
   text-align: center;
   color: red;
   margin-top: 0.5rem;
-  /* display: none; */
 }
 
 .user-solution-title-edit {
