@@ -60,4 +60,4 @@ SECRET_KEY=«generate_strong_secret_here»
 
 ## To-do-list
 
-- Dark Mode
+- Light Mode
