@@ -61,6 +61,14 @@ function Footer() {
           </a>
           <a
             className="footer-text"
+            href="https://github.com/AZensky/Cracking-Leetcode"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            className="footer-text"
             href="https://medium.com/@alexzelinsky124"
             target="_blank"
             rel="noopener noreferrer"

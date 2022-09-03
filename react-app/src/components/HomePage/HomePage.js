@@ -35,6 +35,7 @@ function HomePage() {
   const allProblems = useSelector((state) => state.problems.Problems);
   const user = useSelector((state) => state.session.user);
 
+  // Get problems from backend
   useEffect(() => {
     const initializePage = async () => {
       await dispatch(loadProblems());
@@ -43,6 +44,7 @@ function HomePage() {
     initializePage();
   }, [dispatch]);
 
+  // Loop through all problems, and sort them according to their category
   useEffect(() => {
     if (!allProblems) return;
 
@@ -110,6 +112,7 @@ function HomePage() {
     setDynamicProgrammingProblems(dpProblems);
   }, [allProblems]);
 
+  // Search dropdown
   useEffect(() => {
     if (searchInput.length > 0) {
       setShowMenu(true);
@@ -120,10 +123,12 @@ function HomePage() {
     }
   }, [searchInput]);
 
+  // Reset scroll height to top of page when navigated here
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Handle input into search bar
   function handleSearch(searchInput) {
     const problems = [];
 
@@ -236,11 +241,8 @@ function HomePage() {
         <Topic num={8} title={"Recursion"} problems={recursionProblems} />
         <Topic num={9} title={"Trees"} problems={treeProblems} />
         <Topic num={10} title={"Graphs"} problems={graphProblems} />
-        <Topic
-          num={11}
-          title={"Dynamic Programming"}
-          problems={dynamicProgrammingProblems}
-        />
+        {/* prettier-ignore */}
+        <Topic num={11} title={"Dynamic Programming"} problems={dynamicProgrammingProblems} />
       </div>
 
       <Footer />
