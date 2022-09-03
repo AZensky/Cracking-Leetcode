@@ -49,12 +49,3 @@ def delete_solved(id, problemid):
     db.session.commit()
 
     return {'message': 'Sucessfully deleted'}
-
-
-
-
-
-    db.session.add(solved_problem)
-    db.session.commit()
-
-    return solved_problem.to_dict()
