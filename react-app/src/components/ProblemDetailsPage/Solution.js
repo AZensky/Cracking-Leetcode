@@ -37,9 +37,10 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
     if (userVotedUp || userVotedDown){
        deleteVote();
     }
-    else if (userVotedDown) setError("You have already downvoted this solution");
+
+    else if (user?.id === userId) setError("You can't vote for your own solution");
     else if (!user) setError("You must be logged in to vote");
-    else if (user.id === userId) setError("You can't vote for your own solution");
+
   }
 
   let solutionDate = new Date(date);
@@ -80,7 +81,8 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
 
     useEffect(() => {
       setHasVoted(false)
-    }, [user, userVotedDown, userVotedUp])
+      setError('')
+    }, [user])
 
     let upvoteClassName = ''
     let downvoteClassName = ''
