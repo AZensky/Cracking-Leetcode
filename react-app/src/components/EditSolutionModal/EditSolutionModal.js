@@ -13,7 +13,7 @@ function EditSolutionModal({ solutionId, title, solution, language }) {
     <>
       <i className="fa-solid fa-pen" onClick={() => setShowModal(true)}></i>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)} style={"wide"}>
+        <Modal onClose={() => setShowModal(false)} styleClass={"wide"}>
           <EditSolutionForm
             solutionId={solutionId}
             oldTitle={title}

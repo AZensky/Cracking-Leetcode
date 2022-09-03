@@ -22,9 +22,11 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
 
   let userVotedUp = false;
   let userVotedDown = false;
+  let voteId;
 
   if (solutionVotes && solutionVotes.length > 0) {
   solutionVotes.forEach((vote) => {
+    if (user?.id === vote.userId) voteId = vote.id
     if (user?.id === vote.userId && vote.upvote === true) userVotedUp = true;
     if (user?.id === vote.userId && vote.upvote === false) userVotedDown = true;
   });
@@ -32,7 +34,9 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
 
   function handleDisabledClick() {
     setHasVoted(true);
-    if (userVotedUp) setError("You have already upvoted this solution");
+    if (userVotedUp || userVotedDown){
+       deleteVote();
+    }
     else if (userVotedDown) setError("You have already downvoted this solution");
     else if (!user) setError("You must be logged in to vote");
     else if (user.id === userId) setError("You can't vote for your own solution");
@@ -66,9 +70,28 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
       await dispatch(loadSolutions(problemId));
     }
 
+    async function deleteVote() {
+       const res = await fetch(`/api/solutions/${solutionId}/votes/${voteId}`, {
+         method: "DELETE"
+       });
+
+       await dispatch(loadSolutions(problemId))
+    }
+
     useEffect(() => {
       setHasVoted(false)
     }, [user, userVotedDown, userVotedUp])
+
+    let upvoteClassName = ''
+    let downvoteClassName = ''
+
+    if (userVotedUp) upvoteClassName = 'voted'
+    if (!user) upvoteClassName = 'disabled'
+    if (user?.id === userId) upvoteClassName = 'disabled'
+
+    if (userVotedDown) downvoteClassName = 'voted'
+    if (!user) downvoteClassName = 'disabled'
+    if (user?.id === userId) downvoteClassName = 'disabled'
 
   return (
     <div className="user-solution-container">
@@ -80,10 +103,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
               ? handleDisabledClick
               : upvote
           }
-          // disabled={userVotedUp || !user || user.id === userId}
-          className={
-            userVotedUp || !user || user.id === userId ? "disabled" : ""
-          }
+          className={upvoteClassName}
         >
           <i className="fa-solid fa-caret-up"></i>
         </button>
@@ -94,10 +114,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
               ? handleDisabledClick
               : downvote
           }
-          // disabled={userVotedDown || !user || user.id === userId}
-          className={
-            userVotedDown || !user || user.id === userId ? "disabled" : ""
-          }
+          className={downvoteClassName}
         >
           <i className="fa-solid fa-caret-down"></i>
         </button>
