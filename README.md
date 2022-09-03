@@ -28,15 +28,19 @@ Cracking Leetcode is a website created to help developers learn data structures 
 
 ## Home Page
 
-![cl-home-page-github](https://user-images.githubusercontent.com/95510710/188288848-6b2447cf-55ab-4702-9f95-18e285b64c9b.png)
+![cracking-leetcode-home-page](https://user-images.githubusercontent.com/95510710/188289398-a462d11d-4168-46af-baf5-506c1bab6d05.png)
 
-![cl-problem-dropdown](https://user-images.githubusercontent.com/95510710/188288871-db4bb3b2-9781-4864-8486-a023203f3177.png)
+## Problem Dropdown
 
-## Problem Details Page
+![cracking-leetcode-prob-dropdown](https://user-images.githubusercontent.com/95510710/188289405-494ef350-165d-4865-9f87-596851264515.png)
 
-![problem-description](https://user-images.githubusercontent.com/95510710/188288885-bf6d8895-a73c-459c-9f10-0e75738d36c0.png)
+## Problem Description 
 
-![problem-solution](https://user-images.githubusercontent.com/95510710/188288888-a53c5420-e861-447d-888d-7874e7f40b00.png)
+![cracking-leetcode-prob-description](https://user-images.githubusercontent.com/95510710/188289410-ab65f57d-527f-4740-9f46-d55bda059d29.png)
+
+## Problem Solutions
+
+![cracking-leetcode-solutions](https://user-images.githubusercontent.com/95510710/188289424-8022d942-eafb-4548-8370-2790a6c5f70b.png)
 
 ## Run Locally
 
