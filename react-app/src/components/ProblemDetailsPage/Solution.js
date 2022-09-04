@@ -48,6 +48,8 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
   let {day, month, year} = getDayMonthYear(solutionDate);
 
   async function upvote() {
+    upvoteClassName = "voted";
+
     const res = await fetch(`/api/solutions/${solutionId}/votes`, {
       method: "POST",
       headers: {
@@ -65,8 +67,10 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({'upvote': false}),
+        body: JSON.stringify({ upvote: false }),
       });
+
+       downvoteClassName = 'voted'
 
       await dispatch(loadSolutions(problemId));
     }
