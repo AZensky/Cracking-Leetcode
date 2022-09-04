@@ -32,6 +32,17 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
   });
   }
 
+  let upvoteClassName = "";
+  let downvoteClassName = "";
+
+  if (userVotedUp) upvoteClassName = "voted";
+  if (!user) upvoteClassName = "disabled";
+  if (user?.id === userId) upvoteClassName = "disabled";
+
+  if (userVotedDown) downvoteClassName = "voted";
+  if (!user) downvoteClassName = "disabled";
+  if (user?.id === userId) downvoteClassName = "disabled";
+
   function handleDisabledClick() {
     setHasVoted(true);
     if (userVotedUp || userVotedDown){
@@ -62,6 +73,7 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
   }
 
     async function downvote() {
+      downvoteClassName = "voted";
       const res = await fetch(`/api/solutions/${solutionId}/votes`, {
         method: "POST",
         headers: {
@@ -70,7 +82,6 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
         body: JSON.stringify({ upvote: false }),
       });
 
-       downvoteClassName = 'voted'
 
       await dispatch(loadSolutions(problemId));
     }
@@ -87,17 +98,6 @@ function Solution({ solution, title, language, userId, solutionId, username, dat
       setHasVoted(false)
       setError('')
     }, [user])
-
-    let upvoteClassName = ''
-    let downvoteClassName = ''
-
-    if (userVotedUp) upvoteClassName = 'voted'
-    if (!user) upvoteClassName = 'disabled'
-    if (user?.id === userId) upvoteClassName = 'disabled'
-
-    if (userVotedDown) downvoteClassName = 'voted'
-    if (!user) downvoteClassName = 'disabled'
-    if (user?.id === userId) downvoteClassName = 'disabled'
 
   return (
     <div className="user-solution-container">
