@@ -156,7 +156,8 @@ function HomePage() {
         {user && (
           <div className="problems-completed-section">
             <p>
-              Completed: {user.problemsSolved.length}/{allProblems?.length}
+              Completed: {user.problemsSolved.length}/
+              {allProblems ? allProblems.length : 50}
             </p>
             <ProgressBar
               completed={Math.trunc(

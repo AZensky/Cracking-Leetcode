@@ -2,6 +2,7 @@ import React from "react";
 import "./ProgressBar.css";
 
 function ProgressBar({ completed }) {
+  if (isNaN(completed)) completed = 0;
   return (
     <div className="progress-bar-container">
       <div
