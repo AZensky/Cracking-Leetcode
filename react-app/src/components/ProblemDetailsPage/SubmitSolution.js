@@ -16,6 +16,7 @@ function SubmitSolution() {
   const [title, setTitle] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [successfullySubmitted, setSuccessfullySubmitted] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -51,6 +52,12 @@ function SubmitSolution() {
     let createdSolution = await dispatch(createSolution(problemId, info));
 
     await dispatch(loadSolutions(problemId));
+
+    setSuccessfullySubmitted(true);
+
+    setTimeout(() => {
+      setSuccessfullySubmitted(false);
+    }, 3000);
   }
 
   return (
@@ -63,6 +70,11 @@ function SubmitSolution() {
               validationErrors.length > 0 &&
               validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
+          {successfullySubmitted && (
+            <ul className="submit-form__sucesss">
+              <li>Sucessfully submitted!</li>
+            </ul>
+          )}
           <label className="solution-form-title">
             Solution Title:
             <input

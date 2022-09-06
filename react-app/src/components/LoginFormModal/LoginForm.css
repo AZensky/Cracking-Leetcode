@@ -93,3 +93,10 @@
   text-align: center;
   padding-left: 0;
 }
+
+.submit-form__sucesss {
+  list-style: none;
+  color: #00ff00;
+  text-align: center;
+  padding-left: 0;
+}
