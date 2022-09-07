@@ -31,7 +31,7 @@ function SignupForm() {
       allErrors.push("Password does not match Confirm Password");
 
     setErrors(allErrors);
-  }, [password, confirmPassword]);
+  }, [username, password, confirmPassword]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
