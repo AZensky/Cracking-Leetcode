@@ -20,7 +20,7 @@
 }
 
 .login-form input:focus {
-  border: 1px solid rgb(1, 130, 148);
+  border: 1px solid rgb(117, 117, 117);
 }
 
 .login-form label {
