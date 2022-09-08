@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
@@ -9,10 +9,22 @@ function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    const allErrors = [];
+    if (username.length === 0) allErrors.push("Username field is required");
+
+    if (password.length === 0) allErrors.push("Password field is required");
+
+    setErrors(allErrors);
+  }, [username, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
+
+    setHasSubmitted(true);
+    if (errors.length > 0) return;
 
     //if there are errors when trying to log in, set the errors, so we can display them
     const data = await dispatch(login(username, password));
@@ -25,9 +37,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="login-form">
       <ul className="login-form__validation-errors">
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
+        {hasSubmitted && errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <img className="login-form__icon" src={crackingLeetcodeLogo} alt="logo" />
       <h1 className="login-form__title">Log in</h1>
