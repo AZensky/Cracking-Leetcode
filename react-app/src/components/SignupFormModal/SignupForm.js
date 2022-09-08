@@ -15,14 +15,12 @@ function SignupForm() {
 
   useEffect(() => {
     const allErrors = [];
-    if (username.length === 0)
-      allErrors.push("Username: This field is required");
+    if (username.length === 0) allErrors.push("Username field is required");
 
-    if (password.length === 0)
-      allErrors.push("Password: This field is required");
+    if (password.length === 0) allErrors.push("Password field is required");
 
     if (confirmPassword.length === 0)
-      allErrors.push("Confirm Password: This field is required");
+      allErrors.push("Confirm Password field is required");
 
     if (password.length > 0 && password.length < 4)
       allErrors.push("Password must be at least 4 characters");
