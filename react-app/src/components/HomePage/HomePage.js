@@ -116,7 +116,10 @@ function HomePage() {
   useEffect(() => {
     if (searchInput.length > 0) {
       setShowMenu(true);
-      setSearchResults(handleSearch(searchInput));
+      const searchResults = handleSearch(searchInput);
+      if (searchResults.length === 0)
+        setSearchResults([{ name: "No results found", disabled: true }]);
+      else setSearchResults(searchResults);
     } else {
       setShowMenu(false);
       setSearchResults([]);
@@ -167,12 +170,10 @@ function HomePage() {
           </div>
         )}
       </div>
-
       {/* Search and Display All Section */}
-
       <div className="home-page-search-section">
         {/* Problem search form */}
-        <form onSubmit={handleSearch}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <label>
             <button className="home-page-search-icon">
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -206,7 +207,6 @@ function HomePage() {
           )}
         </div>
       </div>
-
       {/* Search dropdown */}
       {showMenu && searchResults.length > 0 && (
         <div className="search-dropdown-container">
@@ -217,6 +217,7 @@ function HomePage() {
                   key={problem.id}
                   onClick={() => setSearchInput("")}
                   to={`/problems/${problem.id}`}
+                  style={problem.disabled && { pointerEvents: "none" }}
                   className="search-dropdown-item"
                 >
                   <span className="dropdown-problem-name">{problem.name}</span>
@@ -245,7 +246,6 @@ function HomePage() {
         {/* prettier-ignore */}
         <Topic num={11} title={"Dynamic Programming"} problems={dynamicProgrammingProblems} />
       </div>
-
       <Footer />
     </div>
   );
