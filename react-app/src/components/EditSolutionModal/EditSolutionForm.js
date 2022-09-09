@@ -23,7 +23,7 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
   useEffect(() => {
     const errors = [];
 
-    if (title.length === 0) errors.push("Title is required");
+    if (title.trim().length === 0) errors.push("Title is required");
     if (solution.length === 0 || solution.trim().length === 0) errors.push("Solution is required");
 
     setValidationErrors(errors);
@@ -66,7 +66,7 @@ function EditSolutionForm({ solutionId, oldTitle, oldSolution, oldLanguage, clos
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
-          maxlength="55"
+          maxLength="55"
           // required
         />
       </label>
