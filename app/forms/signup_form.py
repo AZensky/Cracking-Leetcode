@@ -29,4 +29,4 @@ def password_length(form, field):
 class SignUpForm(FlaskForm):
     Username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    Password = StringField('password', validators=[DataRequired(), password_length])
+    Password = StringField('password', validators=[DataRequired('Password field is required'), password_length])
