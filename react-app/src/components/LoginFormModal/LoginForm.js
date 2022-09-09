@@ -13,7 +13,8 @@ function LoginForm() {
 
   useEffect(() => {
     const allErrors = [];
-    if (username.length === 0) allErrors.push("Username field is required");
+    if (username.trim().length === 0)
+      allErrors.push("Username field is required");
 
     if (password.length === 0) allErrors.push("Password field is required");
 
