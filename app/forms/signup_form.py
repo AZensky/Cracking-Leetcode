@@ -17,7 +17,7 @@ def username_exists(form, field):
     username = field.data
     user = User.query.filter(User.username == username).first()
     if user:
-        raise ValidationError('Username is already in use.')
+        raise ValidationError('Username is already in use')
 
 def password_length(form, field):
     # Checking if password length is at least 4
