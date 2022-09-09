@@ -30,11 +30,10 @@
 .home-page-search-icon {
   border: none;
   background-color: transparent;
-  z-index: 100;
+  z-index: 99;
   position: absolute;
   top: 12px;
   left: 7px;
-  cursor: pointer;
 }
 
 .home-page-search-section {
@@ -77,6 +76,7 @@
   border-radius: 1rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   width: 200px;
+  z-index: 100;
 }
 
 .search-dropdown-items-container {
