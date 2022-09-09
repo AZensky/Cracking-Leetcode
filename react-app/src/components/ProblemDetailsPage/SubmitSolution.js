@@ -100,7 +100,8 @@ function SubmitSolution() {
           </label>
 
           <h4 className="language-solution-title">
-            {language.charAt(0).toUpperCase() + language.slice(1)} Solution:
+            {language.toLowerCase() === "javascript" ? "JavaScript" : "Python"}{" "}
+            Solution:
           </h4>
 
           {/* if selected language is javascript, render a code editor with javascript formatting/highlighting */}
