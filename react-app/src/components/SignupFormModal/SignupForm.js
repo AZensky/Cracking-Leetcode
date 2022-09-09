@@ -69,6 +69,7 @@ function SignupForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          maxLength="100"
           // required
         />
       </label>
@@ -78,6 +79,7 @@ function SignupForm() {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          maxLength="100"
           // required
         />
       </label>

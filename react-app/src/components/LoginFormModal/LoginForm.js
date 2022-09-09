@@ -49,6 +49,7 @@ function LoginForm() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           // required
+          maxLength="40"
         />
       </label>
       <label className="login-form__password__label">
@@ -58,6 +59,7 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           // required
+          maxLength="100"
         />
       </label>
       <button type="submit" className="login-form__log-in">
