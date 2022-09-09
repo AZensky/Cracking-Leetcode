@@ -73,6 +73,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.05rem;
+  word-break: break-word;
 }
 
 .edit-solution-btn {
@@ -111,6 +112,7 @@
 
 .solution-owner > p {
   color: #d6d0d0;
+  word-break: break-word;
 }
 
 .solution-date {
