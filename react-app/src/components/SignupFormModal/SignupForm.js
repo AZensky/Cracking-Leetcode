@@ -41,7 +41,9 @@ function SignupForm() {
     setHasSubmitted(true);
     if (errors.length > 0) return;
 
-    const data = await dispatch(signUp(username, password));
+    const trimmedUsername = username.trim();
+
+    const data = await dispatch(signUp(trimmedUsername, password));
     if (data) {
       setErrors(data);
     }
