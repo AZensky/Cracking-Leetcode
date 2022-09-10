@@ -6,6 +6,8 @@ import ProblemDescription from "./ProblemDescription";
 import ProblemSolutions from "./ProblemSolutions";
 import SubmitSolution from "./SubmitSolution";
 import Footer from "../Footer/Footer";
+import NotFound from "../NotFound/NotFound";
+import PROBLEMLISTOBJ from "../../util/problem_list_obj.json";
 import "./ProblemDetailsPage.css";
 
 function ProblemDetailsPage() {
@@ -26,6 +28,10 @@ function ProblemDetailsPage() {
     getProblemDetails().catch(console.error);
     window.scrollTo(0, 0);
   }, []);
+
+  if (!PROBLEMLISTOBJ[problemId]) {
+    return <NotFound />;
+  }
 
   return (
     <div className="problem-details-page-container">
