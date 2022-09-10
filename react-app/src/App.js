@@ -34,15 +34,17 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <Switch>
         <Route path="/" exact={true}>
+          <Navbar />
           <HomePage />
         </Route>
         <Route path="/problems/:problemId">
+          <Navbar />
           <ProblemDetailsPage />
         </Route>
         <Route>
+          <Navbar notFound={true} />
           <NotFound />
         </Route>
       </Switch>
