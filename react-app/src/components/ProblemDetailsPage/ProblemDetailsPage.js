@@ -12,6 +12,7 @@ import "./ProblemDetailsPage.css";
 
 function ProblemDetailsPage() {
   const { problemId } = useParams();
+  const history = useHistory();
 
   const [problemDetails, setProblemDetails] = useState();
 
@@ -30,7 +31,7 @@ function ProblemDetailsPage() {
   }, []);
 
   if (!PROBLEMLISTOBJ[problemId]) {
-    return <NotFound />;
+    history.push("/not-found");
   }
 
   return (

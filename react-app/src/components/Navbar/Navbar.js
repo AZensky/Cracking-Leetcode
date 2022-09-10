@@ -7,7 +7,7 @@ import { logout, login } from "../../store/session";
 import crackingLeetcodeLogo from "../../assets/crackingLeetcodeLogo.png";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ notFound }) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -41,6 +41,8 @@ function Navbar() {
       </>
     );
   }
+
+  if (notFound) sessionLinks = undefined;
 
   return (
     <div className="navbar-container">
