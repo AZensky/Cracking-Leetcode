@@ -18,6 +18,10 @@ function LoginForm() {
 
     if (password.length === 0) allErrors.push("Password field is required");
 
+    // Check if password is all spaces and if so, add error
+    if (password.split("").every((el) => el === " "))
+      allErrors.push("Password cannot be all spaces");
+
     setErrors(allErrors);
   }, [username, password]);
 
