@@ -21,7 +21,7 @@ function SignupForm() {
     if (password.length === 0) allErrors.push("Password field is required");
 
     // Check if password is all spaces and if so, add error
-    if (password.split("").every((el) => el === " "))
+    if (password.length >= 4 && password.split("").every((el) => el === " "))
       allErrors.push("Password cannot be all spaces");
 
     if (confirmPassword.length === 0)

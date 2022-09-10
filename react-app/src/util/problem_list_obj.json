@@ -1,0 +1,251 @@
+{
+  "1": {
+    "name": "Contains Duplicate",
+    "id": "1"
+  },
+
+  "2": {
+    "name": "Squares of a Sorted Array",
+    "id": "2"
+  },
+
+  "3": {
+    "name": "Sort Colors",
+    "id": "3"
+  },
+
+  "4": {
+    "name": "Product of Array Except Self",
+    "id": "4"
+  },
+
+  "5": {
+    "name": "Two Sum",
+    "id": "5"
+  },
+
+  "6": {
+    "name": "Majority Element",
+    "id": "6"
+  },
+
+  "7": {
+    "name": "Valid Anagram",
+    "id": "7"
+  },
+
+  "8": {
+    "name": "Group Anagrams",
+    "id": "8"
+  },
+
+  "9": {
+    "name": "Top K Frequent Elements",
+    "id": "9"
+  },
+
+  "10": {
+    "name": "Valid Palindrome",
+    "id": "10"
+  },
+
+  "11": {
+    "name": "Merge Sorted Array",
+    "id": "11"
+  },
+
+  "12": {
+    "name": "3Sum",
+    "id": "12"
+  },
+
+  "13": {
+    "name": "Container With Most Water",
+    "id": "13"
+  },
+
+  "14": {
+    "name": "Best Time to Buy and Sell Stock",
+    "id": "14"
+  },
+
+  "15": {
+    "name": "Longest Substring Without Repeating Characters",
+    "id": "15"
+  },
+
+  "16": {
+    "name": "Minimum Size Subarray Sum",
+    "id": "16"
+  },
+
+  "17": {
+    "name": "Binary Search",
+    "id": "17"
+  },
+
+  "18": {
+    "name": "Search in Rotated Sorted Array",
+    "id": "18"
+  },
+
+  "19": {
+    "name": "Find Minimum in Rotated Sorted Array",
+    "id": "19"
+  },
+
+  "20": {
+    "name": "Search a 2D Matrix",
+    "id": "20"
+  },
+
+  "21": {
+    "name": "Valid Parentheses",
+    "id": "21"
+  },
+
+  "22": {
+    "name": "Backstring Space Compare",
+    "id": "22"
+  },
+
+  "23": {
+    "name": "Daily Temperatures",
+    "id": "23"
+  },
+
+  "24": {
+    "name": "Evaluate Reverse Polish Notation",
+    "id": "24"
+  },
+
+  "25": {
+    "name": "Reverse Linked List",
+    "id": "25"
+  },
+
+  "26": {
+    "name": "Merge Two Sorted Lists",
+    "id": "26"
+  },
+
+  "27": {
+    "name": "Palindrome Linked List",
+    "id": "27"
+  },
+
+  "28": {
+    "name": "Linked List Cycle",
+    "id": "28"
+  },
+
+  "29": {
+    "name": "Remove Nth Node From End of List",
+    "id": "29"
+  },
+
+  "30": {
+    "name": "Add Two Numbers",
+    "id": "30"
+  },
+
+  "31": {
+    "name": "Fibonacci Number",
+    "id": "31"
+  },
+
+  "32": {
+    "name": "Power of Three",
+    "id": "32"
+  },
+
+  "33": {
+    "name": "Permutations",
+    "id": "33"
+  },
+
+  "34": {
+    "name": "Subsets",
+    "id": "34"
+  },
+
+  "35": {
+    "name": "Letter Combinations of a Phone Number",
+    "id": "35"
+  },
+
+  "36": {
+    "name": "Generate Parentheses",
+    "id": "36"
+  },
+
+  "37": {
+    "name": "Invert Binary Tree",
+    "id": "37"
+  },
+
+  "38": {
+    "name": "Maximum Depth of Binary Tree",
+    "id": "38"
+  },
+
+  "39": {
+    "name": "Binary Tree Right Side View",
+    "id": "39"
+  },
+
+  "40": {
+    "name": "Count Good Nodes in Binary Tree",
+    "id": "40"
+  },
+
+  "41": {
+    "name": "Validate Binary Search Tree",
+    "id": "41"
+  },
+
+  "42": {
+    "name": "Number of Islands",
+    "id": "42"
+  },
+
+  "43": {
+    "name": "Max Area of Island",
+    "id": "43"
+  },
+
+  "44": {
+    "name": "Clone Graph",
+    "id": "44"
+  },
+
+  "45": {
+    "name": "Rotting Oranges",
+    "id": "45"
+  },
+
+  "46": {
+    "name": "Word Search",
+    "id": "46"
+  },
+
+  "47": {
+    "name": "Maximum Subarray",
+    "id": "47"
+  },
+
+  "48": {
+    "name": "Coin Change",
+    "id": "48"
+  },
+
+  "49": {
+    "name": "Unique Paths",
+    "id": "49"
+  },
+
+  "50": {
+    "name": "House Robber",
+    "id": "50"
+  }
+}
