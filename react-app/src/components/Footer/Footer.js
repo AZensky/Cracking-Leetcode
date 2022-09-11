@@ -75,14 +75,14 @@ function Footer() {
           >
             Medium
           </a>
-          <a
+          {/* <a
             className="footer-text"
             href="mailto:alexzelinsky124@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Email
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
