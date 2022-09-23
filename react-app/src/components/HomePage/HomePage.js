@@ -14,18 +14,18 @@ function HomePage() {
   const { displayProblems, setDisplayProblems } = useDisplayProblemsContext();
 
   const [searchInput, setSearchInput] = useState("");
-  const [arrayProblems, setArrayProblems] = useState({});
-  const [hashMapProblems, setHashMapProblems] = useState({});
-  const [twoPointerProblems, setTwoPointerProblems] = useState({});
-  const [slidingWindowProblems, setSlidingWindowProblems] = useState({});
-  const [binarySearchProblems, setBinarySearchProblems] = useState({});
-  const [stackProblems, setStackProblems] = useState({});
-  const [linkedListProblems, setLinkedListProblems] = useState({});
-  const [recursionProblems, setRecursionProblems] = useState({});
-  const [treeProblems, setTreeProblems] = useState({});
-  const [graphProblems, setGraphProblems] = useState({});
+  const [arrayProblems, setArrayProblems] = useState([]);
+  const [hashMapProblems, setHashMapProblems] = useState([]);
+  const [twoPointerProblems, setTwoPointerProblems] = useState([]);
+  const [slidingWindowProblems, setSlidingWindowProblems] = useState([]);
+  const [binarySearchProblems, setBinarySearchProblems] = useState([]);
+  const [stackProblems, setStackProblems] = useState([]);
+  const [linkedListProblems, setLinkedListProblems] = useState([]);
+  const [recursionProblems, setRecursionProblems] = useState([]);
+  const [treeProblems, setTreeProblems] = useState([]);
+  const [graphProblems, setGraphProblems] = useState([]);
   const [dynamicProgrammingProblems, setDynamicProgrammingProblems] = useState(
-    {}
+    []
   );
   const [showMenu, setShowMenu] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
