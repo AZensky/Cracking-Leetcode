@@ -153,7 +153,10 @@ function HomePage() {
   }
 
   return (
-    <div className="main-content-container">
+    <div
+      className="main-content-container"
+      id={!isLoaded && "loading-background"}
+    >
       {/* Home page header */}
       {isLoaded ? (
         <>

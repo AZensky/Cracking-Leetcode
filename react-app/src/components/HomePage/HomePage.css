@@ -1,10 +1,14 @@
 .main-content-container {
   width: 100%;
   background-color: #131622;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#loading-background {
+  min-height: 100vh;
 }
 
 .home-page-header {
