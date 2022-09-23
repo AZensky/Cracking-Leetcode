@@ -7,6 +7,7 @@ import { useDisplayProblemsContext } from "../../context/DisplayProblems";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Topic from "../Topics/Topic";
 import Footer from "../Footer/Footer";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import problemList from "../../util/problem_list.json";
 import "./HomePage.css";
 
@@ -29,6 +30,7 @@ function HomePage() {
   );
   const [showMenu, setShowMenu] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -110,6 +112,7 @@ function HomePage() {
     setTreeProblems(treeProblems);
     setGraphProblems(graphProblems);
     setDynamicProgrammingProblems(dpProblems);
+    setIsLoaded(true);
   }, [allProblems]);
 
   // Search dropdown
@@ -150,103 +153,122 @@ function HomePage() {
   }
 
   return (
-    <div className="main-content-container">
+    <div
+      className="main-content-container"
+      id={!isLoaded && "loading-background"}
+    >
       {/* Home page header */}
-      <div className="home-page-header">
-        <div>
-          <h1>Curated 50</h1>
-        </div>
-        {user && (
-          <div className="problems-completed-section">
-            <p>
-              Completed: {user.problemsSolved.length}/
-              {allProblems ? allProblems.length : 50}
-            </p>
-            <ProgressBar
-              completed={Math.trunc(
-                (user.problemsSolved.length / allProblems?.length) * 100
-              )}
-            />
+      {isLoaded ? (
+        <>
+          <div className="home-page-header">
+            <div>
+              <h1>Curated 50</h1>
+            </div>
+            {user && (
+              <div className="problems-completed-section">
+                <p>
+                  Completed: {user.problemsSolved.length}/
+                  {allProblems ? allProblems.length : 50}
+                </p>
+                <ProgressBar
+                  completed={Math.trunc(
+                    (user.problemsSolved.length / allProblems?.length) * 100
+                  )}
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      {/* Search and Display All Section */}
-      <div className="home-page-search-section">
-        {/* Problem search form */}
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label>
-            <button className="home-page-search-icon">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={(e) => setSearchInput(e.target.value)}
-              value={searchInput}
-              className="home-page-search"
-            />
-          </label>
-        </form>
+          {/* Search and Display All Section */}
+          <div className="home-page-search-section">
+            {/* Problem search form */}
+            <form onSubmit={(e) => e.preventDefault()}>
+              <label>
+                <button className="home-page-search-icon">
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  value={searchInput}
+                  className="home-page-search"
+                />
+              </label>
+            </form>
 
-        {/* Display All Content Dropdown */}
-        <div className="display-content-container">
-          {!displayProblems ? (
-            <button
-              className="display-content-btn"
-              onClick={() => setDisplayProblems(true)}
-            >
-              Display All Content <i className="fa-solid fa-arrow-down"></i>
-            </button>
-          ) : (
-            <button
-              className="display-content-btn"
-              onClick={() => setDisplayProblems(false)}
-            >
-              Hide All Content <i className="fa-solid fa-arrow-up"></i>
-            </button>
-          )}
-        </div>
-      </div>
-      {/* Search dropdown */}
-      {showMenu && searchResults.length > 0 && (
-        <div className="search-dropdown-container">
-          <div className="search-dropdown-menu">
-            <div className="search-dropdown-items-container">
-              {searchResults.map((problem) => (
-                <Link
-                  key={problem.id}
-                  onClick={() => setSearchInput("")}
-                  to={`/problems/${problem.id}`}
-                  style={problem.disabled && { pointerEvents: "none" }}
-                  className="search-dropdown-item"
+            {/* Display All Content Dropdown */}
+            <div className="display-content-container">
+              {!displayProblems ? (
+                <button
+                  className="display-content-btn"
+                  onClick={() => setDisplayProblems(true)}
                 >
-                  <span className="dropdown-problem-name">{problem.name}</span>
-                </Link>
-              ))}
+                  Display All Content <i className="fa-solid fa-arrow-down"></i>
+                </button>
+              ) : (
+                <button
+                  className="display-content-btn"
+                  onClick={() => setDisplayProblems(false)}
+                >
+                  Hide All Content <i className="fa-solid fa-arrow-up"></i>
+                </button>
+              )}
             </div>
           </div>
-        </div>
-      )}
+          {/* Search dropdown */}
+          {showMenu && searchResults.length > 0 && (
+            <div className="search-dropdown-container">
+              <div className="search-dropdown-menu">
+                <div className="search-dropdown-items-container">
+                  {searchResults.map((problem) => (
+                    <Link
+                      key={problem.id}
+                      onClick={() => setSearchInput("")}
+                      to={`/problems/${problem.id}`}
+                      style={problem.disabled && { pointerEvents: "none" }}
+                      className="search-dropdown-item"
+                    >
+                      <span className="dropdown-problem-name">
+                        {problem.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
-      {/* Contains all the problems */}
-      <div className="problems-container">
-        {/* Loop through all the problem topics */}
-        <Topic num={1} title={"Arrays"} problems={arrayProblems} />
-        <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
-        <Topic num={3} title={"Two Pointers"} problems={twoPointerProblems} />
-        {/* prettier-ignore */}
-        <Topic num={4} title={"Sliding Window"} problems={slidingWindowProblems} />
-        {/* prettier-ignore */}
-        <Topic num={5} title={"Binary Search"} problems={binarySearchProblems} />
-        <Topic num={6} title={"Stack"} problems={stackProblems} />
-        <Topic num={7} title={"Linked List"} problems={linkedListProblems} />
-        <Topic num={8} title={"Recursion"} problems={recursionProblems} />
-        <Topic num={9} title={"Trees"} problems={treeProblems} />
-        <Topic num={10} title={"Graphs"} problems={graphProblems} />
-        {/* prettier-ignore */}
-        <Topic num={11} title={"Dynamic Programming"} problems={dynamicProgrammingProblems} />
-      </div>
-      <Footer />
+          {/* Contains all the problems */}
+          <div className="problems-container">
+            {/* Loop through all the problem topics */}
+            <Topic num={1} title={"Arrays"} problems={arrayProblems} />
+            <Topic num={2} title={"Hash Maps"} problems={hashMapProblems} />
+            <Topic
+              num={3}
+              title={"Two Pointers"}
+              problems={twoPointerProblems}
+            />
+            {/* prettier-ignore */}
+            <Topic num={4} title={"Sliding Window"} problems={slidingWindowProblems} />
+            {/* prettier-ignore */}
+            <Topic num={5} title={"Binary Search"} problems={binarySearchProblems} />
+            <Topic num={6} title={"Stack"} problems={stackProblems} />
+            <Topic
+              num={7}
+              title={"Linked List"}
+              problems={linkedListProblems}
+            />
+            <Topic num={8} title={"Recursion"} problems={recursionProblems} />
+            <Topic num={9} title={"Trees"} problems={treeProblems} />
+            <Topic num={10} title={"Graphs"} problems={graphProblems} />
+            {/* prettier-ignore */}
+            <Topic num={11} title={"Dynamic Programming"} problems={dynamicProgrammingProblems} />
+          </div>
+          <Footer />
+        </>
+      ) : (
+        <LoadingSpinner />
+      )}
     </div>
   );
 }

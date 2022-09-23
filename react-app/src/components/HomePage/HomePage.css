@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+#loading-background {
+  min-height: 100vh;
+}
+
 .home-page-header {
   display: flex;
   justify-content: space-between;
