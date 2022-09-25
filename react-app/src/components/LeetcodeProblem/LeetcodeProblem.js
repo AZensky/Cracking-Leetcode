@@ -56,11 +56,14 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
       {/* Problem Overview Details */}
       <Link to={`/problems/${id}`} className="lc-problem-overview-container">
         <div className="lc-problem-overview">
-          <Link to={`/problems/${id}`} className="problem-link">
-            <p className="lc-problem-title">{name}</p>
-          </Link>
+          {/* <Link to={`/problems/${id}`} className="problem-link"> */}
+          <p className="lc-problem-title">{name}</p>
+          {/* </Link> */}
 
-          <div className="lc-problem-details">
+          <div
+            className="lc-problem-details"
+            onClick={(e) => e.preventDefault()}
+          >
             <span>Rating:</span>
             <Rating
               emptySymbol="fa fa-star empty"
