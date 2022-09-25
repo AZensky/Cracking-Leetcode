@@ -32,6 +32,13 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
     await dispatch(removeSolvedProblem(user.id, id));
   }
 
+  const openInNewTab = (url, e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <div className="problem-content-container">
       {/* Solved icon */}
@@ -47,13 +54,16 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
       )}
 
       {/* Problem Overview Details */}
-      <div className="lc-problem-overview-container">
+      <Link to={`/problems/${id}`} className="lc-problem-overview-container">
         <div className="lc-problem-overview">
-          <Link to={`/problems/${id}`} className="problem-link">
-            <p className="lc-problem-title">{name}</p>
-          </Link>
+          {/* <Link to={`/problems/${id}`} className="problem-link"> */}
+          <p className="lc-problem-title">{name}</p>
+          {/* </Link> */}
 
-          <div className="lc-problem-details">
+          <div
+            className="lc-problem-details"
+            onClick={(e) => e.preventDefault()}
+          >
             <span>Rating:</span>
             <Rating
               emptySymbol="fa fa-star empty"
@@ -71,17 +81,14 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
             </div>
           </div>
         </div>
-
         {/* Solve Button */}
-        <a
+        <div
           className="solve-challenge-btn"
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={(e) => openInNewTab(link, e)}
         >
           <span className="solve-challenge-btn-container">Solve Challenge</span>
-        </a>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 }
