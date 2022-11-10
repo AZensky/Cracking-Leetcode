@@ -33,6 +33,11 @@
   text-decoration: none;
 }
 
+.lc-problem-overview-container:hover .lc-problem-title {
+  text-decoration: underline;
+  text-decoration-color: #ffffff;
+}
+
 .lc-problem-overview {
   display: flex;
   flex-direction: column;
