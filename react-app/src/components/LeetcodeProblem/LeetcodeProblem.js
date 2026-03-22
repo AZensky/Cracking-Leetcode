@@ -75,10 +75,7 @@ function LeetcodeProblem({ name, id, difficulty, ratings }) {
           </div>
         </div>
         {/* Solve Button */}
-        <div
-          className="solve-challenge-btn"
-          onClick={(e) => e.preventDefault()}
-        >
+        <div className="solve-challenge-btn">
           <span className="solve-challenge-btn-container">Solve Challenge</span>
         </div>
       </Link>
