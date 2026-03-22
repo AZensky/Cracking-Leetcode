@@ -5,7 +5,7 @@ import { addSolvedProblem, removeSolvedProblem } from "../../store/session";
 import Rating from "react-rating";
 import "./LeetcodeProblem.css";
 
-function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
+function LeetcodeProblem({ name, id, difficulty, ratings }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
@@ -31,13 +31,6 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
   async function handleRemove(id) {
     await dispatch(removeSolvedProblem(user.id, id));
   }
-
-  const openInNewTab = (url, e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
-    if (newWindow) newWindow.opener = null;
-  };
 
   return (
     <div className="problem-content-container">
@@ -84,7 +77,7 @@ function LeetcodeProblem({ name, id, difficulty, ratings, link }) {
         {/* Solve Button */}
         <div
           className="solve-challenge-btn"
-          onClick={(e) => openInNewTab(link, e)}
+          onClick={(e) => e.preventDefault()}
         >
           <span className="solve-challenge-btn-container">Solve Challenge</span>
         </div>
